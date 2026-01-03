@@ -15,4 +15,7 @@ hero:
     - theme: brand
       text: "JavaScript"
       link: /frontend/JavaScript/
+  image:
+    src: /logo.jpg
+    alt: Note Logo
 ---

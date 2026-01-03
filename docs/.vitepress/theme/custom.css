@@ -1,58 +1,17 @@
 :root {
-  /* 基础粉色 - Light Pink Palette */
-  --vp-c-brand-1: #ffb6c1; /* Main brand color: LightPink */
-  --vp-c-brand-2: #ffc4d0; /* Hover color: Lighter pink */
-  --vp-c-brand-3: #ff9eaf; /* Active color: Darker pink */
-  --vp-c-brand-soft: rgba(255, 182, 193, 0.16); /* Soft background */
+  /* 基础粉色 - Unified Darker Pink Palette */
+  --vp-c-brand-1: #eb5e78; /* Main brand color: Darker Pink */
+  --vp-c-brand-2: #f0748b; /* Hover color: Slightly lighter */
+  --vp-c-brand-3: #d14560; /* Active color: Darker */
+  --vp-c-brand-soft: rgba(235, 94, 120, 0.16); /* Soft background */
 }
 
-  /* Home hero gradient */
-  :root {
-    --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(
-      120deg,
-      #ffb6c1,
-      #ffc4d0
-    );
-  }
-  
-  /* Custom Button Colors for Homepage Actions */
-  /* Button 1: HTML (Orange) */
-  .VPButton.brand[href*="/frontend/HTML/"] {
-    background-color: #E34F26 !important;
-    border-color: #E34F26 !important;
-    color: white !important;
-  }
-  .VPButton.brand[href*="/frontend/HTML/"]:hover {
-    background-color: #f06529 !important;
-  }
-  
-  /* Button 2: CSS (Blue) */
-  .VPButton.brand[href*="/frontend/CSS/"] {
-    background-color: #264de4 !important;
-    border-color: #264de4 !important;
-    color: white !important;
-  }
-  .VPButton.brand[href*="/frontend/CSS/"]:hover {
-    background-color: #2965f1 !important;
-  }
-  
-  /* Button 3: JavaScript (Yellow) */
-  .VPButton.brand[href*="/frontend/JavaScript/"] {
-    background-color: #f7df1e !important;
-    border-color: #f7df1e !important;
-    color: black !important;
-  }
-  .VPButton.brand[href*="/frontend/JavaScript/"]:hover {
-    background-color: #fce73d !important;
-  }
-  
-  /* Button 4: TypeScript (Blue) */
-  .VPButton.brand[href*="/frontend/TypeScript/"] {
-    background-color: #3178c6 !important;
-    border-color: #3178c6 !important;
-    color: white !important;
-  }
-  .VPButton.brand[href*="/frontend/TypeScript/"]:hover {
-    background-color: #3f90e8 !important;
-  }
+/* Home hero gradient */
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #eb5e78,
+    #f0748b
+  );
+}
