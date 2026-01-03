@@ -1,0 +1,19 @@
+{
+  "name": "notes",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ll:dev": "vitepress dev docs",
+    "ll:build": "vitepress build docs",
+    "ll:preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "lilin <lilin@lilin.com> (https://github.com/lilin)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.26.1",
+  "devDependencies": {
+    "vitepress": "2.0.0-alpha.15"
+  }
+}
