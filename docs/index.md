@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "My notes"
   text: "Frontend learning notes"
-  tagline: HTML, CSS, JavaScript, TypeScript
+  tagline: HTML, CSS, JavaScript,
   actions:
     - theme: brand
       text: "HTML"
@@ -15,7 +15,4 @@ hero:
     - theme: brand
       text: "JavaScript"
       link: /frontend/JavaScript/
-    - theme: brand
-      text: "TypeScript"
-      link: /frontend/TypeScript/
 ---

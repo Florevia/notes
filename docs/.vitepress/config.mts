@@ -11,7 +11,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "Frontend", link: "/frontend/TypeScript/" },
+      { text: "Frontend", link: "/frontend/JavaScript/" },
     ],
 
     sidebar: {
@@ -33,9 +33,9 @@ export default defineConfig({
         {
           text: "JavaScript",
           items: [
-            { text: "Introduction", link: "/frontend/JavaScript/" },
             {
               text: "ECMA-262",
+              collapsed: false,
               items: [
                 {
                   text: "ES2016",
@@ -75,6 +75,7 @@ export default defineConfig({
               items: [
                 {
                   text: "Vue 3",
+                  collapsed: false,
                   items: [
                     {
                       text: "Ref vs Reactive",
@@ -92,21 +93,45 @@ export default defineConfig({
                       text: "Scope Principle",
                       link: "/frontend/JavaScript/frontend-frameworks/vue3/scope原理.md",
                     },
+                    {
+                      text: "Slot Principle",
+                      link: "/frontend/JavaScript/frontend-frameworks/vue3/slot.md",
+                    },
                   ],
                 },
               ],
             },
             {
-              text: "Tools",
-              items: [{ text: "Debugging", link: "/frontend/debug.md" }],
+              text: "JavaScript Flavours",
+              collapsed: false,
+              items: [
+                {
+                  text: "TypeScript",
+                  link: "/frontend/JavaScript/JavaScript-Flavours/TypeScript.md",
+                },
+              ],
+            },
+            {
+              text: "Backend",
+              collapsed: false,
+              items: [
+                {
+                  text: "Express",
+                  link: "/frontend/JavaScript/backend/express/",
+                },
+                {
+                  text: "Next.js",
+                  link: "/frontend/JavaScript/backend/nextjs/",
+                },
+              ],
             },
           ],
         },
       ],
-      "/frontend/TypeScript/": [
+      "/frontend/notes/": [
         {
-          text: "TypeScript",
-          items: [{ text: "Introduction", link: "/frontend/TypeScript/" }],
+          text: "Notes",
+          items: [{ text: "Debugging", link: "/frontend/notes/debug.md" }],
         },
       ],
     },
