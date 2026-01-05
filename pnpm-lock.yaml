@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      canvas-confetti:
+        specifier: ^1.9.4
+        version: 1.9.4
     devDependencies:
       vitepress:
         specifier: 2.0.0-alpha.15
@@ -627,6 +631,9 @@ packages:
 
   birpc@2.9.0:
     resolution: {integrity: sha512-KrayHS5pBi69Xi9JmvoqrIgYGDkD6mcSe/i6YKi3w5kekCLzrX4+nawcXqrj2tIp50Kw/mT/s3p+GVK0A0sKxw==}
+
+  canvas-confetti@1.9.4:
+    resolution: {integrity: sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1461,6 +1468,8 @@ snapshots:
       '@algolia/requester-node-http': 5.46.2
 
   birpc@2.9.0: {}
+
+  canvas-confetti@1.9.4: {}
 
   ccount@2.0.1: {}
 

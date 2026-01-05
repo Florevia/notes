@@ -15,5 +15,8 @@
   "packageManager": "pnpm@10.26.1",
   "devDependencies": {
     "vitepress": "2.0.0-alpha.15"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4"
   }
 }

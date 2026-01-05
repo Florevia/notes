@@ -97,6 +97,10 @@ export default defineConfig({
                       text: "Slot Principle",
                       link: "/frontend/JavaScript/frontend-frameworks/vue3/slot.md",
                     },
+                    {
+                      text: "NextTick Principle",
+                      link: "/frontend/JavaScript/frontend-frameworks/vue3/nextTick.md",
+                    },
                   ],
                 },
               ],
@@ -112,16 +116,26 @@ export default defineConfig({
               ],
             },
             {
-              text: "Backend",
+              text: "JS Module Systems",
+              collapsed: false,
+              items: [
+                {
+                  text: "ESM vs CJS",
+                  link: "/frontend/JavaScript/js-module-systems/ESM-vs-CJS.md",
+                },
+              ],
+            },
+            {
+              text: "Backend Frameworks",
               collapsed: false,
               items: [
                 {
                   text: "Express",
-                  link: "/frontend/JavaScript/backend/express/",
+                  link: "/frontend/JavaScript/backend-frameworks/express/",
                 },
                 {
                   text: "Next.js",
-                  link: "/frontend/JavaScript/backend/nextjs/",
+                  link: "/frontend/JavaScript/backend-frameworks/nextjs/",
                 },
               ],
             },
