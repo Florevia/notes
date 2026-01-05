@@ -15,6 +15,9 @@ hero:
     - theme: brand
       text: "JavaScript"
       link: /frontend/JavaScript/
+    - theme: brand
+      text: "Notes"
+      link: /frontend/notes/
   image:
     src: /logo.jpg
     alt: Note Logo
