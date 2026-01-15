@@ -243,8 +243,32 @@ export default withMermaid(
                 link: "/interview/js/模块判断.md",
               },
               {
+                text: "TS 模块判断",
+                link: "/interview/js/ts模块判断.md",
+              },
+              {
+                text: "Node.js 事件循环",
+                link: "/interview/js/Node事件循环机制.md",
+              },
+              {
+                text: "Set/Map/WeakSet/WeakMap",
+                link: "/interview/js/Set-Map-WeakSet-WeakMap.md",
+              },
+              {
+                text: "柯里化函数",
+                link: "/interview/js/柯里化函数.md",
+              },
+              {
                 text: "作用域与作用域链",
                 link: "/interview/js/作用域和作用域链.md",
+              },
+              {
+                text: "闭包",
+                link: "/interview/js/闭包.md",
+              },
+              {
+                text: "垃圾回收与内存泄漏",
+                link: "/interview/js/垃圾回收和内存泄漏.md",
               },
               {
                 text: "执行栈与上下文",
@@ -293,6 +317,10 @@ export default withMermaid(
               {
                 text: "运算符",
                 link: "/interview/js/运算符.md",
+              },
+              {
+                text: "DOM 尺寸与位置",
+                link: "/interview/js/DOM尺寸和位置属性.md",
               },
             ],
           },
