@@ -19,7 +19,7 @@ const generateSnowflakes = () => {
     flakes.push({
       id: i,
       x: Math.random() * 100, // Random horizontal position (%)
-      size: Math.random() * 10 + 8, // 8px to 18px
+      size: Math.random() * 14 + 12, // 12px to 26px
       duration: Math.random() * 8 + 10, // 10-18 seconds to fall
       delay: Math.random() * 15, // Random start delay
       sway: Math.random() * 30 + 20, // Horizontal sway amount

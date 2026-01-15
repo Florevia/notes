@@ -2,7 +2,7 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/docs/frontend/JavaScript/ecma-262/es5/index.ts",
+      "program": "${workspaceFolder}/docs/interview/js/index.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
