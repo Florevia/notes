@@ -19,6 +19,7 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
     "canvas-confetti": "^1.9.4"
   }
 }
