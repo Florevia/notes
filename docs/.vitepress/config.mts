@@ -19,9 +19,8 @@ export default withMermaid(
           },
           {
             find: /^@braintree\/sanitize-url$/,
-            replacement: require.resolve(
-              "@braintree/sanitize-url/dist/index.js"
-            ),
+            replacement:
+              require.resolve("@braintree/sanitize-url/dist/index.js"),
           },
         ],
       },
@@ -376,6 +375,7 @@ export default withMermaid(
                 link: "/interview/网络/nginx配置详解.md",
               },
               { text: "Session", link: "/interview/网络/session.md" },
+              { text: "HTTP 基础", link: "/interview/网络/http.md" },
               { text: "HTTP 缓存", link: "/interview/网络/HTTP缓存.md" },
               { text: "HTTP 演进", link: "/interview/网络/HTTP演进.md" },
               {
@@ -402,12 +402,20 @@ export default withMermaid(
                 link: "/interview/网络/SSL/TSL.md",
               },
               {
+                text: "CA 证书",
+                link: "/interview/网络/CA.md",
+              },
+              {
                 text: "WebSocket",
-                link: "/interview/网络/websocket.md",
+                link: "/interview/网络/websocket握手.md",
               },
               {
                 text: "输入 URL 后发生了什么",
                 link: "/interview/网络/输入URL后.md",
+              },
+              {
+                text: "回流与重绘",
+                link: "/interview/网络/回流重绘.md",
               },
               {
                 text: "浏览器事件循环",
@@ -422,5 +430,5 @@ export default withMermaid(
         { icon: "github", link: "https://github.com/vuejs/vitepress" },
       ],
     },
-  })
+  }),
 );

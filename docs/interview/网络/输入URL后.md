@@ -21,19 +21,21 @@
 
 ### 2. DNS 解析
 
-如果缓存未命中，需要进行 DNS 查询。查找过程遵循就近原则：
+1. **第一阶段：本地查找（利用缓存）**
 
-1. 递归查询
-   - **浏览器缓存**：检查浏览器自身的 DNS 缓存。
+   在真正发起网络查询前，系统会优先检查各级缓存：
+   - 浏览器缓存：浏览器会检查自己的内存缓存（chrome://net-internals/#dns）。如果存在且未过期，直接返回 IP。
+   - 操作系统缓存 (OS Cache)：如果没有命中浏览器缓存，浏览器会调用系统的 getaddrinfo 函数。系统会先检查Hosts 文件，然后检查本地 DNS 解析缓存。
 
-   - **操作系统缓存**：检查系统 hosts 文件或 OS 缓存。
+2. **第二阶段：远程查询（递归 + 迭代）**
 
-   - **路由器缓存**：检查路由器 DNS 记录。
+   如果本地都没有，请求会发送给本地域名服务器 (Local DNS / LDNS)。这通常是你的 ISP（运营商）提供的 DNS，或者是你手动配置的公共 DNS（如 8.8.8.8）。
 
-   - **ISP DNS 缓存**：向运营商的 DNS 服务器查询。
-
-2. 迭代查询
-   - **递归查询**：如果都没找到，ISP DNS 会按照 **根/顶级/权威服务器** 的顺序查询（Root -> .com -> google.com），直到获取目标 IP。
+   采用PC 到 LDNS 是递归，LDNS 对外是迭代的模式：
+   - LDNS 检查缓存：Local DNS 也会检查自己的缓存，有则直接返回。
+   - 请求根域名服务器 (Root Server)
+   - 请求顶级域名服务器 (TLD Server)
+   - 请求权威域名服务器 (Authoritative Server)
 
 ### 3. 建立 TCP 连接 (三次握手)
 
@@ -54,7 +56,8 @@
 - **请求行**：方法（GET）、URL、协议版本。
 - **请求头**：携带 Cookie、User-Agent、Accept-Encoding 等。
 - **请求体**：POST 请求的数据。
-- **注意**：如果之前有协商缓存（ETag / Last-Modified），会在 Header 中带上 If-None-Match 或 If-Modified-Since。
+
+> **注意**：如果之前有协商缓存（ETag / Last-Modified），会在 Header 中带上 If-None-Match 或 If-Modified-Since。
 
 ### 5. 服务器处理与响应
 
@@ -80,7 +83,7 @@
 ### 7. 渲染 (Rendering)
 
 - **构建渲染树 (Render Tree)**：将 DOM 树和 CSSOM 树合并。
-- **注意**：`display: none` 的节点不会进入渲染树，但 `visibility: hidden` 会。
+  > **注意**：`display: none` 的节点不会进入渲染树，但 `visibility: hidden` 会。
 - **布局 (Layout/Reflow)**：计算每个节点在屏幕上的确切位置和大小（回流）。
 - **绘制 (Painting/Repaint)**：填充像素，如颜色、背景、阴影（重绘）。
 - **合成 (Composite)**：将不同的图层（Layer）分别光栅化，通过 GPU 合成并在屏幕上显示。
