@@ -35,6 +35,7 @@ export default withMermaid(
         { text: "前端", link: "/frontend/JavaScript/" },
         { text: "408", link: "/408/computer-network/正向代理&反向代理.md" },
         { text: "面试", link: "/interview/html/浏览器渲染模式.md" },
+        { text: "AI", link: "/AI/MCP.md" },
         { text: "笔记", link: "/notes/" },
       ],
 
@@ -173,6 +174,10 @@ export default withMermaid(
                 text: "正向代理与反向代理",
                 link: "/408/computer-network/正向代理&反向代理.md",
               },
+              {
+                text: "计算机网络五层模型",
+                link: "/408/computer-network/计算机网络五层模型.md",
+              },
             ],
           },
         ],
@@ -180,15 +185,10 @@ export default withMermaid(
           {
             text: "笔记",
             items: [
-              {
-                text: "静态 Server 与动态 Server",
-                link: "/notes/静态server&动态server.md",
-              },
-              {
-                text: "静态站点与动态站点",
-                link: "/notes/静态站点&动态站点.md",
-              },
+              { text: "Git 语法", link: "/notes/git语法.md" },
               { text: "调试技巧", link: "/notes/debug.md" },
+              { text: "Vue3 项目搭建指南", link: "/notes/vue3项目搭建指南.md" },
+              { text: "Vite 配置文件解读", link: "/notes/vite配置文件解读.md" },
             ],
           },
         ],
@@ -227,6 +227,12 @@ export default withMermaid(
               },
               { text: "浮动 (Float)", link: "/interview/css/float.md" },
               { text: "BFC", link: "/interview/css/BFC.md" },
+              { text: "Flex 布局", link: "/interview/css/flex.md" },
+              { text: "CSS 优先级", link: "/interview/css/css优先级.md" },
+              {
+                text: "行内样式 vs Tailwind",
+                link: "/interview/css/行内样式和TailwindCSS以及手写css.md",
+              },
             ],
           },
           {
@@ -236,6 +242,14 @@ export default withMermaid(
               {
                 text: "原型与原型链",
                 link: "/interview/js/原型和原型链.md",
+              },
+              {
+                text: "Instanceof 原理",
+                link: "/interview/js/instanceOf.md",
+              },
+              {
+                text: "手写 Promise",
+                link: "/interview/js/promise.md",
               },
               {
                 text: "Node.js 模块判断",
@@ -344,8 +358,48 @@ export default withMermaid(
                 link: "/interview/vue/响应式机制.md",
               },
               {
+                text: "v-if 与 v-for",
+                link: "/interview/vue/v-if-v-for.md",
+              },
+              {
+                text: "v-for 中的 key",
+                link: "/interview/vue/v-for中的key.md",
+              },
+              {
+                text: "NextTick 原理",
+                link: "/interview/vue/nextTick.md",
+              },
+              {
+                text: "Scope 原理",
+                link: "/interview/vue/scope原理.md",
+              },
+              {
+                text: "动态绑定 Class 与 Style",
+                link: "/interview/vue/动态绑定class和style.md",
+              },
+              {
                 text: "状态变化到 UI 渲染流程",
                 link: "/interview/vue/状态变化到UI渲染流程.md",
+              },
+              {
+                text: "Composition API vs Options API",
+                link: "/interview/vue/composition-api-options-api.md",
+              },
+              {
+                text: "Vue 生命周期",
+                link: "/interview/vue/vue生命周期.md",
+              },
+              {
+                text: "组件间通信方式 (详细版)",
+                link: "/interview/vue/组件间通信方式.md",
+              },
+              {
+                text: "组件间通信方式 (精简版)",
+                link: "/interview/vue/组件间通信方式2.md",
+              },
+              {
+                text: "Mixin",
+                link: "/interview/vue/mixin.md",
               },
             ],
           },
@@ -399,7 +453,7 @@ export default withMermaid(
               },
               {
                 text: "SSL/TLS",
-                link: "/interview/网络/SSL/TSL.md",
+                link: "/interview/网络/TSL.md",
               },
               {
                 text: "CA 证书",
@@ -407,7 +461,7 @@ export default withMermaid(
               },
               {
                 text: "WebSocket",
-                link: "/interview/网络/websocket握手.md",
+                link: "/interview/网络/websocket.md",
               },
               {
                 text: "输入 URL 后发生了什么",
@@ -421,7 +475,97 @@ export default withMermaid(
                 text: "浏览器事件循环",
                 link: "/interview/网络/浏览器的事件循环.md",
               },
+              {
+                text: "Websocket 握手",
+                link: "/interview/网络/websocket握手.md",
+              },
             ],
+          },
+          {
+            text: "前端工程化",
+            collapsed: false,
+            items: [
+              {
+                text: "静态 Server 与动态 Server",
+                link: "/interview/前端工程化/静态server&动态server.md",
+              },
+              {
+                text: "Web 渲染策略",
+                link: "/interview/前端工程化/Web渲染策略.md",
+              },
+              {
+                text: "静态站点与动态 站点",
+                link: "/interview/前端工程化/静态站点&动态站点.md",
+              },
+              {
+                text: "Vite 为啥快",
+                link: "/interview/前端工程化/vite为啥快.md",
+              },
+              {
+                text: "HMR 原理和机制",
+                link: "/interview/前端工程化/HMR原理和机制.md",
+              },
+              {
+                text: "Plugin 和 Loader 的区别",
+                link: "/interview/前端工程化/Plugin和Loader的区别.md",
+              },
+              {
+                text: "CI/CD 企业级实践",
+                link: "/interview/工程化/CICD.md",
+              },
+              {
+                text: "Babel 原理与配置",
+                link: "/interview/工程化/babel.md",
+              },
+              {
+                text: "ESLint & Prettier 配置",
+                link: "/interview/工程化/eslint-prettier配置.md",
+              },
+              {
+                text: "Stylelint 配置",
+                link: "/interview/工程化/stylelint.md",
+              },
+              {
+                text: "本地测试与生产模式对比",
+                link: "/interview/工程化/本地测试生产模式对比.md",
+              },
+            ],
+          },
+          {
+            text: "浏览器",
+            collapsed: false,
+            items: [
+              {
+                text: "浏览器组成",
+                link: "/interview/浏览器/浏览器组成.md",
+              },
+              {
+                text: "浏览器多进程架构",
+                link: "/interview/浏览器/浏览器多进程架构.md",
+              },
+              {
+                text: "浏览器渲染进程",
+                link: "/interview/浏览器/浏览器的渲染进程.md",
+              },
+              {
+                text: "JS/CSS 阻塞渲染",
+                link: "/interview/浏览器/阻塞渲染.md",
+              },
+              {
+                text: "SSE (Server-Sent Events)",
+                link: "/interview/浏览器/SSE.md",
+              },
+              {
+                text: "Web APIs (DOM/BOM)",
+                link: "/interview/浏览器/WebApis.md",
+              },
+            ],
+          },
+        ],
+        "/AI/": [
+          {
+            text: "AI",
+            items: [{ text: "MCP", link: "/AI/MCP.md" }],
           },
         ],
       },

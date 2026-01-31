@@ -150,30 +150,7 @@ console.log("6: end");
 3. 事件循环：setTimeout 和 setImmediate（顺序不确定）
 ```
 
-## 6. 嵌套示例
-
-```js
-setTimeout(() => {
-  console.log("setTimeout");
-
-  process.nextTick(() => {
-    console.log("nextTick in setTimeout");
-  });
-
-  Promise.resolve().then(() => {
-    console.log("Promise in setTimeout");
-  });
-}, 0);
-
-// 输出顺序：
-// setTimeout
-// nextTick in setTimeout
-// Promise in setTimeout
-
-// 原因：setTimeout 执行完后，清空微任务队列
-```
-
-## 7. 常见错误
+## 6. 常见错误
 
 ### ❌ 递归 nextTick 会阻塞事件循环
 
@@ -198,7 +175,7 @@ setImmediate(function loop() {
 });
 ```
 
-## 8. Node.js vs 浏览器
+## 7. Node.js vs 浏览器
 
 | 特性                 | Node.js        | 浏览器            |
 | -------------------- | -------------- | ----------------- |
@@ -207,7 +184,7 @@ setImmediate(function loop() {
 | **setImmediate**     | ✅ 有          | ❌ 无             |
 | **微任务时机**       | 每个阶段结束后 | 每个宏任务结束后  |
 
-## 9. 面试必背要点
+## 8. 面试必背要点
 
 ### 问题 1：Node.js 事件循环有哪些阶段？
 
@@ -264,7 +241,7 @@ console.log("5");
 2. 清空微任务：nextTick (4) → Promise (3)
 3. 进入事件循环：setTimeout (2)
 
-## 10. 记忆口诀
+## 9. 记忆口诀
 
 ```
 同步代码先执行

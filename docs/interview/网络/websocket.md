@@ -57,6 +57,7 @@ Sec-WebSocket-Accept: HSmrc0sMlYUkAGmn5OI98eE15Ss= // 2. 验证通过的签名
 - 面试考点：Sec-WebSocket-Key 是为了加密安全吗？
 
 - 回答：不是。它主要是为了 **防止缓存代理服务器的误判**。
+
   - 服务器拿到客户端发来的 Key，拼接上一个固定的 GUID（魔数），进行 SHA-1 哈希并转 Base64，生成 Accept 返回给客户端。
 
   - 客户端校验 Accept 也是为了确认：“即使你返回了 200，但我发的是 WS 请求，如果你不懂 WS 协议，你就不会算出这个 Key，那我就断开”。
@@ -68,6 +69,7 @@ Sec-WebSocket-Accept: HSmrc0sMlYUkAGmn5OI98eE15Ss= // 2. 验证通过的签名
 ### 原理：分帧
 
 - TCP 是流式协议，WebSocket 为了区分消息边界，定义了自己的帧格式：
+
   - Opcode (操作码)：定义这个帧是什么数据（文本、二进制、Ping、Pong、关闭）。
 
   - Payload：实际数据。
@@ -167,5 +169,3 @@ ws.onclose = (event) => {
   console.log("连接已彻底断开", event.code);
 };
 ```
-
-## 之前的历史
