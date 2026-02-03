@@ -39,7 +39,7 @@ function myInstanceOf(left, right) {
 
 ## 原型链查找过程
 
-当我们访问一个对象 obj 的属性（如 obj.name）时，JS 引擎会遵循以下查找步骤：
+当我们访问一个对象 obj 的属性（如 obj.name）时，**JS 引擎** 会遵循以下查找步骤：
 
 - 自身查找：
   首先检查对象 obj 自身是否拥有该属性。如果有，直接返回。

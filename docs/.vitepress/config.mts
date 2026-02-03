@@ -248,6 +248,18 @@ export default withMermaid(
                 link: "/interview/js/instanceOf.md",
               },
               {
+                text: "Lodash 常用方法",
+                link: "/interview/js/lodash常用方法.md",
+              },
+              {
+                text: "== 与 ===",
+                link: "/interview/js/==&===区别.md",
+              },
+              {
+                text: "剩余参数",
+                link: "/interview/js/rest-parameters.md",
+              },
+              {
                 text: "手写 Promise",
                 link: "/interview/js/promise.md",
               },
@@ -358,6 +370,10 @@ export default withMermaid(
                 link: "/interview/vue/响应式机制.md",
               },
               {
+                text: "v-show vs v-if",
+                link: "/interview/vue/v-show-v-if.md",
+              },
+              {
                 text: "v-if 与 v-for",
                 link: "/interview/vue/v-if-v-for.md",
               },
@@ -396,6 +412,42 @@ export default withMermaid(
               {
                 text: "组件间通信方式 (精简版)",
                 link: "/interview/vue/组件间通信方式2.md",
+              },
+              {
+                text: "Computed & Watch",
+                link: "/interview/vue/computed-watch.md",
+              },
+              {
+                text: "Computed 双向绑定",
+                link: "/interview/vue/computed如何实现双向绑定.md",
+              },
+              {
+                text: "Setup 函数",
+                link: "/interview/vue/setup函数.md",
+              },
+              {
+                text: "h 函数",
+                link: "/interview/vue/vue3-h-function.md",
+              },
+              {
+                text: "Slot 插槽",
+                link: "/interview/vue/slot.md",
+              },
+              {
+                text: "v-model 原理 (Vue 2)",
+                link: "/interview/vue/v2-model.md",
+              },
+              {
+                text: "v-model 原理 (Vue 3)",
+                link: "/interview/vue/v3-model原理.md",
+              },
+              {
+                text: "Vuex & Pinia",
+                link: "/interview/vue/vuex&pinia.md",
+              },
+              {
+                text: "懒加载",
+                link: "/interview/vue/懒加载.md",
               },
               {
                 text: "Mixin",
@@ -486,6 +538,14 @@ export default withMermaid(
             collapsed: false,
             items: [
               {
+                text: "前端工程化的理解",
+                link: "/interview/前端工程化/前端工程化的理解.md",
+              },
+              {
+                text: "Monorepo",
+                link: "/interview/前端工程化/Monorepo.md",
+              },
+              {
                 text: "静态 Server 与动态 Server",
                 link: "/interview/前端工程化/静态server&动态server.md",
               },
@@ -548,8 +608,16 @@ export default withMermaid(
                 link: "/interview/浏览器/浏览器的渲染进程.md",
               },
               {
+                text: "浏览器事件循环",
+                link: "/interview/浏览器/浏览器的事件循环.md",
+              },
+              {
                 text: "JS/CSS 阻塞渲染",
                 link: "/interview/浏览器/阻塞渲染.md",
+              },
+              {
+                text: "IndexedDB",
+                link: "/interview/浏览器/indexedDB.md",
               },
               {
                 text: "SSE (Server-Sent Events)",
