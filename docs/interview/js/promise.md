@@ -29,9 +29,9 @@ Promise.myAll = function (promises) {
     promises.forEach((p, index) => {
       // 2. 兼容非 Promise 对象（使用 Promise.resolve 包装）
       Promise.resolve(p)
-        .then((res) => {
+        .then((value) => {
           // 3. 核心：通过索引 index 赋值，确保结果顺序一致，而非 push 的顺序
-          res[index] = res;
+          res[index] = value;
 
           count++;
 
@@ -106,7 +106,7 @@ Promise.myRace = function (promises) {
     }
 
     promises.forEach(p) => {
-      //
+      // 遍历每个 Promise，谁先完成就用谁的结果
       Promise.resolve(p).then(resolve, reject)
     }
   })

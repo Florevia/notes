@@ -19,22 +19,15 @@
 
 ### 2.1 加载机制
 
-- **CJS**: 是动态的。由于 `require()` 是同步执行的函数，可以在代码的任何地方调用（例如在 `if` 语句中）。这也意味着只有执行了 `require` 才会去加载模块。
+- **CJS**: 是动态的。
+  - commonjs是 **运行时加载**。
+  - `require()` 是同步执行的函数，可以在代码的任何地方调用（例如在 `if` 语句中）。
+  - 这也意味着只有执行了 `require` 才会去加载模块，很难做 Tree Shaking。
 
-- **ESM**: 是静态的（Static）。`import` 语句（除非是动态 `import()`）必须位于模块顶层，不能在块级作用域中。JS 引擎在执行代码前会先构建模块依赖图。
-
-- **CJS (CommonJS)**: 是**运行时加载**（Dynamic / Runtime）。
-
-  - `require` 是一个函数。
-  - 当代码执行到 `require('fs')` 这一行时，JS 引擎才会去加载该模块。
-  - **特点**: 可以写在 `if` 判断里，路径也可以是动态计算的变量（如 `require('./' + path)`）。
-  - **缺点**: 无法在编译阶段知道你到底引用了什么，很难做 Tree Shaking（摇树优化，去除无用代码）。
-
-- **ESM (ES Modules)**: 是**编译时加载**（Static / Compile-time）。
-  - `import` 是关键字，不是函数。
-  - JS 引擎在**解析**（Parsing）阶段，还没有实际运行代码之前，就会扫描所有的 `import` 语句，构建出依赖关系图。
-  - **特点**: `import` 必须写在文件最顶层，不能包裹在 `if` 或函数里。
-  - **优点**: 工具（如 Webpack, Vite）可以在编译时就知道你只用了模块里的哪些部分，从而放心大胆地删除未使用的代码（Tree Shaking）。
+- **ESM**: 是静态的（Static）。
+  - ESM是 **编译时加载**。
+  - `import` 语句（除非是动态 `import()`）必须位于模块顶层，不能在块级作用域中。
+  - JS 引擎在执行代码前会先构建模块依赖图。
 
 ### 2.2 值的拷贝 vs 引用
 
@@ -43,13 +36,7 @@
 
 #### ⚠️ 影响与注意事项 (Impacts & Precautions)
 
-1.  **Mocking 与 测试 (Mocking)**:
-
-    - **CJS**: 因为 `require` 返回的是个对象，你可以轻易地修改它（例如 `require('./api').get = jest.fn()`），这在单元测试中 Mock 依赖非常方便。
-    - **ESM**: 导入的模块变量是**只读的**（Read-only bindings）。你不能直接赋值修改它（例如 `import { get } from './api'; get = mockFn` 会报错）。这使得 Mocking 变得稍微复杂，通常需要依赖测试框架（如 Jest 27+, Vitest）提供的专门工具来处理。
-
 2.  **状态管理 (State Management)**:
-
     - **CJS**: 如果你导出一个计数器 `counter`，外部拿到的是当时的快照。如果模块内部更新了 `counter`，外部是感知不到的，容易导致数据不一致。
     - **ESM**: 外部能始终看到最新值。这在做单例模式或状态共享时很有用，但也意味着如果你不小心修改了内部状态，所有引用它的地方都会受影响。
 
@@ -68,10 +55,6 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 ```
-
-### 2.4 循环依赖
-
-ESM 处理循环依赖的能力比 CJS 更强，因为它是基于引用的，只要在真正使用变量之前引用已经建立即可。
 
 ## 3. 在开发中如何处理 (Handling in Development)
 
@@ -93,7 +76,6 @@ ESM 处理循环依赖的能力比 CJS 更强，因为它是基于引用的，�
 ### 3.2 互操作性 (Interoperability)
 
 - **ESM 引用 CJS**:
-
   - 可以直接 `import`: `import foo from './foo.cjs'`.
   - 注意：只能使用**默认导入** (`import defaultExport from ...`)，命名导入 (`import { named } from ...`) 可能在某些 Node 版本或工具中不被支持（除非 CJS 模块经过特殊处理）。
 

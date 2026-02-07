@@ -5,8 +5,7 @@ Vite 是一个前端构建工具 + 开发服务器
 - 开发阶段：起一个本地 dev server，支持热更新（HMR），改代码页面秒刷新。
 - 打包阶段：用 Rollup 打包成上线可以用的静态文件（HTML、JS、CSS、图片……）
 
-
-## Vite ***VS*** webpack
+## Vite **_VS_** webpack
 
 - webpack 开发流程：
   - 启动开发服务器前，要先把整个项目打包一次。
@@ -19,21 +18,6 @@ Vite 是一个前端构建工具 + 开发服务器
   - 依赖（node_modules）用 esbuild 预构建,esbuild 是用 Go 写的，非常快。
   - 依赖只需要预构建一次，后面基本就直接用缓存。
   - 生产环境用 Rollup 打包
-
-## 安装
-
-```zsh
-npm install -g create-vite # 全局安装 Vite 命令行工具
-npm create/init vite # 创建一个新的 Vite 项目
-cd my-vite-app   # 进入项目目录（换成你自己的项目名）
-npm install      # 安装依赖（会生成 node_modules）
-
-```
-## 运行 Vite 开发服务器
-
-```zsh
-npm run dev
-```
 
 ## 配置文件
 
@@ -55,7 +39,7 @@ Vite 配置文件是 `vite.config.js`，可以在其中配置 Vite 的行为。
 - 其他配置：
   - `resolve.alias`：路径别名配置。
   - `build.rollupOptions`：Rollup 配置。
-  
+
 ```js
 export default {
   server: {
@@ -72,13 +56,13 @@ export default {
       //简单写法：'/foo': 'http://localhost:4567'
       "/api": {
         // 目标服务器地址
-        target: "http://localhost:3000", 
+        target: "http://localhost:3000",
         // 是否改变源地址，默认是 false
-        changeOrigin: true, 
+        changeOrigin: true,
         // 是否验证 SSL 证书，默认是 true
-        secure: false, 
+        secure: false,
         // 重写路径，默认是 (path) => path
-        rewrite: (path) => path.replace(/^\/api/, ""), 
+        rewrite: (path) => path.replace(/^\/api/, ""),
         //举例：
         //浏览器请求：/api/posts
         //代理前 path：/api/posts
@@ -109,7 +93,7 @@ export default {
           },
         }),
       ],
-    }
-  }
-}
+    },
+  },
+};
 ```

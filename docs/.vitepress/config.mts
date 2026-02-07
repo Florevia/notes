@@ -468,6 +468,10 @@ export default withMermaid(
               { text: "GET vs POST", link: "/interview/网络/GET-POST.md" },
               { text: "JWT", link: "/interview/网络/JWT.md" },
               {
+                text: "鉴权方案",
+                link: "/interview/网络/鉴权方案.md",
+              },
+              {
                 text: "加密算法",
                 link: "/interview/网络/加密算法.md",
               },
@@ -544,6 +548,30 @@ export default withMermaid(
               {
                 text: "Monorepo",
                 link: "/interview/前端工程化/Monorepo.md",
+              },
+              {
+                text: "模块化规范",
+                link: "/interview/前端工程化/模块化规范.md",
+              },
+              {
+                text: "ESM vs CommonJS",
+                link: "/interview/前端工程化/ESM-vs-CJS.md",
+              },
+              {
+                text: "Webpack",
+                link: "/interview/前端工程化/webpack.md",
+              },
+              {
+                text: "Vite",
+                link: "/interview/前端工程化/vite.md",
+              },
+              {
+                text: "ESLint",
+                link: "/interview/前端工程化/eslint.md",
+              },
+              {
+                text: "Prettier",
+                link: "/interview/前端工程化/prettier.md",
               },
               {
                 text: "静态 Server 与动态 Server",

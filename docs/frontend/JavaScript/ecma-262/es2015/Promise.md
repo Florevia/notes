@@ -6,7 +6,7 @@
 - **fulfilled**（已成功）：操作成功完成
 - **rejected**（已失败）：操作失败
 
-**状态不可逆！**一旦从 pending 变为 fulfilled 或 rejected，状态就不会再改变。
+> **状态不可逆！** 一旦从 pending 变为 fulfilled 或 rejected，状态就不会再改变。
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -15,41 +15,6 @@ const promise = new Promise((resolve, reject) => {
   reject("error"); // 这行不会执行，因为状态已经改变
 });
 ```
-
-## Promise 基本用法
-
-### 创建 Promise
-
-```js
-const promise = new Promise((resolve, reject) => {
-  // 异步操作
-  setTimeout(() => {
-    const success = true;
-    if (success) {
-      resolve("操作成功");
-    } else {
-      reject("操作失败");
-    }
-  }, 1000);
-});
-```
-
-### 使用 Promise
-
-```js
-promise
-  .then((result) => {
-    console.log(result); // 处理成功
-  })
-  .catch((error) => {
-    console.log(error); // 处理失败
-  })
-  .finally(() => {
-    console.log("无论成功失败都会执行");
-  });
-```
-
----
 
 ## Promise 状态传递
 
@@ -141,28 +106,6 @@ flowchart TD
 - Promise.any(iterable)
 
 ## 常见面试题
-
-### Promise 构造函数执行时机
-
-```js
-const promise = new Promise((resolve, reject) => {
-  // Promise 构造函数是同步执行的
-  console.log(1);
-  resolve(); // resolve() 后面的代码仍会执行
-  console.log(2);
-});
-
-promise.then(() => {
-  //then 回调是异步的（微任务）
-  console.log(3);
-});
-
-console.log(4);
-```
-
-**答案**: `1, 2, 4, 3`
-
----
 
 ### resolve 传入 Promise
 
@@ -266,9 +209,10 @@ console.log("p3 === p1:", p3 === p1);
 
 **输出**:
 
-```text
+```js
 p2 === p1: false
 p3 === p1: false
+// 1秒后
 p2: p1
 p3: p1
 ```
@@ -276,7 +220,6 @@ p3: p1
 **核心解析**:
 
 1.  **引用不相等**:
-
     - `p1` 是源 Promise。
     - `p2` 是 `new Promise` 创建的新实例。即使 `resolve(p1)`，它也只是锁定状态，而非返回同一个对象。
     - `p3` 是 `.then()` 返回的新实例。
@@ -340,64 +283,3 @@ console.log("end");
 ```
 
 **答案**: `start, promise3, end, promise1, promise4, promise2, setTimeout`
-
----
-
-## 手写 Promise.all()
-
-- 实现要点：
-
-  - 输入检查：先判断是否为数组。
-  - 结果顺序：使用 results[index] = value 确保结果数组的顺序与入参 Promise 顺序一致，而不是谁先完成谁先排进去。
-  - 错误处理：只要有一个 Promise 失败，reject 立即触发（Fail-fast）。
-  - 计数器：使用 count 记录成功的数量，当 count === len 时才最终 resolve。
-  - 兼容性：使用 Promise.resolve(p) 包裹每一项，确保数组中包含非 Promise 值时也能正常处理。
-
-- 实现代码：
-
-```js
-function promiseAll(promises) {
-  return new Promise((resolve, reject) => {
-    if (!Array.isArray(promises)) {
-      return reject(new TypeError("Argument must be an array"));
-    }
-
-    const results = [];
-    let count = 0;
-    const len = promises.length;
-
-    if (len === 0) {
-      return resolve(results);
-    }
-
-    promises.forEach((p, index) => {
-      // Promise.resolve 包裹，确保处理非 Promise 值
-      Promise.resolve(p).then(
-        (value) => {
-          results[index] = value; // 保持原有顺序
-          count++;
-          if (count === len) {
-            resolve(results); // 全部成功
-          }
-        },
-        (error) => {
-          reject(error); // 只要有一个失败，立刻失败
-        }
-      );
-    });
-  });
-}
-
-// 测试代码
-const p1 = Promise.resolve(1);
-const p2 = new Promise((resolve) => setTimeout(() => resolve(2), 1000));
-const p3 = Promise.resolve(3);
-
-promiseAll([p1, p2, p3]).then(console.log).catch(console.error);
-// 1秒后输出 [1, 2, 3]
-
-promiseAll([p1, Promise.reject("error"), p3])
-  .then(console.log)
-  .catch(console.error);
-// 输出 'error'
-```
