@@ -36,6 +36,7 @@ export default withMermaid(
         { text: "408", link: "/408/computer-network/正向代理&反向代理.md" },
         { text: "面试", link: "/interview/html/浏览器渲染模式.md" },
         { text: "AI", link: "/AI/MCP.md" },
+        { text: "Prompt", link: "/prompt/复习记录.md" },
         { text: "笔记", link: "/notes/" },
       ],
 
@@ -700,6 +701,15 @@ export default withMermaid(
           {
             text: "AI",
             items: [{ text: "MCP", link: "/AI/MCP.md" }],
+          },
+        ],
+        "/prompt/": [
+          {
+            text: "Prompt",
+            items: [
+              { text: "复习记录", link: "/prompt/复习记录.md" },
+              { text: "前端面试", link: "/prompt/前端面试.md" },
+            ],
           },
         ],
       },
