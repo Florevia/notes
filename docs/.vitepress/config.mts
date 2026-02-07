@@ -210,6 +210,10 @@ export default withMermaid(
                 text: "替换元素",
                 link: "/interview/html/替换元素.md",
               },
+              {
+                text: "src 与 defer",
+                link: "/interview/html/src-vs-defer.md",
+              },
             ],
           },
           {
@@ -453,6 +457,22 @@ export default withMermaid(
                 text: "Mixin",
                 link: "/interview/vue/mixin.md",
               },
+              {
+                text: "组件封装",
+                link: "/interview/vue/组件封装.md",
+              },
+              {
+                text: "路由模式",
+                link: "/interview/vue/路由模式.md",
+              },
+              {
+                text: "Vue 路由使用",
+                link: "/interview/vue/Vue路由.md",
+              },
+              {
+                text: "动态路由与权限",
+                link: "/interview/vue/动态路由与权限.md",
+              },
             ],
           },
           {
@@ -616,6 +636,24 @@ export default withMermaid(
               {
                 text: "本地测试与生产模式对比",
                 link: "/interview/工程化/本地测试生产模式对比.md",
+              },
+              {
+                text: "npm vs pnpm",
+                link: "/interview/前端工程化/npm-vs-pnpm.md",
+              },
+            ],
+          },
+          {
+            text: "业务场景",
+            collapsed: false,
+            items: [
+              {
+                text: "拖拽组件",
+                link: "/interview/业务场景/拖拽组件.md",
+              },
+              {
+                text: "流式响应",
+                link: "/interview/业务场景/流式响应.md",
               },
             ],
           },
