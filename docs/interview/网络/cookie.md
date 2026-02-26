@@ -6,6 +6,13 @@ Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据�
 
 `name=value; Expires=date; Path=/; Domain=site.com; Secure; HttpOnly`
 
+- name=value： 键值对，用于存储数据。
+- Expires=date： 过期时间，指定 Cookie 何时过期。不设则为会话 Cookie（关闭浏览器即失效）。
+- Path=/： 路径，指定 Cookie 作用的 URL 路径。默认是当前路径。
+- Domain=site.com： 域名，指定 Cookie 作用的域名。默认是当前域名。
+- Secure： 仅在 HTTPS 连接下发送 Cookie。
+- HttpOnly： 禁止 JavaScript 读取 Cookie，防止 XSS 攻击。
+
 数据 + 生命周期 + 作用域 + 安全性
 
 ## 本质

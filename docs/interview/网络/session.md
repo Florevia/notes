@@ -1,4 +1,4 @@
-# session
+# session 会话管理
 
 Session（会话） 是一种服务器端的状态管理机制。
 

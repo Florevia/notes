@@ -14,14 +14,23 @@
      - 全方位监听： 原生支持对象属性增删、数组索引修改。
      - 性能提升： 采用 **Lazy（惰性）** 代理，只有访问到深层属性时才会去代理它，初始化速度大幅提升。
 
-## Diff 算法优化 (静态标记 PatchFlag)
+## 渲染机制与编译优化
 
-- Vue 2： 虚拟 DOM 进行全量对比（Diff）。无论节点是否是动态的，都要层层比对。
+|    维度    |           Vue 2           |                  Vue 3                   |
+| :--------: | :-----------------------: | :--------------------------------------: |
+| VNode 结构 |    较重，包含大量属性     |             更扁平，性能更好             |
+| Diff 策略  |         全量 Diff         | Block Tree + PatchFlag，只 Diff 动态节点 |
+|  静态提升  |           ❌ 无           |          ✅ 静态节点只创建一次           |
+|  事件缓存  | ❌ 每次 render 创建新函数 |        ✅ cacheHandlers 缓存事件         |
+|  SSR 优化  |       走 VNode 流程       |           静态内容直接拼字符串           |
 
-- Vue 3： 引入了 静态标记 (PatchFlag)。
+> Vue 2 和 Vue 3 的 Diff 差异体现在两个层面：
 
-  > 在编译阶段，Vue 3 会标记哪些节点是动态的（比如绑定了 `{{text}}`），哪些是静态的。
-  > 在 Diff 阶段，只对比带有 PatchFlag 的动态节点，完全跳过静态节点。这让 Diff 性能与动态节点数量成正比，而不是模板大小
+> - 第一，Diff 的范围不同。 Vue 2 每次更新都要全量 Diff 整棵虚拟 DOM 树；Vue 3 在编译阶段通过 Block Tree 和 PatchFlag，把动态节点收集起来，运行时 只 Diff 动态节点，静态部分完全跳过。
+
+> - 第二，子节点列表的算法不同。 Vue 2 用双端比较（4 指针从两头向中间收缩）；Vue 3 用快速 Diff，先处理相同的前缀和后缀，中间乱序部分通过 最长递增子序列（LIS） 来计算最小 DOM 移动次数，性能更优。
+
+> - 简单说就是：Vue 3 编译时做减法（减少 Diff 范围），运行时做优化（最少 DOM 操作）。
 
 ## 开发体验：Composition API (组合式 API)
 
@@ -41,6 +50,19 @@
 - Vue 3： 全面拥抱 ES Module。API 变成了具名导出（`import { nextTick } from 'vue'`）。
 
   > 结果： 构建工具可以完美进行 Tree Shaking，没用到的功能直接摇掉，打包体积更小。
+
+## 生命周期
+
+|     Vue 2     | Vue 3 Options API |    Vue 3 Composition API (setup 中)     |
+| :-----------: | :---------------: | :-------------------------------------: |
+| beforeCreate  |   beforeCreate    | ❌ 不需要（setup 本身就在这个时机执行） |
+|    created    |      created      |            ❌ 不需要（同上）            |
+|  beforeMount  |    beforeMount    |              onBeforeMount              |
+|    mounted    |      mounted      |                onMounted                |
+| beforeUpdate  |   beforeUpdate    |             onBeforeUpdate              |
+|    updated    |      updated      |                onUpdated                |
+| beforeDestroy |   beforeUnmount   |         ⚠️ 改名 onBeforeUnmount         |
+|   destroyed   |     unmounted     |           ⚠️ 改名 onUnmounted           |
 
 ## 新特性与细节
 

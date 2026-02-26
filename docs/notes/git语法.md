@@ -144,7 +144,7 @@ git log
 - 从暂存区删掉文件，但保留工作区文件
 
 ```bash
-git re --cached filename
+git reset --cached filename
 ```
 
 - 恢复到之前的版本
@@ -180,8 +180,11 @@ git stash pop
 - 撤销与回滚（面试考点）：
 
 ```bash
-# 撤销最近一次 commit，但保留代码在暂存区（常用于修改提交信息或合并多个 commit）
+# 撤销最近一次 commit，保留暂存区和工作区
+# 常用于修改提交信息或合并多个 commit
   git reset --soft HEAD^
+  # 保留工作区
+  git reset --mixed HEAD^
   # 危险，彻底回退到上一个版本，丢弃代码
   git reset --hard HEAD^
   # 推荐，生成一个新的 commit 来抵消之前的操作。适用于公共分支，因为它不破坏历史记录

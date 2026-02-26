@@ -1,22 +1,37 @@
 # Plugin 和 Loader 的定义与区别
 
-## 1. 定义 (Definition)
+## 1. 定义
 
 ### Loader (加载器)
 
-**Loader 本质上是一个文件转换器（Transformer）。**
+- **Loader 本质上是一个文件转换器（Transformer）。**
 Webpack 自身只理解 JavaScript 和 JSON 文件。Loader 让 Webpack 能够处理其他类型的文件（如 CSS, Images, TypeScript, Vue SFC 等），并将它们转换为有效的模块，以供应用程序使用，最终被添加到依赖图中。
 
-- **形象比喻**：翻译官。将 Webpack "听不懂" 的语言（Sass, TS）翻译成它听得懂的语言（JS）。
+- **本质**：Loader 是一个函数，它接收源文件内容作为输入，返回转换后的模块内容。
+
+```js
+module.exports = function(source) {
+  // 对 source 进行转换
+  const transformedSource = transform(source);
+  return transformedSource;
+}
+```
 
 ### Plugin (插件)
 
-**Plugin 本质上是一个功能扩展器（Extender）。**
-Plugin 是一个具有 `apply` 方法的 JavaScript 对象。它直接作用于 Webpack 的**编译生命周期**（Lifecycle）。通过监听 Webpack 编译器（Compiler）触发的各种事件钩子（Hooks），Plugin 可以在构建流程的特定时机注入自定义逻辑，执行 Loader 无法完成的复杂任务（如打包优化、资源管理、环境变量注入、生成 HTML 等）。
+- **Plugin 本质上是一个功能扩展器（Extender）。**
+Plugin 是一个具有 `apply` 方法的 js 对象。它直接作用于 Webpack 的 **编译生命周期**。通过监听 Webpack 编译器（Compiler）触发的各种事件钩子（Hooks），Plugin 可以在构建流程的特定时机注入自定义逻辑，执行 Loader 无法完成的复杂任务（如打包优化、资源管理、环境变量注入、生成 HTML 等）。
 
-- **形象比喻**：事件监听者/指挥官。它不局限于处理单个文件，而是着眼于整个构建过程，可以在"开始编译"、"编译结束"、"输出文件"等关键节点介入。
-
----
+```js
+class MyPlugin {
+  apply(compiler) {
+    // 监听 Webpack 编译开始事件
+    compiler.hooks.beforeCompile.tap('MyPlugin', (compilationParams) => {
+      console.log('开始编译...');
+    });
+  }
+}
+```
 
 ## 2. 核心区别 (Key Differences)
 

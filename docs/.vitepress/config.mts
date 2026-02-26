@@ -238,6 +238,18 @@ export default withMermaid(
                 text: "行内样式 vs Tailwind",
                 link: "/interview/css/行内样式和TailwindCSS以及手写css.md",
               },
+              {
+                text: "CSS 隔离方案",
+                link: "/interview/css/css隔离方案.md",
+              },
+              {
+                text: "瀑布流布局",
+                link: "/interview/css/瀑布流.md",
+              },
+              {
+                text: "移动端适配方案",
+                link: "/interview/css/移动端适配方案.md",
+              },
             ],
           },
           {
@@ -352,6 +364,22 @@ export default withMermaid(
                 text: "DOM 尺寸与位置",
                 link: "/interview/js/DOM尺寸和位置属性.md",
               },
+              {
+                text: "DOM 事件流",
+                link: "/interview/js/DOM事件流.md",
+              },
+              {
+                text: "ES6 新特性",
+                link: "/interview/js/es6新特性.md",
+              },
+              {
+                text: "This 指向",
+                link: "/interview/js/this指向.md",
+              },
+              {
+                text: "防抖与节流",
+                link: "/interview/js/防抖节流.md",
+              },
             ],
           },
           {
@@ -361,6 +389,10 @@ export default withMermaid(
               {
                 text: "环境变量",
                 link: "/interview/vue/环境变量.md",
+              },
+              {
+                text: "Ref 和 Reactive",
+                link: "/interview/vue/ref和reactive.md",
               },
               {
                 text: "组件间通信方式",
@@ -619,6 +651,10 @@ export default withMermaid(
                 link: "/interview/前端工程化/Plugin和Loader的区别.md",
               },
               {
+                text: "Tree Shaking",
+                link: "/interview/前端工程化/TreeSaking.md",
+              },
+              {
                 text: "CI/CD 企业级实践",
                 link: "/interview/工程化/CICD.md",
               },
@@ -639,8 +675,20 @@ export default withMermaid(
                 link: "/interview/工程化/本地测试生产模式对比.md",
               },
               {
+                text: "npm vs pnpm (详细)",
+                link: "/interview/工程化/pnpm-npm.md",
+              },
+              {
                 text: "npm vs pnpm",
                 link: "/interview/前端工程化/npm-vs-pnpm.md",
+              },
+              {
+                text: "设计模式",
+                link: "/interview/工程化/设计模式.md",
+              },
+              {
+                text: "前端性能优化",
+                link: "/interview/工程化/前端性能优化.md",
               },
             ],
           },
@@ -655,6 +703,14 @@ export default withMermaid(
               {
                 text: "流式响应",
                 link: "/interview/业务场景/流式响应.md",
+              },
+              {
+                text: "RBAC 动态路由",
+                link: "/interview/业务场景/RBAC动态路由.md",
+              },
+              {
+                text: "实现响应式",
+                link: "/interview/业务场景/实现响应式.md",
               },
             ],
           },
@@ -693,6 +749,20 @@ export default withMermaid(
               {
                 text: "Web APIs (DOM/BOM)",
                 link: "/interview/浏览器/WebApis.md",
+              },
+            ],
+          },
+          {
+            text: "AI",
+            collapsed: false,
+            items: [
+              {
+                text: "LLM",
+                link: "/interview/AI/LLM.md",
+              },
+              {
+                text: "LoRA",
+                link: "/interview/AI/LoRA.md",
               },
             ],
           },

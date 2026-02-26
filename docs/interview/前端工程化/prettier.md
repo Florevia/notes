@@ -6,8 +6,6 @@
 
 ```zsh
 pnpm add prettier --save-dev
-# 或者
-pnpm install prettier --save-dev
 ```
 
 ## 配置文件格式
@@ -95,6 +93,5 @@ export default {
   arrowParens: "always",
   //定义换行符的类型,可选"auto"（默认）、"lf"（LF 换行符）、"crlf"（CRLF 换行符）、"cr"（CR 换行符）
   endOfLine: "auto",
-
 }
 ```

@@ -47,7 +47,6 @@ import js from "@eslint/js"; // ESLint 官方的 JS 规则包
 import pluginVue from "eslint-plugin-vue"; // 解析.vue文件、提供 Vue 专用的检查规则
 
 import eslintPluginPrettier from "eslint-plugin-prettier";
-
 import eslintConfigPrettier from "eslint-config-prettier";
 import globals from "globals";
 
