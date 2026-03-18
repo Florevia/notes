@@ -56,7 +56,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 ```
 
-## 3. 在开发中如何处理 (Handling in Development)
+## 3. 在开发中如何处理
 
 ### 3.1 开启 ESM 支持
 
@@ -77,7 +77,6 @@ const __dirname = path.dirname(__filename);
 
 - **ESM 引用 CJS**:
   - 可以直接 `import`: `import foo from './foo.cjs'`.
-  - 注意：只能使用**默认导入** (`import defaultExport from ...`)，命名导入 (`import { named } from ...`) 可能在某些 Node 版本或工具中不被支持（除非 CJS 模块经过特殊处理）。
 
 - **CJS 引用 ESM**:
   - **不能**使用 `require()` 加载 ESM 文件（因为 ESM 是异步的）。

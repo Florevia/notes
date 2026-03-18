@@ -190,6 +190,17 @@ export default withMermaid(
               { text: "调试技巧", link: "/notes/debug.md" },
               { text: "Vue3 项目搭建指南", link: "/notes/vue3项目搭建指南.md" },
               { text: "Vite 配置文件解读", link: "/notes/vite配置文件解读.md" },
+              { text: "Canvas", link: "/notes/Canvas.md" },
+              { text: "FileReader", link: "/notes/FileReader.md" },
+              {
+                text: "Shell 配置文件读取顺序",
+                link: "/notes/shell配置文件读取顺序.md",
+              },
+              { text: "执行 Shell 的方式", link: "/notes/执行shell的方式.md" },
+              { text: "全局 Loading", link: "/notes/全局loading.md" },
+              { text: "前端学习路线", link: "/notes/前端学习路线.md" },
+              { text: "强缓存与哈希值", link: "/notes/强缓存&哈希值.md" },
+              { text: "缓存位置", link: "/notes/缓存位置.md" },
             ],
           },
         ],
@@ -233,6 +244,12 @@ export default withMermaid(
               { text: "浮动 (Float)", link: "/interview/css/float.md" },
               { text: "BFC", link: "/interview/css/BFC.md" },
               { text: "Flex 布局", link: "/interview/css/flex.md" },
+              {
+                text: "弹性布局",
+                link: "/interview/css/弹性布局.md",
+              },
+              { text: "Grid 布局", link: "/interview/css/grid.md" },
+              { text: "盒模型", link: "/interview/css/盒模型.md" },
               { text: "CSS 优先级", link: "/interview/css/css优先级.md" },
               {
                 text: "行内样式 vs Tailwind",
@@ -243,12 +260,28 @@ export default withMermaid(
                 link: "/interview/css/css隔离方案.md",
               },
               {
+                text: "CSS 预处理与后处理器",
+                link: "/interview/css/css预处理和后处理器.md",
+              },
+              {
                 text: "瀑布流布局",
                 link: "/interview/css/瀑布流.md",
               },
               {
                 text: "移动端适配方案",
                 link: "/interview/css/移动端适配方案.md",
+              },
+              {
+                text: "Viewport",
+                link: "/interview/css/viewport.md",
+              },
+              {
+                text: "Canvas",
+                link: "/interview/css/canvas.md",
+              },
+              {
+                text: "图片有间隙",
+                link: "/interview/css/图片有间隙.md",
               },
             ],
           },
@@ -262,7 +295,11 @@ export default withMermaid(
               },
               {
                 text: "Instanceof 原理",
-                link: "/interview/js/instanceOf.md",
+                link: "/interview/js/instanceof.md",
+              },
+              {
+                text: "DocumentFragment",
+                link: "/interview/js/DocumentFragment.md",
               },
               {
                 text: "Lodash 常用方法",
@@ -277,8 +314,16 @@ export default withMermaid(
                 link: "/interview/js/rest-parameters.md",
               },
               {
-                text: "手写 Promise",
-                link: "/interview/js/promise.md",
+                text: "手写 Promise (all)",
+                link: "/interview/js/promise(all).md",
+              },
+              {
+                text: "Promise",
+                link: "/interview/js/Promise.md",
+              },
+              {
+                text: "Class",
+                link: "/interview/js/class.md",
               },
               {
                 text: "Node.js 模块判断",
@@ -395,28 +440,32 @@ export default withMermaid(
                 link: "/interview/vue/ref和reactive.md",
               },
               {
-                text: "组件间通信方式",
-                link: "/interview/vue/组件间通信方式.md",
+                text: "响应式机制",
+                link: "/interview/vue/响应式机制.md",
               },
               {
                 text: "虚拟 DOM",
                 link: "/interview/vue/虚拟DOM.md",
               },
               {
-                text: "响应式机制",
-                link: "/interview/vue/响应式机制.md",
+                text: "Vue 生命周期",
+                link: "/interview/vue/vue生命周期.md",
               },
               {
-                text: "v-show vs v-if",
-                link: "/interview/vue/v-show-v-if.md",
+                text: "状态变化到 UI 渲染流程",
+                link: "/interview/vue/状态变化到UI渲染流程.md",
               },
               {
-                text: "v-if 与 v-for",
-                link: "/interview/vue/v-if-v-for.md",
+                text: "Composition API vs Options API",
+                link: "/interview/vue/composition-api-options-api.md",
               },
               {
-                text: "v-for 中的 key",
-                link: "/interview/vue/v-for中的key.md",
+                text: "Computed & Watch",
+                link: "/interview/vue/computed-watch.md",
+              },
+              {
+                text: "Computed 双向绑定",
+                link: "/interview/vue/computed如何实现双向绑定.md",
               },
               {
                 text: "NextTick 原理",
@@ -431,44 +480,16 @@ export default withMermaid(
                 link: "/interview/vue/动态绑定class和style.md",
               },
               {
-                text: "状态变化到 UI 渲染流程",
-                link: "/interview/vue/状态变化到UI渲染流程.md",
+                text: "v-show vs v-if",
+                link: "/interview/vue/v-show-v-if.md",
               },
               {
-                text: "Composition API vs Options API",
-                link: "/interview/vue/composition-api-options-api.md",
+                text: "v-if 与 v-for",
+                link: "/interview/vue/v-if-v-for.md",
               },
               {
-                text: "Vue 生命周期",
-                link: "/interview/vue/vue生命周期.md",
-              },
-              {
-                text: "组件间通信方式 (详细版)",
-                link: "/interview/vue/组件间通信方式.md",
-              },
-              {
-                text: "组件间通信方式 (精简版)",
-                link: "/interview/vue/组件间通信方式2.md",
-              },
-              {
-                text: "Computed & Watch",
-                link: "/interview/vue/computed-watch.md",
-              },
-              {
-                text: "Computed 双向绑定",
-                link: "/interview/vue/computed如何实现双向绑定.md",
-              },
-              {
-                text: "Setup 函数",
-                link: "/interview/vue/setup函数.md",
-              },
-              {
-                text: "h 函数",
-                link: "/interview/vue/vue3-h-function.md",
-              },
-              {
-                text: "Slot 插槽",
-                link: "/interview/vue/slot.md",
+                text: "v-for 中的 key",
+                link: "/interview/vue/v-for中的key.md",
               },
               {
                 text: "v-model 原理 (Vue 2)",
@@ -479,20 +500,32 @@ export default withMermaid(
                 link: "/interview/vue/v3-model原理.md",
               },
               {
-                text: "Vuex & Pinia",
-                link: "/interview/vue/vuex&pinia.md",
+                text: "h 函数",
+                link: "/interview/vue/vue3-h-function.md",
               },
               {
-                text: "懒加载",
-                link: "/interview/vue/懒加载.md",
+                text: "Setup 函数",
+                link: "/interview/vue/setup函数.md",
+              },
+              {
+                text: "Slot 插槽",
+                link: "/interview/vue/slot.md",
               },
               {
                 text: "Mixin",
                 link: "/interview/vue/mixin.md",
               },
               {
-                text: "组件封装",
-                link: "/interview/vue/组件封装.md",
+                text: "组件间通信方式 (详细版)",
+                link: "/interview/vue/组件间通信方式.md",
+              },
+              {
+                text: "组件间通信方式 (精简版)",
+                link: "/interview/vue/组件间通信方式2.md",
+              },
+              {
+                text: "Vuex & Pinia",
+                link: "/interview/vue/vuex&pinia.md",
               },
               {
                 text: "路由模式",
@@ -502,9 +535,26 @@ export default withMermaid(
                 text: "Vue 路由使用",
                 link: "/interview/vue/Vue路由.md",
               },
+
               {
-                text: "动态路由与权限",
-                link: "/interview/vue/动态路由与权限.md",
+                text: "vue.use() 原理",
+                link: "/interview/vue/vue.use().md",
+              },
+              {
+                text: "Vue2 vs Vue3 差异",
+                link: "/interview/vue/vue2-vue3差异.md",
+              },
+              {
+                text: "Vue 编译器原理",
+                link: "/interview/vue/vue编译器的实现原理.md",
+              },
+              {
+                text: "Ref 和 Reactive 回答",
+                link: "/interview/vue/ref和reactive回答.md",
+              },
+              {
+                text: "VueUse 库",
+                link: "/interview/vue/vueuse库.md",
               },
             ],
           },
@@ -513,6 +563,7 @@ export default withMermaid(
             collapsed: false,
             items: [
               { text: "Cookie", link: "/interview/网络/cookie.md" },
+              { text: "Session", link: "/interview/网络/session.md" },
               { text: "DNS 解析", link: "/interview/网络/DNS解析.md" },
               {
                 text: "Local vs Session Storage",
@@ -529,6 +580,7 @@ export default withMermaid(
                 link: "/interview/网络/加密算法.md",
               },
               { text: "跨域 (CORS)", link: "/interview/网络/跨域.md" },
+              { text: "JSONP", link: "/interview/网络/JSONP.md" },
               {
                 text: "SSH 远程连接",
                 link: "/interview/网络/SSH远程连接.md",
@@ -537,8 +589,8 @@ export default withMermaid(
                 text: "Nginx 配置详解",
                 link: "/interview/网络/nginx配置详解.md",
               },
-              { text: "Session", link: "/interview/网络/session.md" },
               { text: "HTTP 基础", link: "/interview/网络/http.md" },
+              { text: "HTTP vs HTTPS", link: "/interview/网络/HTTP-HTTPS.md" },
               { text: "HTTP 缓存", link: "/interview/网络/HTTP缓存.md" },
               { text: "HTTP 演进", link: "/interview/网络/HTTP演进.md" },
               {
@@ -561,6 +613,14 @@ export default withMermaid(
                 link: "/interview/网络/TCP.md",
               },
               {
+                text: "TCP 可靠性与 UDP",
+                link: "/interview/网络/TCP可靠的原因-UDP.md",
+              },
+              {
+                text: "TCP 粘包与拆包",
+                link: "/interview/网络/TCP粘包与拆包.md",
+              },
+              {
                 text: "SSL/TLS",
                 link: "/interview/网络/TSL.md",
               },
@@ -571,6 +631,10 @@ export default withMermaid(
               {
                 text: "WebSocket",
                 link: "/interview/网络/websocket.md",
+              },
+              {
+                text: "Websocket 握手",
+                link: "/interview/网络/websocket握手.md",
               },
               {
                 text: "输入 URL 后发生了什么",
@@ -585,8 +649,16 @@ export default withMermaid(
                 link: "/interview/网络/浏览器的事件循环.md",
               },
               {
-                text: "Websocket 握手",
-                link: "/interview/网络/websocket握手.md",
+                text: "XHR readyState 与状态码",
+                link: "/interview/网络/readyState&响应状态码.md",
+              },
+              {
+                text: "数据通信基础模式",
+                link: "/interview/网络/数据通信的基础模式.md",
+              },
+              {
+                text: "负载均衡",
+                link: "/interview/网络/负载均衡.md",
               },
             ],
           },
@@ -597,6 +669,10 @@ export default withMermaid(
               {
                 text: "前端工程化的理解",
                 link: "/interview/前端工程化/前端工程化的理解.md",
+              },
+              {
+                text: "前端工程化概览",
+                link: "/interview/工程化/前端工程化.md",
               },
               {
                 text: "Monorepo",
@@ -615,8 +691,28 @@ export default withMermaid(
                 link: "/interview/前端工程化/webpack.md",
               },
               {
+                text: "Webpack 打包流程",
+                link: "/interview/前端工程化/webpack打包流程.md",
+              },
+              {
+                text: "Webpack vs Vite",
+                link: "/interview/前端工程化/webpack&vite.md",
+              },
+              {
+                text: "提升 Webpack 打包速度",
+                link: "/interview/前端工程化/提升webpack打包速度.md",
+              },
+              {
+                text: "打包体积优化",
+                link: "/interview/前端工程化/项目打包后体积优化.md",
+              },
+              {
                 text: "Vite",
                 link: "/interview/前端工程化/vite.md",
+              },
+              {
+                text: "Vite 为啥快",
+                link: "/interview/前端工程化/vite为啥快.md",
               },
               {
                 text: "ESLint",
@@ -635,12 +731,12 @@ export default withMermaid(
                 link: "/interview/前端工程化/Web渲染策略.md",
               },
               {
-                text: "静态站点与动态 站点",
-                link: "/interview/前端工程化/静态站点&动态站点.md",
+                text: "前端渲染模式",
+                link: "/interview/前端工程化/前端渲染模式.md",
               },
               {
-                text: "Vite 为啥快",
-                link: "/interview/前端工程化/vite为啥快.md",
+                text: "静态站点与动态站点",
+                link: "/interview/前端工程化/静态站点&动态站点.md",
               },
               {
                 text: "HMR 原理和机制",
@@ -652,7 +748,19 @@ export default withMermaid(
               },
               {
                 text: "Tree Shaking",
-                link: "/interview/前端工程化/TreeSaking.md",
+                link: "/interview/前端工程化/TreeShaking.md",
+              },
+              {
+                text: "单元测试",
+                link: "/interview/前端工程化/单元测试.md",
+              },
+              {
+                text: "npm vs pnpm",
+                link: "/interview/前端工程化/npm-vs-pnpm.md",
+              },
+              {
+                text: "npm vs pnpm (详细)",
+                link: "/interview/工程化/pnpm-npm.md",
               },
               {
                 text: "CI/CD 企业级实践",
@@ -671,16 +779,12 @@ export default withMermaid(
                 link: "/interview/工程化/stylelint.md",
               },
               {
+                text: "Husky & Lint-Staged",
+                link: "/interview/工程化/husky-lint-stage.md",
+              },
+              {
                 text: "本地测试与生产模式对比",
                 link: "/interview/工程化/本地测试生产模式对比.md",
-              },
-              {
-                text: "npm vs pnpm (详细)",
-                link: "/interview/工程化/pnpm-npm.md",
-              },
-              {
-                text: "npm vs pnpm",
-                link: "/interview/前端工程化/npm-vs-pnpm.md",
               },
               {
                 text: "设计模式",
@@ -689,6 +793,30 @@ export default withMermaid(
               {
                 text: "前端性能优化",
                 link: "/interview/工程化/前端性能优化.md",
+              },
+              {
+                text: "Lodash 库",
+                link: "/interview/工程化/lodash库.md",
+              },
+              {
+                text: "首屏加载优化",
+                link: "/interview/工程化/首屏加载慢如何解决.md",
+              },
+              {
+                text: "骨架屏",
+                link: "/interview/工程化/骨架屏.md",
+              },
+              {
+                text: "BFF",
+                link: "/interview/工程化/BFF.md",
+              },
+              {
+                text: "CDN 工作原理",
+                link: "/interview/工程化/CDN工作原理.md",
+              },
+              {
+                text: "关系型 vs 文档型数据库",
+                link: "/interview/工程化/关系型数据库和文档型数据库.md",
               },
             ],
           },
@@ -712,6 +840,46 @@ export default withMermaid(
                 text: "实现响应式",
                 link: "/interview/业务场景/实现响应式.md",
               },
+              {
+                text: "组件封装",
+                link: "/interview/业务场景/组件封装.md",
+              },
+              {
+                text: "动态路由与权限",
+                link: "/interview/业务场景/动态路由与权限.md",
+              },
+              {
+                text: "懒加载",
+                link: "/interview/业务场景/懒加载.md",
+              },
+              {
+                text: "上拉加载",
+                link: "/interview/业务场景/上拉加载.md",
+              },
+              {
+                text: "长列表优化",
+                link: "/interview/业务场景/长列表.md",
+              },
+              {
+                text: "瀑布流",
+                link: "/interview/业务场景/瀑布流.md",
+              },
+              {
+                text: "render 函数动态渲染 VNode",
+                link: "/interview/业务场景/render函数动态vnode渲染.md",
+              },
+              {
+                text: "跳转特效",
+                link: "/interview/业务场景/跳转特效.md",
+              },
+              {
+                text: "人类行为验证",
+                link: "/interview/业务场景/人类行为验证.md",
+              },
+              {
+                text: "大文件上传",
+                link: "/interview/业务场景/大文件上传.md",
+              },
             ],
           },
           {
@@ -724,7 +892,7 @@ export default withMermaid(
               },
               {
                 text: "浏览器多进程架构",
-                link: "/interview/浏览器/浏览器多进程架构.md",
+                link: "/interview/浏览器/浏览器架构.md",
               },
               {
                 text: "浏览器渲染进程",
@@ -750,6 +918,18 @@ export default withMermaid(
                 text: "Web APIs (DOM/BOM)",
                 link: "/interview/浏览器/WebApis.md",
               },
+              {
+                text: "Web Workers",
+                link: "/interview/浏览器/webworkers.md",
+              },
+              {
+                text: "独立标签页通信",
+                link: "/interview/浏览器/独立标签页通信.md",
+              },
+              {
+                text: "浏览器内核一览",
+                link: "/interview/浏览器/浏览器内核一览.md",
+              },
             ],
           },
           {
@@ -763,6 +943,56 @@ export default withMermaid(
               {
                 text: "LoRA",
                 link: "/interview/AI/LoRA.md",
+              },
+              {
+                text: "RAG",
+                link: "/interview/AI/RAG.md",
+              },
+              {
+                text: "提示词工程",
+                link: "/interview/AI/提示词工程.md",
+              },
+              {
+                text: "异步流处理",
+                link: "/interview/AI/异步流处理.md",
+              },
+              {
+                text: "流式打字机",
+                link: "/interview/AI/流式打字机.md",
+              },
+              {
+                text: "AI 与前端结合场景",
+                link: "/interview/AI/AI和前端结合的场景.md",
+              },
+              {
+                text: "AI 前端开发 vs 普通开发",
+                link: "/interview/AI/AI前端开发vs普通.md",
+              },
+              {
+                text: "Map 与 Redis",
+                link: "/interview/AI/map和redis.md",
+              },
+              {
+                text: "原子扣费",
+                link: "/interview/AI/原子扣费.md",
+              },
+              {
+                text: "AI 面试题",
+                link: "/interview/AI/针对面试.md",
+              },
+              {
+                text: "算法",
+                link: "/interview/AI/算法111111111111.md",
+              },
+            ],
+          },
+          {
+            text: "NestJS",
+            collapsed: false,
+            items: [
+              {
+                text: "Observable",
+                link: "/interview/Nestjs/Observable.md",
               },
             ],
           },

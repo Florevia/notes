@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        /* align-items: stretch; 默认就是这个值，可以不写 */
+      }
+      .column {
+        flex: 1; /* 平分宽度 */
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column">内容很少</div>
+      <div class="column">内容很多<br />撑开了<br />高度</div>
+      <div class="column">内容一般</div>
+    </div>
+  </body>
+</html>

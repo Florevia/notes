@@ -1,0 +1,26 @@
+cme:
+  domains:
+    - your.domain.net
+  email: your@email.com
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://news.ycombinator.com/
+    rewriteHost: true
+listen: 8686
+
+tls:
+  cert: /etc/hysteria/server.crt
+  key: /etc/hysteria/server.key
+
+auth:
+  type: password
+  password: q9xK8R+X9VcWaalOGMWBO5N608z9nKjHI0QmFC/nMTU=
+
+# 可选：伪装网站，防止主动探测
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com
+    rewriteHost: true

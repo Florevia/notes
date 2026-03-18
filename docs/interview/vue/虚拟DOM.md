@@ -65,9 +65,7 @@
 **2. 实现跨平台能力 (最重要的架构价值)**
 
 - 虚拟 DOM **本质是 JS 对象**，它不依赖于具体的宿主环境（如浏览器）。
-
   - 因此可以根据 **不同的渲染器（Renderer）**，将同一套代码渲染到不同平台。
-
     - 例如：渲染到 Web 是 React/Vue，渲染到 iOS/Android 是 React Native/Weex，甚至可以渲染到 Canvas 或小程序。
 
 **3. 提升开发效率（声明式编程）**
@@ -103,7 +101,6 @@ Vue 的模版（Template）是写给开发者看的，浏览器并不认识。�
 这个过程由 **渲染器 (Renderer)** 负责，主要分为两阶段：
 
 1.  **挂载 (Mount)** - 首次渲染：
-
     - 渲染器遍历虚拟 DOM 树。
     - 根据 VNode 的类型（如元素、文本、组件），调用原生 DOM API（如 `document.createElement`, `document.createTextNode`）创建真实的 DOM 节点。
     - 处理属性（props, class, style）和事件监听。

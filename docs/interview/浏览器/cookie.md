@@ -11,9 +11,8 @@ Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据�
 - Path=/： 路径，指定 Cookie 作用的 URL 路径。默认是当前路径。
 - Domain=site.com： 域名，指定 Cookie 作用的域名。默认是当前域名。
 - Secure： 仅在 HTTPS 连接下发送 Cookie。
-- HttpOnly： 禁止 JavaScript 读取 Cookie，防止 XSS 攻击。
-
-数据 + 生命周期 + 作用域 + 安全性
+- HttpOnly： 禁止 js 读取 Cookie，防止 XSS（跨站脚本攻击） 攻击。
+- 组成：数据 + 生命周期 + 作用域 + 安全性
 
 ## 本质
 
@@ -21,7 +20,7 @@ Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据�
 
 ## 机制
 
-1. 服务端在响应头中通过 Set-Cookie 字段把数据发给浏览器。
+1. 服务端在响应头中通过 `Set-Cookie` 字段把数据发给浏览器。
 
 2. 浏览器保存下来。
 
@@ -40,12 +39,10 @@ Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据�
 如何配置 Cookie 来保证安全?
 
 1. `HttpOnly`：
-
    1. 设置为 true 后，禁止 JavaScript 读取（即 document.cookie 无法访问）。
    2. 意义： 有效防御 XSS（跨站脚本攻击），防止攻击者偷走 Session ID。
 
 2. `SameSite` (Strict / Lax / None)：
-
    1. 作用： 限制第三方 Cookie 的发送。
    2. 意义： 有效防御 CSRF（跨站请求伪造） 攻击。现代浏览器（Chrome）默认为 Lax。
 

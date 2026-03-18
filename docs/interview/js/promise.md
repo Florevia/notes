@@ -1,114 +1,325 @@
-# promise
+# Promise
 
-## 手写promise
+### 三种状态
 
-## 手写promise.all
+- **pending**（进行中）：初始状态
+- **fulfilled**（已成功）：操作成功完成
+- **rejected**（已失败）：操作失败
 
-`Promise.all` 接收一个 Promise 实例数组，返回一个新的 Promise。
-
-- 成功机制：只有当数组中所有的 Promise 都成功（Resolved）时，它才返回成功。结果是一个按输入顺序排列的数组。
-
-- 失败机制：只要有任何一个 Promise 失败（Rejected），`Promise.all` 就会立即失败，并返回第一个失败的 Reason。
+> **状态不可逆！** 一旦从 pending 变为 fulfilled 或 rejected，状态就不会再改变。
 
 ```js
-Promise.myAll = function (promises) {
+const promise = new Promise((resolve, reject) => {
+  // resolve 和 reject 只会生效一次
+  resolve("success");
+  reject("error"); // 这行不会执行，因为状态已经改变
+});
+```
+
+## Promise 状态传递
+
+### then
+
+```mermaid
+flowchart TD
+  A["P1 已经 settled"] --> B{"P1 状态?"}
+
+  B -->|"fulfilled"| C{"有 onFulfilled ?"}
+  B -->|"rejected"| J{"有 onRejected ?"}
+
+  %% fulfilled 分支
+  C -->|"否"| F["P2 直接继承<br/>fulfilled(P1.value)"]
+  C -->|"是"| D["执行 onFulfilled 回调"]
+
+  D --> M{"回调结果?"}
+  M -->|"return 非 Promise 值 x"| F2["P2 fulfilled(x)"]
+  M -->|"return Promise q"| G["P2 跟随 q 的状态<br/>q fulfilled ⇒ P2 fulfilled<br/>q rejected ⇒ P2 rejected"]
+  M -->|"throw e"| H["P2 rejected(e)"]
+
+  %% rejected 分支
+  J -->|"否"| K["P2 直接继承<br/>rejected(P1.reason)"]
+  J -->|"是"| L["执行 onRejected 回调"]
+
+  L --> N{"回调结果?"}
+  N -->|"return 非 Promise 值 x"| F3["P2 fulfilled(x)<br/>(错误被处理了)"]
+  N -->|"return Promise q"| G2["P2 跟随 q 的状态<br/>q fulfilled ⇒ P2 fulfilled<br/>q rejected ⇒ P2 rejected"]
+  N -->|"throw e2"| H2["P2 rejected(e2)"]
+```
+
+### catch
+
+```mermaid
+flowchart TD
+  A["P1 已经 settled"] --> B{"P1 状态?"}
+
+  B -->|"fulfilled"| C["不执行 onRejected<br>P2 直接继承 fulfilled(P1.value)"]
+  B -->|"rejected"| D{"有 onRejected ?"}
+
+  D -->|"否"| E["P2 直接继承 rejected(P1.reason)"]
+  D -->|"是"| F["执行 onRejected 回调"]
+
+  F --> G{"回调结果?"}
+  G -->|"return 非 Promise 值 x"| H["P2 fulfilled(x)<br>(错误被处理了)"]
+  G -->|"return Promise q"| I["P2 跟随 q 的状态"]
+  G -->|"throw e2"| J["P2 rejected(e2)"]
+```
+
+### finally
+
+```mermaid
+flowchart TD
+  A["P1 已经 settled"] --> B{"P1 状态?"}
+
+  B -->|"fulfilled"| C{"有 onFinally ?"}
+  B -->|"rejected"| J{"有 onFinally ?"}
+
+  C -->|"否"| D["P2 继承 fulfilled(P1.value)"]
+  C -->|"是"| E["执行 onFinally 回调"]
+
+  J -->|"否"| K["P2 继承 rejected(P1.reason)"]
+  J -->|"是"| L["执行 onFinally 回调"]
+
+  E --> M{"回调结果?"}
+  M -->|"正常结束或<br>返回非 Promise 值"| N["P2 继承 fulfilled(P1.value)"]
+  M -->|"返回 Promise q"| O["等待 q settled"]
+  O -->|"q fulfilled"| P["P2 继承 fulfilled(P1.value)"]
+  O -->|"q rejected(r)"| Q["P2 rejected(r)"]
+  M -->|"抛出 e"| R["P2 rejected(e)"]
+
+  L --> S{"回调结果?"}
+  S -->|"正常结束或<br>返回非 Promise 值"| T["P2 继承 rejected(P1.reason)"]
+  S -->|"返回 Promise q"| U["等待 q settled"]
+  U -->|"q fulfilled"| V["P2 继承 rejected(P1.reason)"]
+  U -->|"q rejected(r)"| W["P2 rejected(r)"]
+  S -->|"抛出 e"| X["P2 rejected(e)"]
+```
+
+---
+
+## Promise 静态方法
+
+- Promise.resolve(value)
+- Promise.reject(reason)
+- Promise.all(iterable)
+- Promise.race(iterable)
+- Promise.allSettled(iterable)
+- Promise.any(iterable)
+
+## 常见面试题
+
+### 用promise封装AJAX
+
+```js
+function request(url, method = "GET") {
+  // 1. 返回一个新的 Promise 实例
   return new Promise((resolve, reject) => {
-    // 处理非数组或空数组（简单化处理，标准库会将其转为迭代器)
-    if (!Array.isArray(promises)) {
-      return reject(new TypeError("Argument must be an array"));
-    }
+    // 2. 实例化原生的 XHR 对象
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
 
-    if (promises.length === 0) {
-      return resolve([]);
-    }
-
-    let res = [];
-    let count = 0; // 计数器，记录已成功的 promise 数量
-    let l = promises.length;
-
-    promises.forEach((p, index) => {
-      // 2. 兼容非 Promise 对象（使用 Promise.resolve 包装）
-      Promise.resolve(p)
-        .then((value) => {
-          // 3. 核心：通过索引 index 赋值，确保结果顺序一致，而非 push 的顺序
-          res[index] = value;
-
-          count++;
-
-          if (count === l) {
-            // 4. 所有都成功时，resolve 结果数组
-            resolve(res);
+    // 3. 监听状态变化
+    xhr.onreadystatechange = function () {
+      // readyState 4 表示请求已完成，响应已就绪
+      if (xhr.readyState === 4) {
+        // 状态码 2xx 代表成功
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            // 成功时，将状态流转为 fulfilled
+            resolve(JSON.parse(xhr.responseText));
+          } catch (e) {
+            reject(new Error("JSON 解析失败"));
           }
-        })
-        .catch((err) => {
-          // 5. 只要有一个失败，立即 reject
-          reject(err);
-        });
-    });
+        } else {
+          // 失败时，将状态流转为 rejected
+          reject(new Error(`请求失败，状态码: ${xhr.status}`));
+        }
+      }
+    };
+
+    // 4. 处理网络级错误（如断网）
+    xhr.onerror = function () {
+      reject(new Error("网络错误 (Network Error)"));
+    };
+
+    // 5. 发送请求
+    xhr.send();
   });
-};
-```
-
-## Promise.allSettled
-
-接收一个 Promise 实例数组，返回状态对象数组。等待每一个 Promise 都完成（无论是成功还是失败）。
-
-```js
-// Promise.allSettled 伪代码
-Promise.myAllSettled = function (promises) {
-  return new Promise((resolve, reject) => {
-    // 处理非数组或空数组（简单化处理，标准库会将其转为迭代器)
-    if (!Array.isArray(promises)) {
-      return reject(new TypeError("Argument must be an array"));
-    }
-
-    if (promises.length === 0) {
-      return resolve([]);
-    }
-
-    let res = [];
-    let count = 0;
-    let l = promises.length;
-
-    promises.forEach((p, index) => {
-      Promise.resolve(p)
-        .then((res) => {
-          res[index] = { status: "fulfilled", value: res };
-          count++;
-          if (count === l) resolve(res);
-        })
-        .catch((err) => {
-          res[index] = { status: "rejected", reason: err };
-          count++;
-          if (count === l) resolve(res);
-        });
-    });
-  });
-};
-```
-
-| 特性     | Promise.all                                   | Promise.allSettled                               |
-| :------- | :-------------------------------------------- | :----------------------------------------------- |
-| 状态依赖 | 短路效应：只要有一个 rejected，整体立即失败。 | 全员等待：无论成功或失败，都会等待所有任务结束。 |
-| 返回时机 | 第一个失败时，或全部成功时。                  | 所有任务都达到“已定型（Settled）”状态。          |
-| 返回数据 | 成功值的数组（按顺序）。                      | 状态对象数组，包含 status, value 或 reason。     |
-| 容错性   | 弱。适用于“全有或全无”的原子操作。            | 强。适用于互不干扰的独立操作。                   |
-
-## 手写promise.race
-
-`Promise.race` 同样接收 Promise 数组，但它只关心第一个改变状态的实例，无论成功还是失败，只要有一个先到达，就直接返回该实例的结果。
-
-```js
-Promise.myRace = function (promises) {
-  return new Promise((resolve, reject) => {
-    if (!Array.isArray(promises)) {
-      return reject(new TypeError("Argument must be an array"));
-    }
-
-    promises.forEach(p) => {
-      // 遍历每个 Promise，谁先完成就用谁的结果
-      Promise.resolve(p).then(resolve, reject)
-    }
-  })
 }
+
+// 使用方式：
+// request('https://api.example.com/data').then(res => console.log(res)).catch(err => console.error(err));
 ```
+
+### resolve 传入 Promise
+
+```js
+const p1 = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("p1");
+  }, 1000);
+});
+
+const p2 = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(p1); // resolve 传入另一个 Promise
+  }, 500);
+});
+
+p2.then((res) => console.log(res)); // 'p1' (                           1秒后输出)
+```
+
+**解析**: 当 `resolve(promise)` 时，会等待传入的 Promise settled 后，采用其状态和值。
+
+---
+
+### Promise 构造器中抛错 vs resolve(Promise.reject())
+
+```js
+// 情况 A
+const pA = new Promise((resolve) => {
+  resolve(Promise.reject("error A"));
+});
+
+// 情况 B
+const pB = new Promise((resolve, reject) => {
+  reject("error B");
+});
+
+// 情况 C
+const pC = new Promise(() => {
+  throw "error C";
+});
+
+pA.catch((e) => console.log("A:", e));
+pB.catch((e) => console.log("B:", e));
+pC.catch((e) => console.log("C:", e));
+// B: error B
+// C: error C
+// A: error A
+```
+
+---
+
+### 微任务时序（高频考点）
+
+```js
+Promise.resolve()
+  .then(() => {
+    console.log(1);
+    return Promise.resolve(2); // 返回一个 fulfilled Promise
+  })
+  .then((res) => {
+    console.log(res);
+  });
+
+Promise.resolve()
+  .then(() => {
+    console.log(3);
+  })
+  .then(() => {
+    console.log(4);
+  })
+  .then(() => {
+    console.log(5);
+  });
+  .then(() => {
+    console.log(6);
+  });
+// 1 3 4 5 2
+```
+
+---
+
+### resolve(promise) vs return promise
+
+```js
+const p1 = new Promise((resolve) => {
+  setTimeout(() => resolve("p1"), 1000);
+});
+
+const p2 = new Promise((resolve) => {
+  resolve(p1);
+});
+
+const p3 = Promise.resolve().then(() => p1);
+
+p2.then((res) => console.log("p2:", res));
+p3.then((res) => console.log("p3:", res));
+
+console.log("p2 === p1:", p2 === p1);
+console.log("p3 === p1:", p3 === p1);
+```
+
+**输出**:
+
+```js
+p2 === p1: false
+p3 === p1: false
+// 1秒后
+p2: p1
+p3: p1
+```
+
+**核心解析**:
+
+1.  **引用不相等**:
+    - `p2 ≠ p1`：new Promise 始终创建新对象，resolve(p1) 让 p2 跟随 p1，而不是让 p2 变成 p1。
+    - `p3 ≠ p1`：`.then()` 始终返回新的 Promise，p3 跟随 p1 的值，也不是 p1 本身。
+2.  **执行顺序 (p2 先于 p3)**:
+    - `p2` 在构造函数中直接 `resolve(p1)`。这是一个同步操作（或非常早的订阅），`p2` 立即订阅了 `p1` 的状态。
+    - `p3` 通过 `Promise.resolve().then(() => p1)` 创建。这是一个**微任务**。只有当这个微任务执行时，回调函数 `() => p1` 被调用，`p3` 才开始订阅 `p1`。
+    - 因此，`p2` 比 `p3` 更早进入 `p1` 的等待队列。
+    - 当 1 秒后 `p1` settled (fulfilled) 时，它会按顺序通知订阅者：先 `p2`，后 `p3`。
+    - 所以 `p2` 的回调先执行，`p3` 的回调后执行。
+
+---
+
+### async/await 与 Promise
+
+```js
+async function async1() {
+  console.log("async1 start");
+  await async2();
+  console.log("async1 end");
+}
+
+async function async2() {
+  console.log("async2");
+}
+
+console.log("script start");
+async1();
+console.log("script end");
+
+// 输出:
+// 'script start'
+// 'async1 start'
+// 'async2'
+// 'script end'
+// 'async1 end'
+```
+
+**解析**: `await` 后面的代码相当于在 `.then()` 中执行，是微任务。
+
+---
+
+### 10. 综合题
+
+```js
+console.log("start");
+
+setTimeout(() => console.log("setTimeout"), 0);
+
+Promise.resolve()
+  .then(() => console.log("promise1"))
+  .then(() => console.log("promise2"));
+
+new Promise((resolve) => {
+  console.log("promise3");
+  resolve();
+}).then(() => console.log("promise4"));
+
+console.log("end");
+```
+
+**答案**: `start, promise3, end, promise1, promise4, promise2, setTimeout`
