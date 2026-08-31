@@ -4,17 +4,6 @@
 
 `Map` 是 ES6 引入的一种**键值对**集合数据结构，与普通对象不同的是，它的**键可以是任意类型**（对象、函数、基本类型等）。
 
-```js
-const map = new Map();
-
-map.set("name", "张三"); // 字符串作为 key
-map.set(1, "one"); // 数字作为 key
-map.set(true, "yes"); // 布尔值作为 key
-
-const obj = { id: 1 };
-map.set(obj, "对象值"); // 对象作为 key
-```
-
 ### Map 的常用方法
 
 | 方法/属性                           | 说明               |
@@ -32,17 +21,7 @@ map.set(obj, "对象值"); // 对象作为 key
 
 ## 二、WeakMap 基础回顾
 
-`WeakMap` 也是键值对集合，但有严格限制：**键只能是对象**（或未注册的 Symbol），不能是基本类型。
-
-```js
-const wm = new WeakMap();
-
-const obj = { id: 1 };
-wm.set(obj, "对象值"); // ✅ 正确
-
-wm.set("name", "张三"); // ❌ TypeError: Invalid value used as weak map key
-wm.set(1, "one"); // ❌ TypeError
-```
+`WeakMap` ：**键只能是对象**（或未注册的 Symbol），不能是基本类型。
 
 ### WeakMap 的可用方法
 
@@ -87,8 +66,6 @@ obj = null; // 外部引用清除了
 
 // 但 map 内部仍然持有对 { name: '张三' } 的引用
 // 这个对象不会被垃圾回收 ❌
-// map.keys() 仍然能拿到这个对象
-console.log([...map.keys()]); // [{ name: '张三' }]
 ```
 
 **问题**：如果忘记手动 `map.delete(obj)`，就会导致**内存泄漏**。
@@ -110,12 +87,6 @@ obj = null; // 外部引用清除了
 ```
 
 **优势**：不需要手动清理，**自动防止内存泄漏**。
-
-### 为什么 WeakMap 不可遍历？
-
-正是因为弱引用的特性，WeakMap 中的键**随时可能被垃圾回收**。如果允许遍历，那么遍历的结果是**不确定的**（取决于 GC 何时执行），这在语义上是不合理的，所以 JS 规范禁止了遍历。
-
----
 
 ## 五、实际应用场景
 

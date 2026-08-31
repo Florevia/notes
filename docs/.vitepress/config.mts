@@ -243,7 +243,7 @@ export default withMermaid(
               },
               { text: "浮动 (Float)", link: "/interview/css/float.md" },
               { text: "BFC", link: "/interview/css/BFC.md" },
-              { text: "Flex 布局", link: "/interview/css/flex.md" },
+
               {
                 text: "弹性布局",
                 link: "/interview/css/弹性布局.md",
@@ -335,7 +335,7 @@ export default withMermaid(
               },
               {
                 text: "Node.js 事件循环",
-                link: "/interview/js/Node事件循环机制.md",
+                link: "/interview/浏览器/Node事件循环机制.md",
               },
               {
                 text: "Set/Map/WeakSet/WeakMap",
@@ -424,6 +424,22 @@ export default withMermaid(
               {
                 text: "防抖与节流",
                 link: "/interview/js/防抖节流.md",
+              },
+              {
+                text: "Map 与 WeakMap 区别",
+                link: "/interview/js/map和weakMap的区别.md",
+              },
+              {
+                text: "Set 与 WeakSet 区别",
+                link: "/interview/js/set和weakSet区别.md",
+              },
+              {
+                text: "判断数据类型",
+                link: "/interview/js/判断数据类型.md",
+              },
+              {
+                text: "取消操作",
+                link: "/interview/js/取消操作.md",
               },
             ],
           },
@@ -556,18 +572,46 @@ export default withMermaid(
                 text: "VueUse 库",
                 link: "/interview/vue/vueuse库.md",
               },
+              {
+                text: "Vue 2/3 生命周期",
+                link: "/interview/vue/2和3生命周期.md",
+              },
+              {
+                text: "KeepAlive 原理",
+                link: "/interview/vue/keep-alive原理.md",
+              },
+              {
+                text: "KeepAlive 常见坑",
+                link: "/interview/vue/keep-alive常见坑.md",
+              },
+              {
+                text: "KeepAlive 滚动位置丢失",
+                link: "/interview/vue/keep-alive滚动位置丢失.md",
+              },
+              {
+                text: "Vue 中 Hook",
+                link: "/interview/vue/vue中hook.md",
+              },
+              {
+                text: "Vue 发请求的时机",
+                link: "/interview/vue/vue发请求的时机.md",
+              },
+              {
+                text: "异步函数与组件渲染",
+                link: "/interview/vue/生命周期中写异步函数是否阻塞组件的挂载和渲染.md",
+              },
             ],
           },
           {
             text: "浏览器与网络",
             collapsed: false,
             items: [
-              { text: "Cookie", link: "/interview/网络/cookie.md" },
+              { text: "Cookie", link: "/interview/浏览器/cookie.md" },
               { text: "Session", link: "/interview/网络/session.md" },
               { text: "DNS 解析", link: "/interview/网络/DNS解析.md" },
               {
                 text: "Local vs Session Storage",
-                link: "/interview/网络/localStorage.md",
+                link: "/interview/浏览器/Storage-cookie.md",
               },
               { text: "GET vs POST", link: "/interview/网络/GET-POST.md" },
               { text: "JWT", link: "/interview/网络/JWT.md" },
@@ -622,7 +666,7 @@ export default withMermaid(
               },
               {
                 text: "SSL/TLS",
-                link: "/interview/网络/TSL.md",
+                link: "/interview/网络/TLS.md",
               },
               {
                 text: "CA 证书",
@@ -642,11 +686,11 @@ export default withMermaid(
               },
               {
                 text: "回流与重绘",
-                link: "/interview/网络/回流重绘.md",
+                link: "/interview/浏览器/回流重绘.md",
               },
               {
                 text: "浏览器事件循环",
-                link: "/interview/网络/浏览器的事件循环.md",
+                link: "/interview/浏览器/浏览器的事件循环.md",
               },
               {
                 text: "XHR readyState 与状态码",
@@ -734,10 +778,7 @@ export default withMermaid(
                 text: "前端渲染模式",
                 link: "/interview/前端工程化/前端渲染模式.md",
               },
-              {
-                text: "静态站点与动态站点",
-                link: "/interview/前端工程化/静态站点&动态站点.md",
-              },
+
               {
                 text: "HMR 原理和机制",
                 link: "/interview/前端工程化/HMR原理和机制.md",
@@ -829,6 +870,18 @@ export default withMermaid(
                 link: "/interview/业务场景/拖拽组件.md",
               },
               {
+                text: "响应顺序导致渲染错位",
+                link: "/interview/业务场景/响应顺序导致渲染错位.md",
+              },
+              {
+                text: "组件封装主题色",
+                link: "/interview/业务场景/组件封装主题色.md",
+              },
+              {
+                text: "自定义栈逻辑页面切换效果",
+                link: "/interview/业务场景/自定义栈逻辑页面切换效果.md",
+              },
+              {
                 text: "流式响应",
                 link: "/interview/业务场景/流式响应.md",
               },
@@ -836,10 +889,7 @@ export default withMermaid(
                 text: "RBAC 动态路由",
                 link: "/interview/业务场景/RBAC动态路由.md",
               },
-              {
-                text: "实现响应式",
-                link: "/interview/业务场景/实现响应式.md",
-              },
+
               {
                 text: "组件封装",
                 link: "/interview/业务场景/组件封装.md",
@@ -877,8 +927,8 @@ export default withMermaid(
                 link: "/interview/业务场景/人类行为验证.md",
               },
               {
-                text: "大文件上传",
-                link: "/interview/业务场景/大文件上传.md",
+                text: "文件上传",
+                link: "/interview/业务场景/文件上传.md",
               },
             ],
           },
@@ -937,14 +987,6 @@ export default withMermaid(
             collapsed: false,
             items: [
               {
-                text: "LLM",
-                link: "/interview/AI/LLM.md",
-              },
-              {
-                text: "LoRA",
-                link: "/interview/AI/LoRA.md",
-              },
-              {
                 text: "RAG",
                 link: "/interview/AI/RAG.md",
               },
@@ -960,14 +1002,7 @@ export default withMermaid(
                 text: "流式打字机",
                 link: "/interview/AI/流式打字机.md",
               },
-              {
-                text: "AI 与前端结合场景",
-                link: "/interview/AI/AI和前端结合的场景.md",
-              },
-              {
-                text: "AI 前端开发 vs 普通开发",
-                link: "/interview/AI/AI前端开发vs普通.md",
-              },
+
               {
                 text: "Map 与 Redis",
                 link: "/interview/AI/map和redis.md",
@@ -983,6 +1018,18 @@ export default withMermaid(
               {
                 text: "算法",
                 link: "/interview/AI/算法111111111111.md",
+              },
+              {
+                text: "Skill 模版",
+                link: "/interview/AI/skill模版.md",
+              },
+              {
+                text: "AI 概念",
+                link: "/interview/AI/概念.md",
+              },
+              {
+                text: "模型训练过程",
+                link: "/interview/AI/模型训练过程.md",
               },
             ],
           },
