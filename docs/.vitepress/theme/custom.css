@@ -101,7 +101,9 @@
 
 /* Nav search trigger */
 .DocSearch-Button {
+  --docsearch-searchbox-background: #2a2a2e;
   border-radius: 999px !important;
+  background-color: #2a2a2e !important;
   transition:
     background-color 180ms var(--vp-search-ease),
     color 180ms var(--vp-search-ease),
@@ -110,8 +112,21 @@
 }
 
 .DocSearch-Button:hover {
+  --docsearch-searchbox-background: #333338;
+  background-color: #333338 !important;
   color: var(--vp-c-brand-1) !important;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--vp-c-brand-1) 35%, transparent);
+}
+
+/* Light mode: soft gray instead of dark */
+html:not(.dark) .DocSearch-Button {
+  --docsearch-searchbox-background: #ececef;
+  background-color: #ececef !important;
+}
+
+html:not(.dark) .DocSearch-Button:hover {
+  --docsearch-searchbox-background: #e4e4e8;
+  background-color: #e4e4e8 !important;
 }
 
 .DocSearch-Button:active {
