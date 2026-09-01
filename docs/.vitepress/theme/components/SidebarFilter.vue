@@ -179,9 +179,9 @@ onBeforeUnmount(() => {
   width: 100%;
   box-sizing: border-box;
   padding: 7px 30px 7px 30px;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid transparent;
   border-radius: 12px;
-  background: var(--vp-c-bg-alt);
+  background: #2a2a2e;
   color: var(--vp-c-text-1);
   font-size: 13px;
   line-height: 1.4;
@@ -199,8 +199,16 @@ onBeforeUnmount(() => {
 
 .sidebar-filter.is-focused .sidebar-filter__input {
   border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg);
+  background: #333338;
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+:global(html:not(.dark)) .sidebar-filter__input {
+  background: #ececef;
+}
+
+:global(html:not(.dark)) .sidebar-filter.is-focused .sidebar-filter__input {
+  background: #e4e4e8;
 }
 
 .sidebar-filter__input::-webkit-search-cancel-button {

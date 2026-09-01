@@ -76,6 +76,12 @@
   }
 }
 
+/* Hide nav divider line above sidebar / under site title */
+.VPNavBar.has-sidebar .divider,
+.VPNavBar.has-sidebar .divider-line {
+  display: none !important;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Local search (Cmd/Ctrl+K) — UI + motion                                    */
 /* -------------------------------------------------------------------------- */
