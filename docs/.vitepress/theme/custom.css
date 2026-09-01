@@ -75,3 +75,269 @@
     transition: none !important;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Local search (Cmd/Ctrl+K) — UI + motion                                    */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --vp-local-search-bg: var(--vp-c-bg-soft);
+  --vp-local-search-result-bg: transparent;
+  --vp-local-search-result-border: transparent;
+  --vp-local-search-result-selected-bg: var(--vp-c-brand-soft);
+  --vp-local-search-result-selected-border: color-mix(
+    in srgb,
+    var(--vp-c-brand-1) 55%,
+    transparent
+  );
+  --vp-local-search-highlight-bg: var(--vp-c-brand-1);
+  --vp-local-search-highlight-text: #1a1a1a;
+  --vp-search-ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark {
+  --vp-local-search-highlight-text: #1a1a1a;
+}
+
+/* Nav search trigger */
+.DocSearch-Button {
+  transition:
+    background-color 180ms var(--vp-search-ease),
+    color 180ms var(--vp-search-ease),
+    box-shadow 180ms var(--vp-search-ease),
+    transform 120ms var(--vp-search-ease) !important;
+}
+
+.DocSearch-Button:hover {
+  color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--vp-c-brand-1) 35%, transparent);
+}
+
+.DocSearch-Button:active {
+  transform: scale(0.97);
+}
+
+.DocSearch-Button-Keys {
+  transition:
+    border-color 180ms var(--vp-search-ease),
+    color 180ms var(--vp-search-ease),
+    background-color 180ms var(--vp-search-ease);
+}
+
+.DocSearch-Button:hover .DocSearch-Button-Keys {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 45%, transparent);
+  color: var(--vp-c-brand-1);
+}
+
+/* Backdrop + shell entrance */
+@keyframes vp-search-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vp-search-shell-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes vp-search-result-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.VPLocalSearchBox .backdrop {
+  background: color-mix(in srgb, var(--vp-c-bg) 55%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: vp-search-backdrop-in 200ms var(--vp-search-ease) both;
+}
+
+.VPLocalSearchBox .shell {
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    0 0 0 1px color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
+  animation: vp-search-shell-in 280ms var(--vp-search-ease) both;
+}
+
+@media (max-width: 767px) {
+  .VPLocalSearchBox .shell {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Search input bar */
+.VPLocalSearchBox .search-bar {
+  border-radius: 10px;
+  border-color: var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  transition:
+    border-color 180ms var(--vp-search-ease),
+    box-shadow 180ms var(--vp-search-ease),
+    background-color 180ms var(--vp-search-ease);
+}
+
+.VPLocalSearchBox .search-bar:focus-within {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+  background: var(--vp-c-bg);
+}
+
+.VPLocalSearchBox .search-icon {
+  color: var(--vp-c-text-3);
+  transition: color 180ms var(--vp-search-ease), transform 180ms var(--vp-search-ease);
+}
+
+.VPLocalSearchBox .search-bar:focus-within .search-icon {
+  color: var(--vp-c-brand-1);
+  transform: scale(1.06);
+}
+
+.VPLocalSearchBox .search-input {
+  caret-color: var(--vp-c-brand-1);
+}
+
+.VPLocalSearchBox .search-actions button {
+  border-radius: 8px;
+  color: var(--vp-c-text-3);
+  transition:
+    color 160ms var(--vp-search-ease),
+    background-color 160ms var(--vp-search-ease),
+    transform 120ms var(--vp-search-ease);
+}
+
+.VPLocalSearchBox .search-actions button:not([disabled]):hover {
+  background: var(--vp-c-default-soft, rgba(142, 150, 170, 0.14));
+  color: var(--vp-c-brand-1);
+}
+
+.VPLocalSearchBox .search-actions button:not([disabled]):active {
+  transform: scale(0.92);
+}
+
+/* Results */
+.VPLocalSearchBox .results {
+  gap: 8px;
+  padding: 2px;
+  margin: 0 -2px;
+}
+
+.VPLocalSearchBox .results > li {
+  animation: vp-search-result-in 220ms var(--vp-search-ease) both;
+}
+
+.VPLocalSearchBox .results > li:nth-child(1) { animation-delay: 20ms; }
+.VPLocalSearchBox .results > li:nth-child(2) { animation-delay: 40ms; }
+.VPLocalSearchBox .results > li:nth-child(3) { animation-delay: 60ms; }
+.VPLocalSearchBox .results > li:nth-child(4) { animation-delay: 80ms; }
+.VPLocalSearchBox .results > li:nth-child(5) { animation-delay: 100ms; }
+.VPLocalSearchBox .results > li:nth-child(6) { animation-delay: 120ms; }
+.VPLocalSearchBox .results > li:nth-child(7) { animation-delay: 140ms; }
+.VPLocalSearchBox .results > li:nth-child(8) { animation-delay: 160ms; }
+
+.VPLocalSearchBox .result {
+  border-radius: 10px;
+  border-width: 1px;
+  background: var(--vp-c-bg);
+  transition:
+    border-color 160ms var(--vp-search-ease),
+    background-color 160ms var(--vp-search-ease),
+    transform 160ms var(--vp-search-ease),
+    box-shadow 160ms var(--vp-search-ease) !important;
+}
+
+.VPLocalSearchBox .result:hover {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 28%, transparent);
+  transform: translateY(-1px);
+}
+
+.VPLocalSearchBox .result.selected {
+  background: var(--vp-local-search-result-selected-bg);
+  border-color: var(--vp-local-search-result-selected-border);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent);
+  transform: translateY(-1px);
+}
+
+.VPLocalSearchBox .titles mark,
+.VPLocalSearchBox .excerpt mark {
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.VPLocalSearchBox .no-results {
+  color: var(--vp-c-text-2);
+  padding: 20px 12px;
+  animation: vp-search-result-in 220ms var(--vp-search-ease) both;
+}
+
+.VPLocalSearchBox .no-results strong {
+  color: var(--vp-c-brand-1);
+}
+
+/* Keyboard hints */
+.VPLocalSearchBox .search-keyboard-shortcuts {
+  opacity: 0.7;
+  padding-top: 2px;
+  transition: opacity 180ms var(--vp-search-ease);
+}
+
+.VPLocalSearchBox .shell:focus-within .search-keyboard-shortcuts {
+  opacity: 0.9;
+}
+
+.VPLocalSearchBox .search-keyboard-shortcuts kbd {
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
+  transition:
+    border-color 160ms var(--vp-search-ease),
+    color 160ms var(--vp-search-ease),
+    background-color 160ms var(--vp-search-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .DocSearch-Button,
+  .DocSearch-Button-Keys,
+  .VPLocalSearchBox .backdrop,
+  .VPLocalSearchBox .shell,
+  .VPLocalSearchBox .search-bar,
+  .VPLocalSearchBox .search-icon,
+  .VPLocalSearchBox .search-actions button,
+  .VPLocalSearchBox .results > li,
+  .VPLocalSearchBox .result,
+  .VPLocalSearchBox .no-results,
+  .VPLocalSearchBox .search-keyboard-shortcuts,
+  .VPLocalSearchBox .search-keyboard-shortcuts kbd {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .VPLocalSearchBox .result:hover,
+  .VPLocalSearchBox .result.selected,
+  .DocSearch-Button:active,
+  .VPLocalSearchBox .search-actions button:not([disabled]):active {
+    transform: none;
+  }
+}
