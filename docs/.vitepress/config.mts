@@ -29,6 +29,28 @@ export default withMermaid(
       outline: {
         level: "deep",
       },
+      search: {
+        provider: "local",
+        options: {
+          translations: {
+            button: {
+              buttonText: "搜索",
+              buttonAriaLabel: "搜索文档",
+            },
+            modal: {
+              displayDetails: "显示详细列表",
+              resetButtonTitle: "重置搜索",
+              backButtonTitle: "关闭搜索",
+              noResultsText: "无结果",
+              footer: {
+                selectText: "选择",
+                navigateText: "切换",
+                closeText: "关闭",
+              },
+            },
+          },
+        },
+      },
       // https://vitepress.dev/reference/default-theme-config
       nav: [
         { text: "首页", link: "/" },
