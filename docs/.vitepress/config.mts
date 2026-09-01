@@ -81,11 +81,11 @@ export default withMermaid(
             items: [
               {
                 text: "ECMA-262",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {
                     text: "ES2016",
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: "Class",
@@ -95,7 +95,7 @@ export default withMermaid(
                   },
                   {
                     text: "ES2015",
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: "Promise",
@@ -105,7 +105,7 @@ export default withMermaid(
                   },
                   {
                     text: "ES5",
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: "迭代器",
@@ -117,11 +117,11 @@ export default withMermaid(
               },
               {
                 text: "前端框架",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {
                     text: "Vue 3",
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: "Ref 与 Reactive",
@@ -153,7 +153,7 @@ export default withMermaid(
               },
               {
                 text: "JavaScript 变体",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {
                     text: "TypeScript",
@@ -163,7 +163,7 @@ export default withMermaid(
               },
               {
                 text: "JS 模块化体系",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {
                     text: "ESM 与 CJS",
@@ -173,7 +173,7 @@ export default withMermaid(
               },
               {
                 text: "后端框架",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   {
                     text: "Express",
@@ -191,7 +191,7 @@ export default withMermaid(
         "/408/": [
           {
             text: "计算机网络",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "正向代理与反向代理",
@@ -229,7 +229,7 @@ export default withMermaid(
         "/interview/": [
           {
             text: "HTML",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "浏览器渲染模式",
@@ -252,7 +252,7 @@ export default withMermaid(
           },
           {
             text: "CSS",
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: "CSS 单位", link: "/interview/css/css单位.md" },
               {
@@ -309,7 +309,7 @@ export default withMermaid(
           },
           {
             text: "JavaScript",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "原型与原型链",
@@ -467,7 +467,7 @@ export default withMermaid(
           },
           {
             text: "Vue",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "环境变量",
@@ -626,7 +626,7 @@ export default withMermaid(
           },
           {
             text: "浏览器与网络",
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: "Cookie", link: "/interview/浏览器/cookie.md" },
               { text: "Session", link: "/interview/网络/session.md" },
@@ -730,7 +730,7 @@ export default withMermaid(
           },
           {
             text: "前端工程化",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "前端工程化的理解",
@@ -885,7 +885,7 @@ export default withMermaid(
           },
           {
             text: "业务场景",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "拖拽组件",
@@ -956,7 +956,7 @@ export default withMermaid(
           },
           {
             text: "浏览器",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "浏览器组成",
@@ -1006,7 +1006,7 @@ export default withMermaid(
           },
           {
             text: "AI",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "RAG",
@@ -1057,7 +1057,7 @@ export default withMermaid(
           },
           {
             text: "NestJS",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "Observable",
