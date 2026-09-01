@@ -36,3 +36,42 @@
   transform: scale(1.05);
   filter: brightness(1.1);
 }
+
+/* Sidebar filter item transitions */
+.VPSidebar .VPSidebarItem[data-sidebar-filter-hidden="true"] {
+  opacity: 0;
+  transform: translateX(-8px) scale(0.98);
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none;
+  border: none !important;
+}
+
+.VPSidebar[data-sidebar-filter-ready="true"] .VPSidebarItem {
+  --sf-item-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  transition:
+    opacity 200ms var(--sf-item-ease),
+    transform 200ms var(--sf-item-ease),
+    max-height 240ms var(--sf-item-ease),
+    margin 200ms var(--sf-item-ease),
+    padding 200ms var(--sf-item-ease);
+  transform-origin: left center;
+  max-height: 2000px;
+}
+
+.VPSidebar[data-sidebar-filtering="true"]
+  .VPSidebarItem[data-sidebar-filter-match="true"]
+  > .item
+  .text {
+  color: var(--vp-c-brand-1);
+  transition: color 180ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPSidebar[data-sidebar-filter-ready="true"] .VPSidebarItem {
+    transition: none !important;
+  }
+}
