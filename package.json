@@ -19,6 +19,7 @@
     "cytoscape-cose-bilkent": "^4.1.0",
     "dayjs": "^1.11.19",
     "debug": "^4.4.3",
+    "jsdom": "^30.0.1",
     "mermaid": "^11.12.2",
     "vitepress": "2.0.0-alpha.15",
     "vitepress-plugin-mermaid": "^2.0.17"
