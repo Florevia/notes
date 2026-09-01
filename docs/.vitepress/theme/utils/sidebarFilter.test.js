@@ -96,13 +96,15 @@ describe("applySidebarFilter", () => {
 });
 
 describe("resetSidebarFilter", () => {
-  it("clears hidden marks", () => {
+  it("clears hidden marks and filtering state", () => {
     const root = makeSidebarDom();
     applySidebarFilter(root, "闭包");
+    assert.equal(root.dataset.sidebarFiltering, "true");
     resetSidebarFilter(root);
+    assert.equal(root.dataset.sidebarFiltering, undefined);
     for (const el of root.querySelectorAll(".VPSidebarItem")) {
       assert.equal(el.dataset.sidebarFilterHidden, undefined);
-      assert.notEqual(el.style.display, "none");
+      assert.equal(el.dataset.sidebarFilterMatch, undefined);
     }
   });
 });

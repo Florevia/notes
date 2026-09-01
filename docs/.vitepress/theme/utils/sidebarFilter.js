@@ -19,10 +19,10 @@ function getItemText(el) {
 function setHidden(el, hidden) {
   if (hidden) {
     el.dataset.sidebarFilterHidden = "true";
-    el.style.display = "none";
+    el.setAttribute("aria-hidden", "true");
   } else {
     delete el.dataset.sidebarFilterHidden;
-    el.style.removeProperty("display");
+    el.removeAttribute("aria-hidden");
   }
 }
 
@@ -38,6 +38,10 @@ export function applySidebarFilter(root, query) {
   if (!q) {
     resetSidebarFilter(root);
     return { matchCount: items.length };
+  }
+
+  if (root && root.dataset) {
+    root.dataset.sidebarFiltering = "true";
   }
 
   const selfMatch = new Map();
@@ -68,7 +72,13 @@ export function applySidebarFilter(root, query) {
   }
 
   for (const el of items) {
-    setHidden(el, !keep.has(el));
+    const visible = keep.has(el);
+    setHidden(el, !visible);
+    if (visible && selfMatch.get(el)) {
+      el.dataset.sidebarFilterMatch = "true";
+    } else {
+      delete el.dataset.sidebarFilterMatch;
+    }
   }
 
   return { matchCount };
@@ -78,8 +88,12 @@ export function applySidebarFilter(root, query) {
  * @param {ParentNode} root
  */
 export function resetSidebarFilter(root) {
+  if (root && root.dataset) {
+    delete root.dataset.sidebarFiltering;
+  }
   for (const el of root.querySelectorAll(".VPSidebarItem")) {
     delete el.dataset.sidebarFilterHidden;
-    el.style.removeProperty("display");
+    delete el.dataset.sidebarFilterMatch;
+    el.removeAttribute("aria-hidden");
   }
 }
