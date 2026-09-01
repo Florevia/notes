@@ -101,6 +101,7 @@
 
 /* Nav search trigger */
 .DocSearch-Button {
+  border-radius: 999px !important;
   transition:
     background-color 180ms var(--vp-search-ease),
     color 180ms var(--vp-search-ease),
@@ -118,6 +119,7 @@
 }
 
 .DocSearch-Button-Keys {
+  border-radius: 999px;
   transition:
     border-color 180ms var(--vp-search-ease),
     color 180ms var(--vp-search-ease),
@@ -172,7 +174,7 @@
   gap: 12px;
   padding: 14px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 20px;
   box-shadow:
     0 18px 50px rgba(0, 0, 0, 0.28),
     0 0 0 1px color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
@@ -189,7 +191,7 @@
 
 /* Search input bar */
 .VPLocalSearchBox .search-bar {
-  border-radius: 10px;
+  border-radius: 14px;
   border-color: var(--vp-c-divider);
   background: var(--vp-c-bg);
   transition:
@@ -219,7 +221,7 @@
 }
 
 .VPLocalSearchBox .search-actions button {
-  border-radius: 8px;
+  border-radius: 999px;
   color: var(--vp-c-text-3);
   transition:
     color 160ms var(--vp-search-ease),
@@ -257,7 +259,7 @@
 .VPLocalSearchBox .results > li:nth-child(8) { animation-delay: 160ms; }
 
 .VPLocalSearchBox .result {
-  border-radius: 10px;
+  border-radius: 14px;
   border-width: 1px;
   background: var(--vp-c-bg);
   transition:
@@ -281,7 +283,7 @@
 
 .VPLocalSearchBox .titles mark,
 .VPLocalSearchBox .excerpt mark {
-  border-radius: 3px;
+  border-radius: 6px;
   padding: 0 3px;
 }
 
@@ -307,7 +309,7 @@
 }
 
 .VPLocalSearchBox .search-keyboard-shortcuts kbd {
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--vp-c-bg);
   border-color: var(--vp-c-divider);
   box-shadow: none;

@@ -180,7 +180,7 @@ onBeforeUnmount(() => {
   box-sizing: border-box;
   padding: 7px 30px 7px 30px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
   font-size: 13px;
