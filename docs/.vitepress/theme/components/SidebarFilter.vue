@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, nextTick, onBeforeUnmount } from "vue";
 import { useRoute } from "vitepress";
 import {
   applySidebarFilter,
@@ -13,7 +13,9 @@ const rootRef = ref(null);
 const focused = ref(false);
 
 let debounceTimer = null;
-const DEBOUNCE_MS = 90;
+let rafId = 0;
+let lastAppliedQuery = "";
+const DEBOUNCE_MS = 160;
 
 function getSidebarRoot() {
   const el = rootRef.value;
@@ -26,6 +28,9 @@ function runFilter() {
   if (!root) return;
 
   const q = query.value.trim();
+  if (q === lastAppliedQuery) return;
+  lastAppliedQuery = q;
+
   if (!q) {
     resetSidebarFilter(root);
     matchCount.value = null;
@@ -39,17 +44,33 @@ function runFilter() {
 function scheduleFilter() {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
-    runFilter();
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(runFilter);
   }, DEBOUNCE_MS);
 }
 
 function clearQuery() {
   query.value = "";
   clearTimeout(debounceTimer);
-  nextTick(() => runFilter());
+  cancelAnimationFrame(rafId);
+  lastAppliedQuery = "";
+  nextTick(() => {
+    const root = getSidebarRoot();
+    if (root) resetSidebarFilter(root);
+    matchCount.value = null;
+  });
 }
 
-watch(query, () => {
+watch(query, (value) => {
+  if (!value.trim()) {
+    clearTimeout(debounceTimer);
+    cancelAnimationFrame(rafId);
+    lastAppliedQuery = "";
+    const root = getSidebarRoot();
+    if (root) resetSidebarFilter(root);
+    matchCount.value = null;
+    return;
+  }
   scheduleFilter();
 });
 
@@ -57,28 +78,21 @@ watch(
   () => route.path,
   async () => {
     clearTimeout(debounceTimer);
+    cancelAnimationFrame(rafId);
     query.value = "";
     matchCount.value = null;
+    lastAppliedQuery = "";
     await nextTick();
     const root = getSidebarRoot();
     if (root) resetSidebarFilter(root);
   }
 );
 
-onMounted(async () => {
-  await nextTick();
-  const root = getSidebarRoot();
-  // Enable transitions after first paint to avoid mount flicker.
-  if (root?.dataset) root.dataset.sidebarFilterReady = "true";
-});
-
 onBeforeUnmount(() => {
   clearTimeout(debounceTimer);
+  cancelAnimationFrame(rafId);
   const root = getSidebarRoot();
-  if (root) {
-    resetSidebarFilter(root);
-    if (root.dataset) delete root.dataset.sidebarFilterReady;
-  }
+  if (root) resetSidebarFilter(root);
 });
 </script>
 

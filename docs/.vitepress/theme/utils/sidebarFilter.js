@@ -11,12 +11,24 @@ export function textMatches(text, normalizedQuery) {
     .includes(normalizedQuery);
 }
 
+/** @type {WeakMap<Element, string>} */
+const textCache = new WeakMap();
+
 function getItemText(el) {
+  const cached = textCache.get(el);
+  if (cached != null) return cached;
   const textEl = el.querySelector(":scope > .item .text");
-  return textEl ? textEl.textContent || "" : "";
+  const text = textEl ? textEl.textContent || "" : "";
+  textCache.set(el, text);
+  return text;
 }
 
 function setHidden(el, hidden) {
+  const wasHidden = el.dataset.sidebarFilterHidden === "true";
+  if (hidden === wasHidden) {
+    // Still sync match highlight below; hidden flag unchanged.
+    return wasHidden;
+  }
   if (hidden) {
     el.dataset.sidebarFilterHidden = "true";
     el.setAttribute("aria-hidden", "true");
@@ -24,6 +36,20 @@ function setHidden(el, hidden) {
     delete el.dataset.sidebarFilterHidden;
     el.removeAttribute("aria-hidden");
   }
+  return hidden;
+}
+
+function setMatch(el, matched) {
+  const wasMatched = el.dataset.sidebarFilterMatch === "true";
+  if (matched === wasMatched) return;
+  if (matched) el.dataset.sidebarFilterMatch = "true";
+  else delete el.dataset.sidebarFilterMatch;
+}
+
+function expandForFilter(el) {
+  if (!el.classList.contains("collapsed")) return;
+  el.classList.remove("collapsed");
+  el.dataset.sidebarFilterExpanded = "true";
 }
 
 /**
@@ -33,7 +59,7 @@ function setHidden(el, hidden) {
  */
 export function applySidebarFilter(root, query) {
   const q = normalizeQuery(query);
-  const items = [...root.querySelectorAll(".VPSidebarItem")];
+  const items = root.querySelectorAll(".VPSidebarItem");
 
   if (!q) {
     resetSidebarFilter(root);
@@ -44,28 +70,25 @@ export function applySidebarFilter(root, query) {
     root.dataset.sidebarFiltering = "true";
   }
 
-  const selfMatch = new Map();
-  for (const el of items) {
-    selfMatch.set(el, textMatches(getItemText(el), q));
-  }
-
+  /** @type {Set<Element>} */
   const keep = new Set();
   let matchCount = 0;
 
   for (const el of items) {
-    if (!selfMatch.get(el)) continue;
+    if (!textMatches(getItemText(el), q)) continue;
     matchCount += 1;
     keep.add(el);
-    // ancestors
+
     let parent = el.parentElement;
     while (parent && parent !== root) {
       if (parent.classList?.contains("VPSidebarItem")) {
         keep.add(parent);
-        parent.classList.remove("collapsed");
+        expandForFilter(parent);
       }
       parent = parent.parentElement;
     }
-    // if group title matched, keep all descendants
+
+    // Group title hit → keep whole subtree
     for (const child of el.querySelectorAll(".VPSidebarItem")) {
       keep.add(child);
     }
@@ -74,11 +97,7 @@ export function applySidebarFilter(root, query) {
   for (const el of items) {
     const visible = keep.has(el);
     setHidden(el, !visible);
-    if (visible && selfMatch.get(el)) {
-      el.dataset.sidebarFilterMatch = "true";
-    } else {
-      delete el.dataset.sidebarFilterMatch;
-    }
+    setMatch(el, visible && textMatches(getItemText(el), q));
   }
 
   return { matchCount };
@@ -91,7 +110,16 @@ export function resetSidebarFilter(root) {
   if (root && root.dataset) {
     delete root.dataset.sidebarFiltering;
   }
-  for (const el of root.querySelectorAll(".VPSidebarItem")) {
+
+  const items = root.querySelectorAll(
+    ".VPSidebarItem[data-sidebar-filter-hidden], .VPSidebarItem[data-sidebar-filter-match], .VPSidebarItem[data-sidebar-filter-expanded]"
+  );
+
+  for (const el of items) {
+    if (el.dataset.sidebarFilterExpanded === "true") {
+      el.classList.add("collapsed");
+      delete el.dataset.sidebarFilterExpanded;
+    }
     delete el.dataset.sidebarFilterHidden;
     delete el.dataset.sidebarFilterMatch;
     el.removeAttribute("aria-hidden");

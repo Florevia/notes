@@ -96,15 +96,23 @@ describe("applySidebarFilter", () => {
 });
 
 describe("resetSidebarFilter", () => {
-  it("clears hidden marks and filtering state", () => {
+  it("clears hidden marks and restores expanded groups", () => {
     const root = makeSidebarDom();
+    const interview = root.querySelectorAll(".VPSidebarItem.level-0")[0];
+    assert.equal(interview.classList.contains("collapsed"), true);
+
     applySidebarFilter(root, "闭包");
     assert.equal(root.dataset.sidebarFiltering, "true");
+    assert.equal(interview.classList.contains("collapsed"), false);
+    assert.equal(interview.dataset.sidebarFilterExpanded, "true");
+
     resetSidebarFilter(root);
     assert.equal(root.dataset.sidebarFiltering, undefined);
+    assert.equal(interview.classList.contains("collapsed"), true);
     for (const el of root.querySelectorAll(".VPSidebarItem")) {
       assert.equal(el.dataset.sidebarFilterHidden, undefined);
       assert.equal(el.dataset.sidebarFilterMatch, undefined);
+      assert.equal(el.dataset.sidebarFilterExpanded, undefined);
     }
   });
 });
