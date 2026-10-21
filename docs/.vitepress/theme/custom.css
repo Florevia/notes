@@ -49,6 +49,143 @@
   color: var(--vp-c-brand-1);
 }
 
+/* -------------------------------------------------------------------------- */
+/* Expand / collapse menus — sidebar, nav flyout, mobile screen               */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --vp-menu-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --vp-menu-duration: 280ms;
+}
+
+/* Sidebar collapsible sections */
+.VPSidebar .VPSidebarItem.level-0 {
+  transition: padding-bottom var(--vp-menu-duration) var(--vp-menu-ease);
+}
+
+.VPSidebar .VPSidebarItem > .items {
+  display: block !important;
+  overflow: hidden;
+  max-height: 2400px;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height var(--vp-menu-duration) var(--vp-menu-ease),
+    opacity 200ms var(--vp-menu-ease),
+    visibility 200ms var(--vp-menu-ease),
+    height var(--vp-menu-duration) var(--vp-menu-ease);
+}
+
+.VPSidebar .VPSidebarItem.collapsed > .items {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Prefer true height animation when the browser supports it */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  .VPSidebar .VPSidebarItem > .items {
+    max-height: none;
+    height: auto;
+  }
+
+  .VPSidebar .VPSidebarItem.collapsed > .items {
+    max-height: none;
+    height: 0;
+  }
+}
+
+/* Filtering: keep instant show/hide, no expand animation */
+.VPSidebar[data-sidebar-filtering="true"] .VPSidebarItem > .items,
+.VPSidebar[data-sidebar-filtering="true"] .VPSidebarItem.level-0 {
+  transition: none !important;
+}
+
+/* Top nav dropdown (前端 / AI …) */
+.VPFlyout .menu {
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top center;
+  transition:
+    opacity var(--vp-menu-duration) var(--vp-menu-ease),
+    visibility var(--vp-menu-duration) var(--vp-menu-ease),
+    transform var(--vp-menu-duration) var(--vp-menu-ease) !important;
+}
+
+.VPFlyout .button[aria-expanded="false"] + .menu {
+  transform: translateY(-8px) scale(0.98) !important;
+}
+
+.VPFlyout:hover .menu,
+.VPFlyout .button[aria-expanded="true"] + .menu {
+  transform: translateY(0) scale(1) !important;
+}
+
+.VPFlyout .text-icon {
+  transition: transform 220ms var(--vp-menu-ease);
+}
+
+.VPFlyout:hover .text-icon,
+.VPFlyout .button[aria-expanded="true"] .text-icon {
+  transform: rotate(180deg);
+}
+
+/* Mobile nav screen accordion groups */
+.VPNavScreenMenuGroup {
+  height: auto !important;
+  max-height: 48px;
+  transition:
+    max-height var(--vp-menu-duration) var(--vp-menu-ease),
+    padding-bottom var(--vp-menu-duration) var(--vp-menu-ease) !important;
+}
+
+.VPNavScreenMenuGroup.open {
+  max-height: min(70vh, 960px);
+}
+
+.VPNavScreenMenuGroup .items {
+  visibility: visible !important;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition:
+    opacity 200ms var(--vp-menu-ease),
+    transform 200ms var(--vp-menu-ease);
+}
+
+.VPNavScreenMenuGroup.open .items {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPSidebar .VPSidebarItem.level-0,
+  .VPSidebar .VPSidebarItem > .items,
+  .VPFlyout .menu,
+  .VPFlyout .text-icon,
+  .VPNavScreenMenuGroup,
+  .VPNavScreenMenuGroup .items {
+    transition: none !important;
+  }
+
+  .VPFlyout .menu,
+  .VPFlyout .button[aria-expanded="false"] + .menu,
+  .VPFlyout:hover .menu,
+  .VPFlyout .button[aria-expanded="true"] + .menu {
+    transform: none !important;
+  }
+
+  .VPFlyout:hover .text-icon,
+  .VPFlyout .button[aria-expanded="true"] .text-icon {
+    transform: none;
+  }
+}
+
 /* Hide nav divider line above sidebar / under site title */
 .VPNavBar.has-sidebar .divider,
 .VPNavBar.has-sidebar .divider-line {
