@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动画库效果对比</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+    <style>
+      :root {
+        --bg: #0f1419;
+        --panel: #1a222d;
+        --border: #2c3848;
+        --text: #e8eef5;
+        --muted: #8b9bb0;
+        --accent: #3d9cf0;
+        --tag: #243044;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+        background: radial-gradient(1200px 600px at 10% -10%, #1b2a3d, transparent),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px 12px;
+      }
+
+      header h1 {
+        margin: 0 0 8px;
+        font-size: 1.75rem;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 52ch;
+      }
+
+      .grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px 20px 80px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .demo {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px;
+        min-height: 200px;
+      }
+
+      @media (max-width: 720px) {
+        .demo {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .lib-tag {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+        background: var(--tag);
+        border: 1px solid var(--border);
+      }
+
+      .lib-tag .name {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--accent);
+        word-break: break-word;
+      }
+
+      .lib-tag .desc {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .lib-tag a {
+        font-size: 0.78rem;
+        color: #9ec9f5;
+        text-decoration: none;
+      }
+
+      .lib-tag a:hover {
+        text-decoration: underline;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 160px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #121820, #0d1218);
+        border: 1px dashed #334155;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+
+      .controls {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+      }
+
+      button {
+        appearance: none;
+        border: 1px solid #3b4b60;
+        background: #243041;
+        color: var(--text);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .box {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #4ea1ff, #7c5cff);
+        box-shadow: 0 10px 30px rgba(78, 161, 255, 0.25);
+      }
+
+      .dots {
+        display: flex;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: #56d4a0;
+      }
+
+      .dot:nth-child(2) {
+        background: #f0b35a;
+      }
+
+      .dot:nth-child(3) {
+        background: #f07178;
+      }
+
+      .dot:nth-child(4) {
+        background: #7aa2f7;
+      }
+
+      .dot:nth-child(5) {
+        background: #c792ea;
+      }
+
+      #lottie-box {
+        width: 140px;
+        height: 140px;
+      }
+
+      #motion-box {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #22d3ee, #818cf8);
+      }
+
+      #spring-root {
+        width: 100%;
+        height: 100%;
+        min-height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .spring-ball {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ffe08a, #f59e0b);
+        box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+        cursor: pointer;
+      }
+
+      .aos-cards {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        padding: 80px 0 120px;
+        min-height: 320px;
+        align-content: flex-start;
+      }
+
+      .aos-card {
+        width: 88px;
+        height: 64px;
+        border-radius: 12px;
+        background: #334155;
+        display: grid;
+        place-items: center;
+        color: #cbd5e1;
+        font-size: 0.85rem;
+      }
+
+      .aos-stage {
+        align-items: stretch;
+        justify-content: stretch;
+        overflow-y: auto;
+        max-height: 200px;
+      }
+
+      #auto-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: min(320px, 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      #auto-list li {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 10px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #auto-list button {
+        padding: 4px 10px;
+      }
+
+      #theatre-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #fb7185, #f97316);
+        will-change: transform, opacity;
+      }
+
+      .hint {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>动画开源库效果对比</h1>
+      <p>
+        每一块左侧标注所用库；右侧是可交互示意。本地预览：启动 VitePress 后打开
+        <code>/animation-demos.html</code>，或直接用浏览器打开本文件。
+      </p>
+    </header>
+
+    <div class="grid">
+      <!-- Anime.js -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">Anime.js</div>
+          <div class="desc">错开出场 + 循环旋转</div>
+          <a href="https://github.com/juliangarnier/anime" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：SVG / 序列 / stagger</span>
+          <div class="dots" id="anime-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="controls">
+            <button type="button" id="anime-replay">重播</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Animate.css -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">Animate.css</div>
+          <div class="desc">加 class 即用的 CSS 动画</div>
+          <a
+            href="https://github.com/animate-css/animate.css"
+            target="_blank"
+            rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：弹窗 / 按钮微交互</span>
+          <div id="animate-box" class="box animate__animated animate__bounce"></div>
+          <div class="controls">
+            <button type="button" data-anim="bounce">bounce</button>
+            <button type="button" data-anim="tada">tada</button>
+            <button type="button" data-anim="flip">flip</button>
+            <button type="button" data-anim="heartBeat">heartBeat</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Motion -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">Motion</div>
+          <div class="desc">原 Framer Motion，声明式弹簧</div>
+          <a href="https://github.com/motiondivision/motion" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：布局过渡 / 手势 / 滚动</span>
+          <div id="motion-box"></div>
+          <div class="controls">
+            <button type="button" id="motion-toggle">切换位置</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lottie -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">Lottie Web</div>
+          <div class="desc">AE 导出 JSON，矢量播片</div>
+          <a href="https://github.com/airbnb/lottie-web" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：Loading / 品牌插画</span>
+          <div id="lottie-box"></div>
+          <div class="controls">
+            <button type="button" id="lottie-toggle">暂停 / 播放</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- React Spring -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">React Spring</div>
+          <div class="desc">弹簧物理，可打断手感</div>
+          <a href="https://github.com/pmndrs/react-spring" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：跟手拖拽 / React 交互</span>
+          <div id="spring-root"></div>
+          <div class="controls">
+            <button type="button" id="spring-jump">弹一下</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- AOS -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">AOS</div>
+          <div class="desc">滚进视口再出场</div>
+          <a href="https://github.com/michalsnik/aos" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage aos-stage" id="aos-stage">
+          <span class="hint">向下滚动看卡片依次出现</span>
+          <div class="aos-cards">
+            <div class="aos-card" data-aos="fade-up">A</div>
+            <div class="aos-card" data-aos="fade-up" data-aos-delay="80">B</div>
+            <div class="aos-card" data-aos="zoom-in" data-aos-delay="160">C</div>
+            <div class="aos-card" data-aos="flip-left" data-aos-delay="240">D</div>
+            <div class="aos-card" data-aos="fade-left" data-aos-delay="320">E</div>
+            <div class="aos-card" data-aos="fade-right" data-aos-delay="400">F</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AutoAnimate -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">AutoAnimate</div>
+          <div class="desc">列表增删自动过渡</div>
+          <a href="https://github.com/formkit/auto-animate" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：Todo / 筛选结果变化</span>
+          <ul id="auto-list"></ul>
+          <div class="controls">
+            <button type="button" id="auto-add">添加一项</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Theatre.js -->
+      <section class="demo">
+        <aside class="lib-tag">
+          <div class="name">Theatre.js</div>
+          <div class="desc">时间轴编排复杂场景</div>
+          <a href="https://github.com/theatre-js/theatre" target="_blank" rel="noreferrer"
+            >GitHub →</a
+          >
+        </aside>
+        <div class="stage">
+          <span class="hint">适合：镜头感 / 多属性时间轴</span>
+          <div id="theatre-box"></div>
+          <div class="controls">
+            <button type="button" id="theatre-play">播放时间轴</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script type="module" src="/animation-demos.js"></script>
+
+    <script>
+      // ——— Anime.js ———
+      function playAnime() {
+        anime({
+          targets: "#anime-dots .dot",
+          translateY: [
+            { value: -28, duration: 400 },
+            { value: 0, duration: 400 },
+          ],
+          rotate: "1turn",
+          delay: anime.stagger(90),
+          easing: "easeInOutQuad",
+          loop: true,
+        });
+      }
+      playAnime();
+      document.getElementById("anime-replay").onclick = () => {
+        anime.remove("#anime-dots .dot");
+        document.querySelectorAll("#anime-dots .dot").forEach((el) => {
+          el.style.transform = "";
+        });
+        playAnime();
+      };
+
+      // ——— Animate.css ———
+      const animateBox = document.getElementById("animate-box");
+      document.querySelectorAll("[data-anim]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const name = btn.getAttribute("data-anim");
+          animateBox.className = "box animate__animated";
+          void animateBox.offsetWidth;
+          animateBox.classList.add("animate__" + name);
+        });
+      });
+
+      // ——— Lottie ———
+      const lottieAnim = lottie.loadAnimation({
+        container: document.getElementById("lottie-box"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "https://assets2.lottiefiles.com/packages/lf20_u4yrau.json",
+      });
+      let lottiePlaying = true;
+      document.getElementById("lottie-toggle").onclick = () => {
+        if (lottiePlaying) lottieAnim.pause();
+        else lottieAnim.play();
+        lottiePlaying = !lottiePlaying;
+      };
+
+      // ——— AOS ———
+      AOS.init({
+        duration: 700,
+        once: false,
+        mirror: true,
+        offset: 20,
+      });
+      const aosStage = document.getElementById("aos-stage");
+      aosStage.addEventListener("scroll", () => AOS.refresh());
+      // 演示区较矮：进入页面后轻微滚动，让卡片更容易触发
+      setTimeout(() => {
+        aosStage.scrollTop = 1;
+        AOS.refresh();
+      }, 300);
+    </script>
+  </body>
+</html>

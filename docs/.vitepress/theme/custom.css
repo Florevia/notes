@@ -537,6 +537,11 @@ html.dark .VPMenu {
   display: none !important;
 }
 
+/* Remove the line between site title and sidebar filter */
+.VPNavBarTitle.has-sidebar .title {
+  border-bottom-color: transparent !important;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Inline nav search — expand / collapse in place                             */
 /* -------------------------------------------------------------------------- */
