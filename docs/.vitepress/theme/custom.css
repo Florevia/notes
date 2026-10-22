@@ -553,11 +553,19 @@ html.dark .VPMenu {
 }
 
 html:not(.dark) {
-  --vp-local-search-bg: #ececef;
+  /* 比首页氛围粉 (#ffd9e2 / #ffe8ee) 再浅一点 */
+  --vp-local-search-bg: #fff5f7;
+  --vp-local-search-bg-hover: #ffeff2;
 }
 
 html:not(.dark) .VPNavBarSearch .inline-search__bar:hover {
-  background: #e4e4e8;
+  background: var(--vp-local-search-bg-hover);
+}
+
+html:not(.dark) .VPNavBarSearch .inline-search__keys {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 22%, #fff);
+  color: color-mix(in srgb, var(--vp-c-brand-1) 55%, #8a7078);
+  background: color-mix(in srgb, #fff 70%, var(--vp-local-search-bg));
 }
 
 html:not(.dark) .VPNavBarSearch .inline-search__result {
