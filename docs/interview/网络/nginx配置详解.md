@@ -1,13 +1,4 @@
-# Nginx 核心配置详解（初学者版）
-
-## 快速导航
-
-- [配置文件结构](#配置文件结构)
-- [核心配置一览](#核心配置一览)
-- [五大配置块详解](#一全局块-main)
-- [实战案例](#实战案例)
-
----
+# Nginx 核心配置详解
 
 ## 配置文件结构
 
@@ -36,7 +27,6 @@ Nginx 配置文件是**层级结构**，就像俄罗斯套娃：
 
 ## 核心配置一览
 
-### 🎯 初学者必须掌握的核心配置
 
 | 配置块       | 核心配置项                      | 作用                       | 重要性 |
 | ------------ | ------------------------------- | -------------------------- | ------ |
@@ -70,8 +60,6 @@ worker_processes auto;
 - `auto`：自动根据 CPU 核心数设置（**推荐**）
 - 手动设置：`worker_processes 4;`（4 核 CPU 就设置 4）
 
-**新手建议**：保持 `auto` 即可，无需修改。
-
 ---
 
 #### 2. `error_log /var/log/nginx/error.log;`
@@ -85,7 +73,7 @@ error_log /var/log/nginx/error.log;
 **作用**：
 
 - Nginx 出错时，错误信息会写入这个文件
-- 配置不生效？先查错误日志！
+- 配置不生效？先查错误日志
 
 **实用技巧**：
 
@@ -105,8 +93,6 @@ pid /run/nginx.pid;
 ```
 
 **作用**：存储 Nginx 主进程的 ID，用于管理 Nginx。
-
-**新手建议**：默认配置即可，无需修改。
 
 ---
 
@@ -202,9 +188,7 @@ awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -rn | head -1
 
 #### 2. 性能优化配置
 
-##### `sendfile on;`
-
-**高效文件传输**
+##### **高效文件传输**
 
 ```nginx
 sendfile on;
@@ -216,9 +200,7 @@ sendfile on;
 - 传输静态文件（图片、CSS、JS）时更快
 - **新手建议**：开启，不要关闭
 
-##### `keepalive_timeout 65;`
-
-**长连接超时时间**
+##### **长连接超时时间**
 
 ```nginx
 keepalive_timeout 65;
@@ -230,17 +212,11 @@ keepalive_timeout 65;
 - 同一连接可以发送多个 HTTP 请求
 - 减少重复建立连接的开销
 
-**通俗理解**：
-
-- 就像打电话，聊完一个话题不挂断，继续聊下一个（而非每次都重新拨号）
-
 ---
 
 #### 3. MIME 类型配置
 
-##### `include /etc/nginx/mime.types;`
-
-**加载文件类型映射表**
+##### **加载文件类型映射表**
 
 ```nginx
 include /etc/nginx/mime.types;
@@ -254,8 +230,6 @@ default_type application/octet-stream;
 - `.jpg` → 图片（浏览器显示）
 - `.zip` → 压缩包（浏览器下载）
 
-**新手建议**：保持默认，无需修改。
-
 ---
 
 ## 四、Server 块（⭐ 核心）
@@ -266,9 +240,7 @@ default_type application/octet-stream;
 
 ### 核心配置
 
-#### 1. `listen 80;`
-
-**监听端口**
+#### 1. **监听端口**
 
 ```nginx
 listen 80;           # 监听 IPv4 的 80 端口
@@ -283,9 +255,7 @@ listen [::]:80;      # 监听 IPv6 的 80 端口
 
 ---
 
-#### 2. `server_name localhost;`
-
-**服务器域名**
+#### 2. **服务器域名**
 
 ```nginx
 server_name localhost;
@@ -323,9 +293,7 @@ server {
 
 ---
 
-#### 3. `root /www/lilin-project/dist;`
-
-**网站根目录**
+#### 3. **网站根目录**
 
 ```nginx
 root /www/lilin-project/dist;
@@ -606,8 +574,6 @@ server {
 
 **说明**：一台服务器，不同域名访问不同网站。
 
----
-
 ## 核心知识总结
 
 ### 1. 配置文件层级
@@ -620,39 +586,51 @@ Main（全局）
               └── location（路径规则）
 ```
 
-### 2. 核心配置速查
-
-| 作用        | 配置项               | 示例                                       |
-| ----------- | -------------------- | ------------------------------------------ |
-| 性能优化    | `worker_processes`   | `worker_processes auto;`                   |
-| 并发连接    | `worker_connections` | `worker_connections 1024;`                 |
-| 监听端口    | `listen`             | `listen 80;`                               |
-| 域名        | `server_name`        | `server_name example.com;`                 |
-| 网站根目录  | `root`               | `root /var/www/html;`                      |
-| 前端路由    | `try_files`          | `try_files $uri $uri/ /index.html;`        |
-| 反向代理    | `proxy_pass`         | `proxy_pass http://backend/;`              |
-| 传递真实 IP | `proxy_set_header`   | `proxy_set_header X-Real-IP $remote_addr;` |
-
-### 3. 常用命令
+### 2. 常用命令
 
 ```bash
-# 检查配置文件语法
+# 启动
+nginx
+# 指定配置文件启动
+nginx -c /etc/nginx/nginx.conf
+
+# 检查配置文件语法（改配置后必做）
 nginx -t
 
-# 重载配置（不中断服务）
+# 重载配置（不中断服务，热加载）
 nginx -s reload
 
-# 停止 Nginx
+# 优雅停止（处理完当前请求再退出）
+nginx -s quit
+
+# 立即停止
 nginx -s stop
 
-# 查看错误日志
-tail -f /var/log/nginx/error.log
+# 重新打开日志文件（配合 logrotate，不重启服务）
+nginx -s reopen
 
-# 查看访问日志
+# 查看版本 / 编译模块
+nginx -v
+nginx -V
+
+# 查看进程
+ps aux | grep nginx
+
+# 查看错误 / 访问日志
+tail -f /var/log/nginx/error.log
 tail -f /var/log/nginx/access.log
 ```
 
----
+**`reload` / `quit` / `stop` 区别**：
+
+| 信号 | 作用 | 场景 |
+|------|------|------|
+| `reload` | 热加载配置，旧 worker 处理完现有连接后退出 | 改配置后生效 |
+| `quit` | 优雅停机，不接新请求，等现有请求结束 | 计划维护 |
+| `stop` | 立即杀进程 | 紧急关停 |
+
+> 用 systemd 管理时，等价命令：`systemctl start/reload/stop nginx`。
+
 
 ## 常见问题
 
@@ -670,8 +648,6 @@ nginx -s reload
 # 3. 查看错误日志
 tail -f /var/log/nginx/error.log
 ```
-
----
 
 ### Q2：如何解决跨域问题？
 
@@ -693,8 +669,6 @@ location /api/ {
     proxy_pass http://backend_server/;
 }
 ```
-
----
 
 ### Q3：如何配置 HTTPS？
 
@@ -723,19 +697,6 @@ server {
 }
 ```
 
----
-
-### Q4：如何查看 Nginx 版本和编译参数？
-
-```bash
-# 查看版本
-nginx -v
-
-# 查看版本和编译参数
-nginx -V
-```
-
----
 
 ## 进阶优化（可选）
 
@@ -783,31 +744,6 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff|woff2)$ {
 
 **作用**：静态资源缓存 30 天，减少重复请求。
 
----
-
-## 学习路径
-
-### 第 1 阶段：基础掌握 ✅
-
-- ✅ 理解配置文件层级结构
-- ✅ 掌握 server 和 location 配置
-- ✅ 能部署静态网站
-- ✅ 能配置反向代理
-
-### 第 2 阶段：进阶实战
-
-- 配置 HTTPS
-- 负载均衡
-- Gzip 压缩和缓存
-- 限流和防攻击
-
-### 第 3 阶段：深入原理
-
-- Nginx 架构和工作原理
-- 性能调优
-- 自定义模块开发
-
----
 
 ## 参考资料
 
@@ -815,7 +751,6 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff|woff2)$ {
 - [Nginx 配置最佳实践](https://www.nginx.com/resources/wiki/start/)
 - [免费 SSL 证书 - Let's Encrypt](https://letsencrypt.org/)
 
----
 
 ## 配置模板（快速上手）
 
@@ -876,26 +811,3 @@ server {
     }
 }
 ```
-
----
-
-## 总结
-
-### 核心要点
-
-1. **配置层级**：Main → Events → HTTP → Server → Location
-2. **Server 块**：定义一个网站（监听端口、域名、根目录）
-3. **Location 块**：定义 URL 路径规则（静态文件、反向代理）
-4. **try_files**：前端 SPA 必备（支持前端路由）
-5. **proxy_pass**：反向代理（解决跨域、负载均衡）
-
-### 快速上手步骤
-
-1. 理解配置文件结构
-2. 学会配置一个 server 块
-3. 掌握 location 的两大核心场景：
-   - `try_files`（前端路由）
-   - `proxy_pass`（反向代理）
-4. 实践：部署一个前端项目 + 配置 API 代理
-
-**祝你学习顺利！** 🚀
