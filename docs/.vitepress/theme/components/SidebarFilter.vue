@@ -193,9 +193,9 @@ onBeforeUnmount(() => {
   width: 100%;
   box-sizing: border-box;
   padding: 7px 30px 7px 30px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background: #2a2a2e;
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 14%, transparent);
+  border-radius: 999px;
+  background: var(--vp-local-search-bg, #fff5f7);
   color: var(--vp-c-text-1);
   font-size: 13px;
   line-height: 1.4;
@@ -207,22 +207,23 @@ onBeforeUnmount(() => {
 }
 
 .sidebar-filter__input::placeholder {
-  color: var(--vp-c-text-3);
+  color: color-mix(in srgb, var(--vp-c-brand-1) 42%, var(--vp-c-text-3));
   transition: opacity 160ms var(--sf-ease);
 }
 
 .sidebar-filter.is-focused .sidebar-filter__input {
   border-color: var(--vp-c-brand-1);
-  background: #333338;
+  background: var(--vp-local-search-bg-hover, #ffeff2);
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
 }
 
-:global(html:not(.dark)) .sidebar-filter__input {
-  background: #ececef;
+:global(.dark) .sidebar-filter__input {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 12%, #2a2a2e);
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 22%, transparent);
 }
 
-:global(html:not(.dark)) .sidebar-filter.is-focused .sidebar-filter__input {
-  background: #e4e4e8;
+:global(.dark) .sidebar-filter.is-focused .sidebar-filter__input {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 18%, #2a2a2e);
 }
 
 .sidebar-filter__input::-webkit-search-cancel-button {

@@ -13,17 +13,17 @@ const containerRef = ref(null);
 // Create snowflakes
 const generateSnowflakes = () => {
   const flakes = [];
-  const count = 50; // Number of snowflakes
+  const count = 28;
 
   for (let i = 0; i < count; i++) {
     flakes.push({
       id: i,
-      x: Math.random() * 100, // Random horizontal position (%)
-      size: Math.random() * 14 + 12, // 12px to 26px
-      duration: Math.random() * 8 + 10, // 10-18 seconds to fall
-      delay: Math.random() * 15, // Random start delay
-      sway: Math.random() * 30 + 20, // Horizontal sway amount
-      opacity: Math.random() * 0.5 + 0.3, // 0.3 to 0.8 opacity
+      x: Math.random() * 100,
+      size: Math.random() * 10 + 10,
+      duration: Math.random() * 8 + 12,
+      delay: Math.random() * 15,
+      sway: Math.random() * 30 + 20,
+      opacity: Math.random() * 0.28 + 0.18,
     });
   }
   snowflakes.value = flakes;
