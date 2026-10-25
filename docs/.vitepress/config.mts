@@ -313,6 +313,7 @@ const frontendSidebar = [
           { text: "Nginx 配置", link: "/interview/网络/nginx配置详解.md" },
           { text: "负载均衡", link: "/interview/网络/负载均衡.md" },
           { text: "SSH 远程连接", link: "/interview/网络/SSH远程连接.md" },
+          { text: "System Proxy / TUN / fake-IP", link: "/interview/网络/代理TUN与fake-IP.md" },
         ],
       },
     ],
