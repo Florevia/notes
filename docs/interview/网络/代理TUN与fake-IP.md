@@ -1,7 +1,5 @@
 # System Proxy、TUN 与 fake-IP
 
-从一次 `git pull` 失败说起，理清代理两种模式、假 IP、以及「解析成功 ≠ 能连上」的差别。
-
 ## 现象
 
 ```text
@@ -25,23 +23,14 @@ dig +short github.com
 
 `198.18.0.0/15` **不是** GitHub 的公网地址，而是代理客户端（Clash / Surge 等）在 **TUN + fake-IP** 下分配的本地假 IP。报错里「关掉连接」的其实是本机 TUN/假 IP 栈，不是真正的 GitHub 服务器。
 
----
 
-## 三种网络状态对比
+## 两种网络状态对比
 
 | 模式 | DNS 常见结果 | 流量怎么走 | `git` SSH（22）常见表现 |
 |------|--------------|------------|-------------------------|
-| 关代理 / 关 TUN | 真 IP（或污染 IP） | **直连** | 国内常超时 / 重置 / 极慢 |
 | System Proxy | 多半真 IP | 仅「认系统代理」的 App 走代理；终端 SSH **默认不走** HTTP 代理 | 常表现为「能用」——其实多半在直连碰运气，或你实际用了 HTTPS |
 | TUN + fake-IP | `198.18.*` 假 IP | **几乎所有流量**（含 SSH）进代理栈 | 假 IP 映射/分流/节点对 22 不友好时，易被本机直接掐断 |
 
-一句话：
-
-- 不开代理连不上 → **直连路不通**（干扰/封锁）
-- TUN 下 SSH 报 `198.18.*` → **代理栈把路接错/接断了**
-- System Proxy「没事」→ 网页等 **绕道节点**；SSH 往往根本没进代理
-
----
 
 ## System Proxy 为什么「开了就没事」
 
@@ -61,11 +50,9 @@ dig +short github.com
 
    `Connection closed by 198.18.x.x port 22`
 
----
-
 ## 为什么开了 TUN，解析到的就是假 IP？
 
-这是 **故意设计**，不是 DNS 坏了。
+ **故意设计**
 
 ### 正常 DNS
 
@@ -99,30 +86,6 @@ TUN 要拦所有 TCP/UDP。很多程序的流程是：
 
 **假 IP 是给代理用的标签，不是给你直连用的。**
 
-System Proxy 不太依赖这套：浏览器会直接告诉代理「我要访问 `https://github.com/...`」。
-
----
-
-## 解析到正确 IP 就能连上吗？
-
-**不能。DNS 成功 ≠ TCP 通。**
-
-| 步骤 | 含义 |
-|------|------|
-| DNS | 只回答「地址是谁」 |
-| TCP/路由 | 才决定「包能不能到、会不会被掐」 |
-
-国内常见：`dig` 已经是正确的 GitHub IP，但 `22` / `443` 仍 timeout 或 `connection reset`——瓶颈在**连通性**，不在解析。
-
-验证（尽量在关代理时测）：
-
-```bash
-dig +short github.com
-nc -vz github.com 22
-nc -vz github.com 443
-```
-
----
 
 ## 和 Git 相关的实用处理
 
@@ -133,28 +96,5 @@ nc -vz github.com 443
 3. 远程改 HTTPS：  
    `git remote set-url origin https://github.com/USER/REPO.git`
 4. SSH 走 443：使用 `ssh.github.com:443`（需配 `~/.ssh/config`）
-5. 用 Git 时临时关 TUN，只用 System Proxy
-
+   
 快速自检：改完网络后，`dig +short github.com` **不应**再以 `198.18.` 开头（若你希望走真实解析）。
-
----
-
-## 心智模型（总结）
-
-```text
-                    ┌─ System Proxy ─► 认代理的 App 出国
-应用发请求 ─────────┤
-                    └─ 终端 SSH 默认 ─► 直连（可不进 HTTP 代理）
-
-                    ┌─ fake-IP：域名 → 198.18.*（标签）
-TUN 开启 ───────────┤
-                    └─ 几乎全部流量进代理栈 → 再按表还原域名并转发
-                         ↑
-                    SSH 最容易在这一层被掐断
-```
-
-三个容易混在一起的问题，拆开看就清楚了：
-
-1. **直连被干扰** → 关代理也上不了 GitHub  
-2. **假 IP + TUN 接盘失败** → `Connection closed by 198.18.*`  
-3. **System Proxy 只覆盖部分程序** → 网页好了不代表 SSH 也走了同一条代理路径  

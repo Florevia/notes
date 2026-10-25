@@ -1,189 +1,147 @@
 # SSH 远程连接
 
-## 目录
+## 是什么
 
-- [基本原理](#基本原理)
-- [操作步骤](#步骤)
-  - [1. 链接服务器](#链接服务器)
-  - [2. 环境准备](#环境准备)
-  - [3. 上传项目](#上传项目文件)
-  - [4. Nginx 配置](#配置-nginx核心步骤)
-- [常见报错](#常见报错-troubleshooting)
+SSH（Secure Shell）是一种加密的远程登录与命令执行协议，用来在不可信网络上安全地操作另一台机器。
 
----
+默认走 **TCP 22 端口**，在客户端与服务器之间建立加密通道，认证和数据都走这条通道。
 
-## 基本原理
+一句话：SSH 就是「加密的远程终端」，也是运维、开发里连服务器、配 Git、做隧道的基础工具。
 
-- SSH (Secure Shell) 是一种网络协议，用于在不安全的网络中安全地远程登录到另一台计算机。
-- SSH 通过加密的通道传输数据，确保数据的安全性。
-- SSH 通过密钥对进行身份验证，确保只有授权用户才能访问远程计算机。
-- SSH 通过端口 22 进行通信，使用 TCP 协议。
-- SSH 通过 SSH 协议进行通信，使用 TCP 协议。
-- SSH 通过 SSH 协议进行通信，使用 TCP 协议。
+## 解决什么问题
 
-## 步骤
+早期远程工具不加密：
 
-### 链接服务器
+- **Telnet**：远程登录（默认 23 端口），账号密码和命令都是明文。
+- **rsh（remote shell）**：远程执行命令，同样基本明文。
 
-1. 连接远程服务器
+SSH 用加密通道 + 身份认证替代它们，避免中间人直接看到密码和会话内容。
+
+## 常见用途
+
+- 远程登录服务器（`ssh user@host`）
+- 在远程机器上执行命令（`ssh user@host 'cmd'`）
+- 安全传文件（`scp` / `sftp`）
+- 端口转发 / 隧道
+- Git 等工具的认证与传输（如 `git@github.com:...`）
+
+## 基本工作方式
+
+1. 客户端连上服务器（默认端口 22）
+2. 协商加密算法，建立安全通道
+3. 身份认证（密码，或更常见的公钥 / 私钥）
+4. 之后的 shell、传文件、转发都在加密通道里进行
+
+## 公钥认证
+
+常用 **公钥认证**，比每次输密码更安全、也更适合自动化：
+
+| 位置 | 文件 | 作用 |
+| --- | --- | --- |
+| 本机 | `~/.ssh/id_ed25519`（私钥） | 证明「我是我」，勿泄露、勿上传 |
+| 本机 | `~/.ssh/id_ed25519.pub`（公钥） | 可以给人、可以拷到服务器 |
+| 服务器 | `~/.ssh/authorized_keys` | 存放允许登录的公钥列表 |
+
+生成密钥（推荐 ed25519）：
+
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+```
+
+把公钥拷到服务器（任选其一）：
+
+```bash
+ssh-copy-id user@host
+# 或手动：把 .pub 内容追加到服务器 ~/.ssh/authorized_keys
+```
+
+登录时客户端用私钥做证明，服务器用 `authorized_keys` 里的公钥校验，通过即可进 shell。
+
+## 基本操作
+
+### 登录
 
 ```bash
 ssh username@hostname
+# 非 22 端口
+ssh -p 2222 username@hostname
+# 登上去直接跑一条命令（跑完退出）
+ssh username@hostname 'hostnamectl'
 ```
 
-2. 输入密码
+首次连接会提示确认主机指纹，确认后写入 `~/.ssh/known_hosts`，用来防主机被掉包（MITM）。
+
+### 传文件（走 SSH 通道）
 
 ```bash
-password
+# 本地 → 远程
+scp -r /path/to/local user@host:/path/to/remote
+
+# 远程 → 本地
+scp -r user@host:/path/to/remote /path/to/local
+
+# 非 22 端口用 -P（大写）
+scp -P 2222 file user@host:/tmp/
 ```
 
-3. 查看服务器系统
+交互式文件操作用 `sftp user@host`。
+
+### 配置别名（`~/.ssh/config`）
+
+避免每次敲长命令：
+
+```text
+Host myserver
+    HostName 1.2.3.4
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+之后直接：
 
 ```bash
-hostnamectl
-# 或者
-cat /etc/os-release
+ssh myserver
+scp ./dist myserver:/var/www/
 ```
 
-返回字段中看 `Operating System`，看是 CentOS 还是 Ubuntu。
+## 端口转发（隧道）简述
 
-**必要性：因为不同的操作系统，安装的软件包管理器不同**
+| 类型 | 典型命令 | 用途 |
+| --- | --- | --- |
+| 本地转发 | `ssh -L 8080:127.0.0.1:80 user@host` | 访问本机 `localhost:8080` ≈ 访问远程的 `80` |
+| 远程转发 | `ssh -R 9000:127.0.0.1:3000 user@host` | 让远程侧能转到你本机的服务 |
+| 动态转发 | `ssh -D 1080 user@host` | 本机起一个 SOCKS 代理，流量经 SSH 出去 |
 
-- 如果是 CentOS / RedHat / Fedora：
+面试记一句即可：SSH 隧道 = 把别的 TCP 流量包进已加密的 SSH 连接里。
 
-  - 包管理器是 yum (或新版 dnf)。
-  - 安装命令：yum install nginx
+## 和 Git 的关系
 
-- 如果是 Ubuntu / Debian：
+`git@github.com:user/repo.git` 这种地址走的是 **SSH 协议**，不是 HTTPS：
 
-  - 包管理器是 apt (或 apt-get)。
-  - 安装命令：apt install nginx
+- 用你本机私钥认证（公钥要加到 GitHub / GitLab）
+- 传代码内容也在 SSH 加密通道里
 
-### 环境准备
+代理 / TUN / fake-IP 把 `github.com` 解析成 `198.18.*` 时，SSH（22）容易出问题，见 [System Proxy / TUN / fake-IP](./代理TUN与fake-IP.md)。
 
-4. 查看是否安装`Nginx`
+## 常见问题
+
+| 现象 | 常见原因 |
+| --- | --- |
+| `Permission denied (publickey)` | 没用对私钥、服务器没放公钥、权限不对（私钥建议 `600`，`.ssh` 目录 `700`） |
+| `Host key verification failed` | `known_hosts` 里旧指纹和当前主机不一致（重装过系统或真被劫持，需确认后再更新） |
+| `Connection refused` / 超时 | 22 端口没开、安全组/防火墙拦了、sshd 没起、地址错了 |
+| 一直要密码 | 没配公钥，或 `ssh -v` 看发现没用上你以为的那把密钥 |
+
+排障常用：
 
 ```bash
-nginx -v
+ssh -v user@host          # 详细握手日志
+ssh -i ~/.ssh/某私钥 user@host
 ```
 
-5. 安装`Nginx`
+## 和 Nginx 部署的边界
 
-CentOS:
+用 SSH **登服务器、传文件** 是 SSH 的事；**装 Nginx、写 `server {}`、反代** 是 Web 服务的事，见 [Nginx 配置](./nginx配置详解.md)。
 
-```bash
-# 安装
-sudo yum install nginx -y
-
-# 启动Nginx
-sudo systemctl start nginx
-
-# 设置开机自启
-sudo systemctl enable nginx
-```
-
-6. 查看 Nginx 状态
-
-```bash
-sudo systemctl status nginx
-```
-
-如果看到绿色的 `active (running)`，说明安装成功
-
-7. 防火墙设置（如果无法访问）
-
-```bash
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-
-# 重新加载防火墙配置
-
-sudo firewall-cmd --reload
-```
-
-### 上传项目文件
-
-8. 在服务器创建存放目录
-
-```bash
-mkdir -p /www/lilin-project
-```
-
-9. 上传项目文件
-
-注意：
-
-- 要在本地终端执行
-- 路径里有中文和空格，要用引号括起来
-- 目标文件夹要预先创建好
-
-```bash
-scp -r /path/to/local/project username@hostname:/www/lilin-project
-```
-
-10. 设置文件权限
-
-```bash
-chmod -R 755 /www/lilin-project
-```
-
-### 配置 Nginx（核心步骤）
-
-11. 找到配置文件
-
-```bash
-sudo vim /etc/nginx/nginx.conf
-```
-
-`i` 进入编辑模式
-
-12. 添加配置
-
-```bash
-server {
-    listen 80;
-    server_name localhost;
-    # 核心配置
-    root /www/lilin-project; # 项目存放目录
-    index index.html; # 入口文件
-
-    # 如果是Vue/React项目路由模式（history），加上防止刷新
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # 定义 URL 路径匹配规则，表示当请求的 URL 路径以 /api 开头时，就执行这个配置块中的规则。
-    location /api {
-    # 核心：转发请求到后端服务
-    proxy_pass Server B 的 IP;
-
-    # 关键：传递真实 IP 和主机头，防止后端获取不到客户端信息
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-    # 可选：重写路径 (如果后端不需要 /api 前缀)
-    # rewrite ^/api/(.*)$ /$1 break;
-    }
-}
-
-
-
-# 如果有后端接口，配置反向代理 (解决跨域问题)
-
-```
-
-`Esc` 退出编辑模式，`:wq` 保存退出
-
-13. 检查并重启 Nginx
-
-配置生效前必须要检查，防止配置错误导致 Nginx 无法启动
-
-```bash
-# 检查配置
-sudo nginx -t
-# 重启Nginx
-sudo systemctl restart nginx
-```
-
-必须看到 `syntax is ok` 和 `test is successful`。
+以前这篇后半截把「SSH 登录 → 装 Nginx → 配站点」写成一整条部署教程，容易让人以为 SSH = Nginx——那是串题了。
