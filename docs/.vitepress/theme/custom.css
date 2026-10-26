@@ -324,18 +324,6 @@ html.dark .VPHero .image-src {
   }
 }
 
-/* Sidebar filter: instant hide, no layout transitions */
-.VPSidebar .VPSidebarItem[data-sidebar-filter-hidden="true"] {
-  display: none !important;
-}
-
-.VPSidebar[data-sidebar-filtering="true"]
-  .VPSidebarItem[data-sidebar-filter-match="true"]
-  > .item
-  .text {
-  color: var(--vp-c-brand-1);
-}
-
 /* -------------------------------------------------------------------------- */
 /* Expand / collapse menus — sidebar, nav flyout, mobile screen               */
 /* -------------------------------------------------------------------------- */
@@ -385,12 +373,6 @@ html.dark .VPHero .image-src {
     max-height: none;
     height: 0;
   }
-}
-
-/* Filtering: keep instant show/hide, no expand animation */
-.VPSidebar[data-sidebar-filtering="true"] .VPSidebarItem > .items,
-.VPSidebar[data-sidebar-filtering="true"] .VPSidebarItem.level-0 {
-  transition: none !important;
 }
 
 /* Top nav dropdown (前端 / AI …) */
