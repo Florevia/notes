@@ -2,18 +2,14 @@
 
 ## 配置文件结构
 
-Nginx 配置文件是**层级结构**，就像俄罗斯套娃：
+Nginx 配置文件是**层级结构**：
 
 ```
-全局配置 (Main)                    ← 影响整个 Nginx
-  │
-  ├─ events                        ← 控制并发连接
-  │
-  └─ http                          ← HTTP 服务配置
-       │
-       └─ server                   ← 一个网站/虚拟主机
-            │
-            └─ location            ← 路径匹配规则
+Main（全局）
+  └── events（并发连接）
+      └── http（HTTP 服务）
+          └── server（虚拟主机）
+              └── location（路径规则）
 ```
 
 **核心理解**：
@@ -23,20 +19,15 @@ Nginx 配置文件是**层级结构**，就像俄罗斯套娃：
 - 一个 `http` 块可以包含多个 `server`（多个网站）
 - 一个 `server` 可以包含多个 `location`（不同 URL 路径的处理）
 
----
-
 ## 核心配置一览
 
-
-| 配置块       | 核心配置项                      | 作用                       | 重要性 |
-| ------------ | ------------------------------- | -------------------------- | ------ |
-| **全局**     | `worker_processes`              | 工作进程数（性能相关）     | ⭐⭐⭐ |
-| **events**   | `worker_connections`            | 最大并发连接数             | ⭐⭐⭐ |
-| **http**     | `sendfile`, `keepalive_timeout` | 性能优化                   | ⭐⭐   |
-| **server**   | `listen`, `server_name`, `root` | 监听端口、域名、网站根目录 | ⭐⭐⭐ |
-| **location** | `try_files`, `proxy_pass`       | 文件查找、反向代理         | ⭐⭐⭐ |
-
----
+| 配置块       | 核心配置项                  | 作用                       | 重要性 |
+| ------------ | --------------------------- | -------------------------- | ------ |
+| **全局**     | worker_processes            | 工作进程数（性能相关）     | ⭐⭐⭐ |
+| **events**   | worker_connections          | 最大并发连接数             | ⭐⭐⭐ |
+| **http**     | sendfile, keepalive_timeout | 性能优化                   | ⭐⭐   |
+| **server**   | listen, server_name, root   | 监听端口、域名、网站根目录 | ⭐⭐⭐ |
+| **location** | try_files, proxy_pass       | 文件查找、反向代理         | ⭐⭐⭐ |
 
 ## 一、全局块 (Main)
 
@@ -46,7 +37,7 @@ Nginx 配置文件是**层级结构**，就像俄罗斯套娃：
 
 ### 核心配置
 
-#### 1. `worker_processes auto;`
+#### 1. `worker_processes auto`
 
 **控制工作进程数量**
 
@@ -82,8 +73,6 @@ error_log /var/log/nginx/error.log;
 tail -f /var/log/nginx/error.log
 ```
 
----
-
 #### 3. `pid /run/nginx.pid;`
 
 **进程 ID 文件**
@@ -94,8 +83,6 @@ pid /run/nginx.pid;
 
 **作用**：存储 Nginx 主进程的 ID，用于管理 Nginx。
 
----
-
 ## 二、Events 块
 
 ### 作用
@@ -104,7 +91,7 @@ pid /run/nginx.pid;
 
 ### 核心配置
 
-#### `worker_connections 1024;`
+#### 1. `worker_connections 1024;`
 
 **每个工作进程的最大并发连接数**
 
@@ -126,8 +113,6 @@ events {
 - 中型网站：`4096` - `8192`
 - 大型网站：`10240` - `65535`
 
----
-
 ## 三、HTTP 块
 
 ### 作用
@@ -136,9 +121,9 @@ HTTP 服务的核心配置，包含所有网站相关设置。
 
 ### 核心配置
 
-#### 1. 日志配置
+#### 日志配置
 
-##### `log_format main '...'`
+##### 1. `log_format main '...'`
 
 **自定义日志格式**
 
@@ -164,7 +149,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 192.168.1.100 - - [09/Jan/2026:14:30:25 +0800] "GET /index.html HTTP/1.1" 200 1024 "-" "Chrome/90.0"
 ```
 
-##### `access_log /var/log/nginx/access.log main;`
+##### 2. `access_log /var/log/nginx/access.log main;`
 
 **访问日志路径**
 
@@ -186,9 +171,9 @@ awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -rn | head -1
 
 ---
 
-#### 2. 性能优化配置
+#### 性能优化配置
 
-##### **高效文件传输**
+##### 1. **高效文件传输**
 
 ```nginx
 sendfile on;
@@ -200,7 +185,7 @@ sendfile on;
 - 传输静态文件（图片、CSS、JS）时更快
 - **新手建议**：开启，不要关闭
 
-##### **长连接超时时间**
+##### 2. **长连接超时时间**
 
 ```nginx
 keepalive_timeout 65;
@@ -212,11 +197,9 @@ keepalive_timeout 65;
 - 同一连接可以发送多个 HTTP 请求
 - 减少重复建立连接的开销
 
----
+#### MIME 类型配置
 
-#### 3. MIME 类型配置
-
-##### **加载文件类型映射表**
+##### 1. **加载文件类型映射表**
 
 ```nginx
 include /etc/nginx/mime.types;
@@ -230,9 +213,7 @@ default_type application/octet-stream;
 - `.jpg` → 图片（浏览器显示）
 - `.zip` → 压缩包（浏览器下载）
 
----
-
-## 四、Server 块（⭐ 核心）
+## 四、Server 块
 
 ### 作用
 
@@ -252,8 +233,6 @@ listen [::]:80;      # 监听 IPv6 的 80 端口
 - `80`：HTTP 默认端口（浏览器访问 `http://example.com` 会自动连接 80 端口）
 - `443`：HTTPS 默认端口
 - 自定义端口：`listen 8080;`（访问时需要指定：`http://example.com:8080`）
-
----
 
 #### 2. **服务器域名**
 
@@ -291,8 +270,6 @@ server {
 
 同一台服务器，不同域名访问不同网站。
 
----
-
 #### 3. **网站根目录**
 
 ```nginx
@@ -309,15 +286,9 @@ root /www/lilin-project/dist;
 - 请求：`http://localhost/css/style.css`
 - Nginx 查找：`/www/lilin-project/dist/css/style.css`
 
----
+## 五、Location 块
 
-## 五、Location 块（⭐ 核心）
-
-### 作用
-
-定义不同 URL 路径的处理规则。
-
-### Location 匹配规则
+#### 定义不同 URL 路径的处理规则。
 
 ```nginx
 location [ 修饰符 ] /uri/ {
@@ -335,107 +306,28 @@ location [ 修饰符 ] /uri/ {
 | `~*`   | 正则匹配（不区分大小写） | `location ~* \.(jpg\|png)$ { }` | 中     |
 | 无     | 普通前缀匹配             | `location / { }`                | 低     |
 
----
 
-### 核心场景 1：前端单页应用（SPA）
+### 作用
 
-```nginx
-location / {
-    try_files $uri $uri/ /index.html;
-}
-```
+#### 1. 静态资源服务
 
-#### `try_files $uri $uri/ /index.html;`
+静态资源就是内容固定、不用程序现算的文件，比如 HTML、CSS、JS、图片、字体、视频。前端项目（Vue、React）打包之后，生成的就是一堆静态文件，放到服务器的某个目录里，由 Nginx 直接读出来发给浏览器。
 
-**作用**：按顺序查找文件，都找不到就返回 `index.html`
+#### 2. 反向代理服务
 
-**执行流程**（以请求 `/about` 为例）：
+- 统一入口：前端和后端都挂在同一个域名下，前端请求 `/api` 不会遇到跨域问题。
+- 隐藏后端：后端程序只监听 127.0.0.1，外网根本连不上，只能经过 Nginx，更安全。
+- 一个服务器跑多个服务：`/api` 转给 Node，`/admin` 转给 Python，`/chat` 转给另一个程序，对外只开 80 和 443 两个端口。
 
-1. 先找 `/www/lilin-project/dist/about` 文件
-2. 找不到，再找 `/www/lilin-project/dist/about/` 目录
-3. 还找不到，返回 `/www/lilin-project/dist/index.html`
-
-**为什么需要？**
-
-- Vue/React 等前端框架使用前端路由
-- 用户访问 `http://example.com/about` 时，这个路由是前端 JS 管理的
-- Nginx 服务器上并没有 `/about` 这个文件
-- 所以需要返回 `index.html`，让前端 JS 来处理 `/about` 路由
-
-**对比**：
-
-```nginx
-# ❌ 不配置 try_files
-location / {
-    # 默认行为：找不到文件就 404
-}
-# 用户访问 /about → 404 错误
-
-# ✅ 配置 try_files
-location / {
-    try_files $uri $uri/ /index.html;
-}
-# 用户访问 /about → 返回 index.html → 前端路由生效
-```
-
----
-
-### 核心场景 2：反向代理
-
-```nginx
-location /prod-api/ {
-    proxy_pass https://api.imooc-admin.lgdsunday.club;
-    proxy_set_header X-Real-IP $remote_addr;
-}
-```
-
-#### `proxy_pass`
-
-**作用**：将请求转发到后端服务器
-
-**理解**：
-
-- Nginx 作为中间人（反向代理）
-- 浏览器 → Nginx → 后端服务器
-- 好处：跨域解决、负载均衡、隐藏后端真实地址
-
-#### 路径拼接规则（重要！）
+##### 路径拼接规则
 
 | `proxy_pass` 配置             | 客户端请求        | 转发到后端                                          |
 | ----------------------------- | ----------------- | --------------------------------------------------- |
 | `proxy_pass http://backend;`  | `/prod-api/users` | `http://backend/prod-api/users`（保留 `/prod-api`） |
 | `proxy_pass http://backend/;` | `/prod-api/users` | `http://backend/users`（去掉 `/prod-api`）          |
 
-**当前配置**：
 
-```nginx
-proxy_pass https://api.imooc-admin.lgdsunday.club;
-# 末尾无 /，保留前缀
-# /prod-api/users → https://api.imooc-admin.lgdsunday.club/prod-api/users
-```
-
-**如果后端不需要 `/prod-api` 前缀**：
-
-```nginx
-proxy_pass https://api.imooc-admin.lgdsunday.club/;
-# 末尾有 /，去掉前缀
-# /prod-api/users → https://api.imooc-admin.lgdsunday.club/users
-```
-
-#### `proxy_set_header X-Real-IP $remote_addr;`
-
-**作用**：传递客户端真实 IP
-
-**问题**：
-
-- 后端服务器看到的 IP 是 Nginx 的 IP，而非用户真实 IP
-
-**解决**：
-
-- 通过请求头 `X-Real-IP` 传递用户 IP
-- 后端代码读取：`request.headers['x-real-ip']`
-
-**完整代理头配置**（推荐）：
+##### **完整代理头配置**（推荐）：
 
 ```nginx
 location /api/ {
@@ -455,33 +347,34 @@ location /api/ {
 }
 ```
 
----
 
-### 核心场景 3：错误页面
+#### 3. 负载均衡服务
 
-```nginx
-error_page 404 /404.html;
-location = /404.html {
-    root /usr/share/nginx/html;
-}
+要注意：多台后端之间不能各存各的登录状态，否则用户这次在 A 登录，下次分到 B 就变成没登录了。一般的做法是把会话存到 Redis 这类共享存储里，或者用 JWT 令牌。
 
-error_page 500 502 503 504 /50x.html;
-location = /50x.html {
-    root /usr/share/nginx/html;
-}
+#### 4. https加密
+
+为什么把 HTTPS 放在 Nginx 上做（TLS 终止）
+
+证书只在 Nginx 配一次，后面有多少个后端程序都不用管加密
+后端代码更简单，跟 Nginx 之间在本机或内网走普通 HTTP 就行
+证书续期、升级加密算法都只改一个地方
+
+最常用的是 Let's Encrypt 的免费证书，有效期 90 天。用 certbot 工具一条命令就能申请，还能自动帮你改好 Nginx 配置并定时续期：
+
+```
+sudo certbot --nginx -d example.com
 ```
 
-**作用**：自定义错误页面
+#### 5. 缓存
 
-**错误码说明**：
+- 浏览器缓存：告诉浏览器静态文件可以存多久，期间再访问直接用本地的，连请求都不发。前端打包出来的文件名一般带哈希值（比如 app.3f9a1c.js），内容变了文件名就变，所以可以放心缓存很久。
 
-- `404`：页面不存在
-- `500`：服务器内部错误
-- `502`：网关错误（后端服务挂了）
-- `503`：服务不可用
-- `504`：网关超时（后端响应太慢）
+- 代理缓存：Nginx 把后端的回复存一份，下次同样的请求直接返回，不打扰后端。适合不常变的接口，比如商品列表、文章详情。
 
----
+#### 6. 压缩
+
+#### 7. 限流
 
 ## 实战案例
 
@@ -505,8 +398,6 @@ server {
     }
 }
 ```
-
----
 
 ### 案例 2：前后端分离（Nginx 作为反向代理）
 
@@ -544,8 +435,6 @@ server {
 - ✅ 前后端统一域名
 - ✅ 隐藏后端服务器真实地址
 
----
-
 ### 案例 3：配置多个网站
 
 ```nginx
@@ -574,19 +463,7 @@ server {
 
 **说明**：一台服务器，不同域名访问不同网站。
 
-## 核心知识总结
-
-### 1. 配置文件层级
-
-```
-Main（全局）
-  └── events（并发连接）
-      └── http（HTTP 服务）
-          └── server（虚拟主机）
-              └── location（路径规则）
-```
-
-### 2. 常用命令
+## 常用命令
 
 ```bash
 # 启动
@@ -620,17 +497,6 @@ ps aux | grep nginx
 tail -f /var/log/nginx/error.log
 tail -f /var/log/nginx/access.log
 ```
-
-**`reload` / `quit` / `stop` 区别**：
-
-| 信号 | 作用 | 场景 |
-|------|------|------|
-| `reload` | 热加载配置，旧 worker 处理完现有连接后退出 | 改配置后生效 |
-| `quit` | 优雅停机，不接新请求，等现有请求结束 | 计划维护 |
-| `stop` | 立即杀进程 | 紧急关停 |
-
-> 用 systemd 管理时，等价命令：`systemctl start/reload/stop nginx`。
-
 
 ## 常见问题
 
@@ -697,7 +563,6 @@ server {
 }
 ```
 
-
 ## 进阶优化（可选）
 
 ### 1. 启用 Gzip 压缩
@@ -744,13 +609,11 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff|woff2)$ {
 
 **作用**：静态资源缓存 30 天，减少重复请求。
 
-
 ## 参考资料
 
 - [Nginx 官方文档](http://nginx.org/en/docs/)
 - [Nginx 配置最佳实践](https://www.nginx.com/resources/wiki/start/)
 - [免费 SSL 证书 - Let's Encrypt](https://letsencrypt.org/)
-
 
 ## 配置模板（快速上手）
 
