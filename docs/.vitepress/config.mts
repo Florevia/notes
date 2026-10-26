@@ -30,17 +30,9 @@ function inlineNavSearchPlugin() {
 
 const frontendSidebar = [
   {
-    text: "导读",
-    collapsed: false,
-    items: [
-      { text: "前端学习路线", link: "/frontend/前端学习路线.md" },
-    ],
-  },
-  {
     text: "HTML",
     collapsed: true,
     items: [
-      { text: "简介", link: "/frontend/HTML/" },
       { text: "图片类型及选择", link: "/frontend/HTML/图片类型及选择.md" },
       { text: "浏览器渲染模式", link: "/interview/html/浏览器渲染模式.md" },
       { text: "Iframe", link: "/interview/html/iframe.md" },
@@ -95,7 +87,6 @@ const frontendSidebar = [
     text: "JavaScript",
     collapsed: true,
     items: [
-      { text: "简介", link: "/frontend/JavaScript/" },
       {
         text: "基础",
         collapsed: true,
@@ -559,7 +550,6 @@ const frontendSidebar = [
     text: "AI 面试",
     collapsed: true,
     items: [
-      { text: "AI 概念", link: "/AI/面试/概念.md" },
       { text: "RAG", link: "/AI/面试/RAG.md" },
       { text: "提示词工程", link: "/AI/面试/提示词工程.md" },
       { text: "模型训练过程", link: "/AI/面试/模型训练过程.md" },
@@ -682,10 +672,9 @@ export default withMermaid(
         {
           text: "前端",
           items: [
-            { text: "导读", link: "/frontend/前端学习路线.md" },
-            { text: "HTML", link: "/frontend/HTML/" },
+            { text: "HTML", link: "/frontend/HTML/图片类型及选择.md" },
             { text: "CSS", link: "/frontend/CSS/css选择器.md" },
-            { text: "JavaScript", link: "/frontend/JavaScript/" },
+            { text: "JavaScript", link: "/interview/js/var-let-const.md" },
             { text: "TypeScript", link: "/frontend/JavaScript/JavaScript-Flavours/TypeScript.md" },
             { text: "浏览器", link: "/interview/浏览器/浏览器组成.md" },
             { text: "网络", link: "/interview/网络/输入URL后.md" },
@@ -694,7 +683,7 @@ export default withMermaid(
             { text: "性能优化", link: "/interview/性能优化/前端性能优化.md" },
             { text: "Node.js", link: "/interview/node/Node事件循环机制.md" },
             { text: "业务实战", link: "/interview/业务场景/拖拽组件.md" },
-            { text: "AI 面试", link: "/AI/面试/概念.md" },
+            { text: "AI 面试", link: "/AI/面试/RAG.md" },
             { text: "工具与基建", link: "/git/分支开发流程.md" },
             { text: "408 计算机基础", link: "/408/computer-network/正向代理&反向代理.md" },
           ],
@@ -728,7 +717,6 @@ export default withMermaid(
           {
             text: "AI 面试",
             items: [
-              { text: "AI 概念", link: "/AI/面试/概念.md" },
               { text: "RAG", link: "/AI/面试/RAG.md" },
               { text: "提示词工程", link: "/AI/面试/提示词工程.md" },
               { text: "模型训练过程", link: "/AI/面试/模型训练过程.md" },

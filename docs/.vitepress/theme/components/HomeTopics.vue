@@ -3,42 +3,42 @@ const topics = [
   {
     title: "HTML",
     desc: "语义、图片与文档结构",
-    link: "/frontend/HTML/",
+    link: "/frontend/HTML/图片类型及选择",
   },
   {
     title: "CSS",
     desc: "布局、视觉与移动端适配",
-    link: "/frontend/CSS/css选择器.md",
+    link: "/frontend/CSS/css选择器",
   },
   {
     title: "JavaScript",
     desc: "语言核心、异步与模块化",
-    link: "/frontend/JavaScript/",
+    link: "/interview/js/var-let-const",
   },
   {
     title: "浏览器",
     desc: "渲染、存储与 Web API",
-    link: "/interview/浏览器/浏览器组成.md",
+    link: "/interview/浏览器/浏览器组成",
   },
   {
     title: "网络",
     desc: "HTTP、缓存、跨域与安全",
-    link: "/interview/网络/输入URL后.md",
+    link: "/interview/网络/输入URL后",
   },
   {
     title: "Vue",
     desc: "响应式、组件与路由状态",
-    link: "/frontend/JavaScript/frontend-frameworks/vue3/ref-reactive.md",
+    link: "/frontend/JavaScript/frontend-frameworks/vue3/ref-reactive",
   },
   {
     title: "工程化",
     desc: "构建、质量与协作流程",
-    link: "/interview/前端工程化/前端工程化的理解.md",
+    link: "/interview/前端工程化/前端工程化的理解",
   },
   {
     title: "业务实战",
     desc: "场景题与真实落地笔记",
-    link: "/interview/业务场景/拖拽组件.md",
+    link: "/interview/业务场景/拖拽组件",
   },
 ];
 </script>

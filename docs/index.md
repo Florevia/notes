@@ -11,8 +11,8 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /frontend/HTML/
+      link: /frontend/HTML/图片类型及选择
     - theme: alt
       text: 从 JavaScript 看起
-      link: /frontend/JavaScript/
+      link: /interview/js/var-let-const
 ---
