@@ -236,6 +236,7 @@ const frontendSidebar = [
           { text: "HTTP vs HTTPS", link: "/interview/网络/HTTP-HTTPS.md" },
           { text: "HTTP 演进", link: "/interview/网络/HTTP演进.md" },
           { text: "GET vs POST", link: "/interview/网络/GET-POST.md" },
+          { text: "RESTful vs RPC", link: "/interview/网络/RESTful与RPC.md" },
           { text: "XHR readyState 与状态码", link: "/interview/网络/readyState&响应状态码.md" },
         ],
       },
