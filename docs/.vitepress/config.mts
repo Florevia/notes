@@ -463,6 +463,16 @@ const frontendSidebar = [
         ],
       },
       {
+        text: "团队协作",
+        collapsed: true,
+        items: [
+          {
+            text: "组件复用与代码风格",
+            link: "/interview/前端工程化/团队协作组件复用.md",
+          },
+        ],
+      },
+      {
         text: "文档",
         collapsed: true,
         items: [
