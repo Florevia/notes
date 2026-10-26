@@ -471,6 +471,13 @@ const frontendSidebar = [
           { text: "本地测试 vs 生产模式", link: "/interview/前端工程化/本地测试生产模式对比.md" },
         ],
       },
+      {
+        text: "文档",
+        collapsed: true,
+        items: [
+          { text: "文档档案对照", link: "/interview/前端工程化/文档档案对照.md" },
+        ],
+      },
     ],
   },
   {
