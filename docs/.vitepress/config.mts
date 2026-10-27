@@ -703,6 +703,7 @@ export default withMermaid(
           text: "AI",
           items: [
             { text: "MCP", link: "/AI/MCP.md" },
+            { text: "Pi Agent MCP", link: "/AI/Pi-Agent-MCP.md" },
             { text: "OpenClaw", link: "/AI/openclaw.md" },
             { text: "Skill", link: "/skill/" },
             { text: "Rule", link: "/rule/" },
@@ -722,6 +723,7 @@ export default withMermaid(
             text: "AI",
             items: [
               { text: "MCP", link: "/AI/MCP.md" },
+              { text: "Pi Agent MCP", link: "/AI/Pi-Agent-MCP.md" },
               { text: "OpenClaw", link: "/AI/openclaw.md" },
             ],
           },
