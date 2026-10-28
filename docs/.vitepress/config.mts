@@ -549,6 +549,7 @@ const frontendSidebar = [
         text: "交互与动效",
         collapsed: true,
         items: [
+          { text: "AI 对话复制", link: "/frontend/AI对话复制.md" },
           { text: "自定义栈页面切换", link: "/interview/业务场景/自定义栈逻辑页面切换效果.md" },
           { text: "跳转特效", link: "/interview/业务场景/跳转特效.md" },
           { text: "人类行为验证", link: "/interview/业务场景/人类行为验证.md" },
