@@ -238,6 +238,7 @@ const frontendSidebar = [
           { text: "GET vs POST", link: "/interview/网络/GET-POST.md" },
           { text: "RESTful vs RPC", link: "/interview/网络/RESTful与RPC.md" },
           { text: "XHR readyState 与状态码", link: "/interview/网络/readyState&响应状态码.md" },
+          { text: "Axios / Fetch / SSE 与 MCP", link: "/interview/网络/HTTP请求与流式通信.md" },
         ],
       },
       {
