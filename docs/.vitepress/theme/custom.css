@@ -325,6 +325,128 @@ html.dark .VPHero .image-src {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Desktop sidebar toggle — keep mobile drawer behavior unchanged             */
+/* -------------------------------------------------------------------------- */
+
+.sidebar-toggle {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .sidebar-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--vp-c-text-2);
+    cursor: pointer;
+    transition: color 160ms ease, background-color 160ms ease;
+  }
+
+  .sidebar-toggle:hover {
+    color: var(--vp-c-brand-1);
+    background-color: var(--vp-c-brand-soft);
+  }
+
+  .sidebar-toggle:focus-visible {
+    outline: 2px solid var(--vp-c-brand-1);
+    outline-offset: 2px;
+  }
+
+  .sidebar-toggle + .VPNavBarSearch {
+    padding-left: 12px;
+    --search-collapsed-w: clamp(120px, 16vw, 220px);
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  .VPContent {
+    overflow-anchor: none;
+  }
+
+  /* Use the expanded reading width in both states to avoid text reflow. */
+  .VPDoc.has-sidebar .content-container {
+    width: 100%;
+    max-width: min(688px, calc(100vw - var(--vp-sidebar-width) - 128px));
+  }
+
+  .Layout .VPSidebar {
+    transition:
+      transform 280ms var(--vp-menu-ease),
+      opacity 220ms var(--vp-menu-ease),
+      visibility 0s;
+  }
+
+  .Layout.sidebar-collapsed .VPSidebar {
+    /* Hide only after sliding out; restore visibility immediately on expand. */
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition:
+      transform 280ms var(--vp-menu-ease),
+      opacity 220ms var(--vp-menu-ease),
+      visibility 0s linear 280ms;
+  }
+
+  .Layout.sidebar-collapsed .VPContent.has-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .Layout.sidebar-collapsed .VPLocalNav.has-sidebar {
+    padding-left: 0;
+  }
+
+  /* Restore the regular nav layout instead of shrinking the site title. */
+  .Layout.sidebar-collapsed .VPNavBar.has-sidebar {
+    background-color: var(--vp-nav-bg-color);
+  }
+
+  .Layout.sidebar-collapsed .VPNavBar.has-sidebar > .wrapper {
+    padding: 0 32px;
+  }
+
+  .Layout.sidebar-collapsed .VPNavBar.has-sidebar > .wrapper > .container {
+    max-width: calc(var(--vp-layout-max-width) - 64px);
+  }
+
+  .Layout.sidebar-collapsed .VPNavBar.has-sidebar > .wrapper > .container > .title {
+    position: static;
+    width: auto;
+    padding: 0;
+  }
+
+  .Layout.sidebar-collapsed .VPNavBar.has-sidebar > .wrapper > .container > .content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: min(
+      688px,
+      calc(min(100vw, var(--vp-layout-max-width)) - var(--vp-sidebar-width) - 384px)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-toggle,
+  .Layout .VPSidebar {
+    transition: none !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
 /* Expand / collapse menus — sidebar, nav flyout, mobile screen               */
 /* -------------------------------------------------------------------------- */
 
