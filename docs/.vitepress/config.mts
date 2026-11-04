@@ -704,6 +704,9 @@ export default withMermaid(
         {
           text: "AI",
           items: [
+            { text: "Agent 的模块构成", link: "/AI/Agent的模块构成.md" },
+            { text: "Subagent 与多 Agent 协作及通信", link: "/AI/Subagent与多Agent协作及通信机制.md" },
+            { text: "Harness 的模块构成", link: "/AI/Harness的模块构成.md" },
             { text: "MCP", link: "/AI/MCP.md" },
             { text: "Pi Agent MCP", link: "/AI/Pi-Agent-MCP.md" },
             { text: "OpenClaw", link: "/AI/openclaw.md" },
@@ -724,6 +727,9 @@ export default withMermaid(
           {
             text: "AI",
             items: [
+              { text: "Agent 的模块构成", link: "/AI/Agent的模块构成.md" },
+              { text: "Subagent 与多 Agent 协作及通信", link: "/AI/Subagent与多Agent协作及通信机制.md" },
+              { text: "Harness 的模块构成", link: "/AI/Harness的模块构成.md" },
               { text: "MCP", link: "/AI/MCP.md" },
               { text: "Pi Agent MCP", link: "/AI/Pi-Agent-MCP.md" },
               { text: "OpenClaw", link: "/AI/openclaw.md" },
