@@ -1,9 +1,5 @@
 # Pi Agent 的 MCP 实现与架构
 
-本文汇总两次问答：Pi Agent 如何实现 MCP，以及三层架构、内置 MCP 和不同 Agent 实现方式的进一步解释。
-
-研究对象是 Mario Zechner 的 **Pi Coding Agent**，原仓库为 `badlogic/pi-mono`，现为 [`earendil-works/pi`](https://github.com/earendil-works/pi)。以下实现说明基于 2026-10-27 查询的官方 `main` 源码和文档，不代表所有历史版本。
-
 ## 一、Pi Agent 是如何实现 MCP 的？
 
 Pi 当前已经有内置 MCP 支持。核心实现是：**独立 MCP Client + 内置 MCP 扩展 + Pi 的统一工具调用管线**。
@@ -107,17 +103,101 @@ ToolDefinition.execute()
 
 源码：[连接管理](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/src/extensions/mcp/runtime.ts) · [工具适配](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/src/extensions/mcp/tools.ts)。
 
-### 4. 最关键的设计：工具注册和上下文暴露分离
+### 4. 最关键的设计：Pi把 mcp连接和工具怎么进模型上下文 拆开
 
-Pi 默认不是“启动时把所有 MCP 工具声明给模型”，而是提供四种 `exposure`：
+协议层始终是 pi-mcp；模型侧按每个 Server 的 exposure 走 codemode / deferred / direct / hidden。默认是 codemode。
 
-| 模式 | 模型如何使用 |
-| --- | --- |
-| **`codemode`，默认** | 不直接声明工具；脚本通过 `searchTools()`、`describeTool()` 等发现并调用 |
-| `deferred` | 先用 `tool_search` 找到工具，再把匹配工具声明给后续模型调用 |
-| `direct` | 像普通内置工具一样，直接声明给模型 |
-| `hidden` | 已注册，但不可调用 |
+| Exposure | 行为 | 典型用途 |
+| --- | --- | --- |
+| `codemode`（默认） | 可从 codemode 脚本调用，但既不声明给模型，也不列在 codemode 描述里。脚本用 `searchTools()`、`describeTool()` 或 `ALL_TOOLS` 发现工具。 | 大多数 MCP 服务器，尤其需要组合调用或过滤大结果时 |
+| `deferred` | 不预先声明，直到 `tool_search` 匹配到后，才在下一次模型调用中声明，之后可直接调用 | 工具很多、希望发现后再直接调用的服务器 |
+| `direct` | 像内置工具一样直接声明给模型，同时也可从 codemode 调用 | 小型、经常使用的工具集 |
+| `hidden` | 已注册但不可达 | 需要保持不可用的服务器或工具 |
 
+```mermaid
+flowchart TB
+  %% 1. 用户交互与决策核心
+  subgraph Cluster_Core["用户交互与决策核心"]
+    TUI["👤 用户入口 TUI / CLI / SDK"]
+    Loop["⚙️ Agent Loop (pi-agent-core)"]
+    AI["🧠 LLM 统一接口 (pi-ai)"]
+    LLM[("☁️ 大语言模型 LLM")]
+
+    TUI --> Loop
+    Loop <--> AI
+    AI <--> LLM
+  end
+
+  %% 2. 工具分发层
+  subgraph Cluster_Tools["工具注册与分发 (pi-coding-agent)"]
+    direction LR
+    Builtin["内置工具 read/bash/edit/write"]
+    TS["按需搜索 tool_search"]
+    Res["资源管理 MCP resource"]
+    CM["沙箱工具 codemode"]
+  end
+
+  %% 3. 沙箱隔离层
+  subgraph Cluster_Sandbox["代码沙箱隔离环境 (pi-codemode)"]
+    QJS["🔒 QuickJS in WASM 沙箱 (无网络/无文件系统)"]
+  end
+
+  %% 4. MCP 客户端通信层
+  subgraph Cluster_MCP["MCP 客户端通信 (pi-mcp)"]
+    direction TB
+    Reg["工具注册中心 mcp__server__tool"]
+    subgraph Cluster_Trans["传输协议与认证"]
+      direction LR
+      Stdio["stdio 协议通道"]
+      HTTP["Streamable HTTP (含 OAuth)"]
+    end
+    Reg --> Stdio
+    Reg --> HTTP
+  end
+
+  %% 5. 外部 MCP 服务端
+  subgraph Cluster_Servers["MCP 目标服务端"]
+    direction LR
+    LocalServer["🖥️ 本地进程 Server"]
+    RemoteServer["🖥️ 远程 HTTP Server"]
+  end
+
+  %% 核心到工具
+  Loop --> Builtin
+  Loop --> TS
+  Loop --> Res
+  Loop --> CM
+  TS -.->|"按需挂载"| Loop
+
+  %% 调用链路
+  CM -->|"执行脚本"| QJS
+  QJS -->|"沙箱调用"| Reg
+  Loop -->|"直接调用"| Reg
+
+  %% 协议到服务端
+  Stdio --> LocalServer
+  HTTP --> RemoteServer
+
+  %% 模块层次色彩规范
+  classDef coreStyle fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#1E1B4B;
+  classDef toolStyle fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#064E3B;
+  classDef sandStyle fill:#FFFBEB,stroke:#F59E0B,stroke-width:1.5px,color:#78350F;
+  classDef mcpStyle fill:#FAF5FF,stroke:#A855F7,stroke-width:1.5px,color:#581C87;
+  classDef servStyle fill:#F1F5F9,stroke:#64748B,stroke-width:1.5px,color:#0F172A;
+
+  class TUI,Loop,AI,LLM coreStyle;
+  class Builtin,TS,Res,CM toolStyle;
+  class QJS sandStyle;
+  class Reg,Stdio,HTTP mcpStyle;
+  class LocalServer,RemoteServer servStyle;
+
+  style Cluster_Core fill:#F8FAFC,stroke:#818CF8,stroke-width:1.5px;
+  style Cluster_Tools fill:#F0FDF4,stroke:#34D399,stroke-width:1.5px;
+  style Cluster_Sandbox fill:#FFFDF5,stroke:#FBBF24,stroke-width:1.5px;
+  style Cluster_MCP fill:#FAF5FF,stroke:#C084FC,stroke-width:1.5px;
+  style Cluster_Trans fill:#FFFFFF,stroke:#E9D5FF,stroke-width:1px,stroke-dasharray: 3 3;
+  style Cluster_Servers fill:#F8FAFC,stroke:#94A3B8,stroke-width:1.5px;
+```
 因此它区分了三个状态：
 
 > **服务已连接 → 工具已注册 → 工具是否出现在模型请求里。**
