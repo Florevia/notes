@@ -1152,6 +1152,6 @@ Subagent 通信更像函数调用或服务委派，多 Agent 通信更像多个�
 
 - [Agent 的模块构成](./Agent的模块构成.md)
 - [Harness 的模块构成](./Harness的模块构成.md)
-- [MCP](./MCP.md)
+- [MCP 系统性知识](./MCP系统性知识.md)
 - [数据通信的基础模式](../interview/网络/数据通信的基础模式.md)
 - [RESTful 与 RPC](../interview/网络/RESTful与RPC.md)
