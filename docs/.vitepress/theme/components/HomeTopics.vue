@@ -1,46 +1,6 @@
 <script setup>
-const topics = [
-  {
-    title: "HTML",
-    desc: "语义、图片与文档结构",
-    link: "/frontend/HTML/图片类型及选择",
-  },
-  {
-    title: "CSS",
-    desc: "布局、视觉与移动端适配",
-    link: "/frontend/CSS/css选择器",
-  },
-  {
-    title: "JavaScript",
-    desc: "语言核心、异步与模块化",
-    link: "/interview/js/var-let-const",
-  },
-  {
-    title: "浏览器",
-    desc: "渲染、存储与 Web API",
-    link: "/interview/浏览器/浏览器组成",
-  },
-  {
-    title: "网络",
-    desc: "HTTP、缓存、跨域与安全",
-    link: "/interview/网络/输入URL后",
-  },
-  {
-    title: "Vue",
-    desc: "响应式、组件与路由状态",
-    link: "/frontend/JavaScript/frontend-frameworks/vue3/ref-reactive",
-  },
-  {
-    title: "工程化",
-    desc: "构建、质量与协作流程",
-    link: "/interview/前端工程化/前端工程化的理解",
-  },
-  {
-    title: "业务实战",
-    desc: "场景题与真实落地笔记",
-    link: "/interview/业务场景/拖拽组件",
-  },
-];
+import { withBase } from "vitepress";
+import { noteCategories, topicLink } from "../../navigation";
 </script>
 
 <template>
@@ -49,21 +9,26 @@ const topics = [
       <header class="home-topics__header">
         <p class="home-topics__eyebrow">目录</p>
         <h2 id="home-topics-title" class="home-topics__title">从这里开始翻</h2>
-        <p class="home-topics__lead">按主题进入笔记，不必从零翻侧边栏。</p>
+        <p class="home-topics__lead">六个方向，一份持续生长的笔记。从原理到实践，再到面试验证。</p>
       </header>
 
       <ul class="home-topics__list">
-        <li v-for="(topic, index) in topics" :key="topic.link">
-          <a class="home-topics__link" :href="topic.link">
+        <li v-for="(category, index) in noteCategories" :key="category.id" class="home-topics__category">
+          <a class="home-topics__link" :href="withBase(category.link)">
             <span class="home-topics__index">{{
               String(index + 1).padStart(2, "0")
             }}</span>
             <span class="home-topics__copy">
-              <span class="home-topics__name">{{ topic.title }}</span>
-              <span class="home-topics__desc">{{ topic.desc }}</span>
+              <span class="home-topics__name">{{ category.text }}</span>
+              <span class="home-topics__desc">{{ category.description }}</span>
             </span>
             <span class="home-topics__arrow" aria-hidden="true">→</span>
           </a>
+          <ul class="home-topics__children" :aria-label="category.text + '专题'">
+            <li v-for="topic in category.items" :key="topic.id">
+              <a :href="withBase(topicLink(category, topic))">{{ topic.text }}</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -125,7 +90,6 @@ const topics = [
   align-items: center;
   gap: 16px;
   padding: 16px 4px;
-  border-bottom: 1px solid var(--vp-c-divider);
   text-decoration: none;
   color: inherit;
   background: transparent;
@@ -192,9 +156,64 @@ const topics = [
   transform: translateX(0);
 }
 
+.home-topics__category {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.home-topics__children {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px 18px 52px;
+}
+
+.home-topics__children a {
+  display: inline-block;
+  padding: 4px 0;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.home-topics__children a:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home-topics a:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 @media (max-width: 639px) {
+  .home-topics__link {
+    gap: 12px;
+  }
+
+  .home-topics__children {
+    padding-left: 48px;
+    gap: 2px 16px;
+  }
+
+  .home-topics__children a {
+    padding-block: 8px;
+  }
+
   .home-topics__arrow {
-    display: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-topics__link,
+  .home-topics__arrow {
+    transition: none;
   }
 }
 </style>

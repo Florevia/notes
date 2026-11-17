@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-strip-types --test scripts/knowledge.test.mjs",
+    "check": "pnpm test && pnpm catalog:check",
+    "catalog:generate": "node --experimental-strip-types scripts/catalog.mjs --write",
+    "catalog:check": "node --experimental-strip-types scripts/catalog.mjs",
     "ll:dev": "vitepress dev docs",
     "ll:build": "vitepress build docs",
-    "ll:preview": "vitepress preview docs"
+    "ll:preview": "node scripts/preview.mjs"
   },
   "keywords": [],
   "author": "lilin <lilin@lilin.com> (https://github.com/lilin)",

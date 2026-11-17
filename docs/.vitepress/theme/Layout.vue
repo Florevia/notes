@@ -5,6 +5,7 @@ import DefaultTheme, { useLayout } from "vitepress/theme";
 import BackgroundEffects from "./components/BackgroundEffects.vue";
 import Fireworks from "./components/Fireworks.vue";
 import HomeTopics from "./components/HomeTopics.vue";
+import KnowledgeContext from "./components/KnowledgeContext.vue";
 
 const { Layout } = DefaultTheme;
 const route = useRoute();
@@ -181,6 +182,9 @@ watch(
           />
         </svg>
       </button>
+    </template>
+    <template #doc-before>
+      <KnowledgeContext />
     </template>
     <template #home-hero-after>
       <HomeTopics />

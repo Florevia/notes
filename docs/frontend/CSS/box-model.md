@@ -1,0 +1,23 @@
+---
+title: "盒模型"
+description: "盒模型：语言基础、浏览器、网络、Vue 与前端业务实践"
+tags: ["前端开发"]
+docType: "concept"
+knowledgeTopic: "/frontend/css/"
+migrationSource: "interview/css/盒模型.md"
+---
+
+# 盒模型
+
+标准盒模型和怪异盒模型的区别
+
+- 标准盒模型： 元素的宽度和高度只包括内容区域（content），不包括内边距（padding）、边框（border）和外边距（margin）。
+- 怪异盒模型（也叫 IE 盒模型）： 元素的宽度和高度包括内容区域、内边距、边框和外边距。
+
+```css
+/* 标准盒模型 */
+box-sizing: content-box;
+
+/* 怪异盒模型 */
+box-sizing: border-box;
+```  

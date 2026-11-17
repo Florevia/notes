@@ -1,0 +1,3642 @@
+[
+  {
+    "id": "frontend",
+    "text": "前端开发",
+    "description": "Web 技术与应用实现的主线。语言基础讲机制，浏览器与网络讲运行环境，Vue 与业务实践讲如何落地。",
+    "link": "/frontend/",
+    "items": [
+      {
+        "text": "HTML",
+        "items": [
+          {
+            "text": "HTML 概览",
+            "link": "/frontend/html/html-overview",
+            "id": "topic-1-1"
+          },
+          {
+            "text": "图片类型及选择",
+            "link": "/frontend/html/image-formats",
+            "id": "topic-1-2"
+          },
+          {
+            "text": "Iframe",
+            "link": "/frontend/html/iframe",
+            "id": "topic-1-4"
+          },
+          {
+            "text": "微格式 Microformats",
+            "link": "/frontend/html/microformats",
+            "status": "planned",
+            "id": "topic-1-5"
+          },
+          {
+            "text": "替换元素",
+            "link": "/frontend/html/replaced-elements",
+            "status": "planned",
+            "id": "topic-1-6"
+          },
+          {
+            "text": "Script 的 src 与 defer",
+            "link": "/frontend/html/src-vs-defer",
+            "id": "topic-1-7"
+          }
+        ],
+        "id": "topic-1",
+        "directory": "frontend/html",
+        "indexLink": "/frontend/html/",
+        "references": [],
+        "description": "HTML专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解HTML的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "CSS",
+        "items": [
+          {
+            "text": "基础",
+            "items": [
+              {
+                "text": "CSS 选择器",
+                "link": "/frontend/css/selectors",
+                "id": "topic-2-1-1"
+              },
+              {
+                "text": "盒模型",
+                "link": "/frontend/css/box-model",
+                "id": "topic-2-1-2"
+              },
+              {
+                "text": "CSS 单位",
+                "link": "/frontend/css/units",
+                "id": "topic-2-1-3"
+              },
+              {
+                "text": "CSS 优先级",
+                "link": "/frontend/css/specificity",
+                "id": "topic-2-1-4"
+              },
+              {
+                "text": "BFC",
+                "link": "/frontend/css/bfc",
+                "id": "topic-2-1-5"
+              },
+              {
+                "text": "浮动 (Float)",
+                "link": "/frontend/css/float",
+                "id": "topic-2-1-6"
+              }
+            ],
+            "id": "topic-2-1",
+            "indexLink": "/frontend/css/#topic-2-1"
+          },
+          {
+            "text": "布局",
+            "items": [
+              {
+                "text": "弹性布局",
+                "link": "/frontend/css/flexbox",
+                "id": "topic-2-2-1"
+              },
+              {
+                "text": "Grid 布局",
+                "link": "/frontend/css/grid",
+                "id": "topic-2-2-2"
+              },
+              {
+                "text": "水平垂直居中",
+                "link": "/frontend/css/centering",
+                "id": "topic-2-2-3"
+              },
+              {
+                "text": "瀑布流布局",
+                "link": "/frontend/css/masonry",
+                "id": "topic-2-2-4"
+              },
+              {
+                "text": "隐藏元素的方式",
+                "link": "/frontend/css/hiding-elements",
+                "id": "topic-2-2-5"
+              },
+              {
+                "text": "图片有间隙",
+                "link": "/frontend/css/image-gaps",
+                "id": "topic-2-2-6"
+              }
+            ],
+            "id": "topic-2-2",
+            "indexLink": "/frontend/css/#topic-2-2"
+          },
+          {
+            "text": "适配与工程",
+            "items": [
+              {
+                "text": "Viewport",
+                "link": "/frontend/css/viewport",
+                "id": "topic-2-3-1"
+              },
+              {
+                "text": "移动端适配",
+                "link": "/frontend/css/responsive-design",
+                "id": "topic-2-3-2"
+              },
+              {
+                "text": "CSS 隔离方案",
+                "link": "/frontend/css/style-isolation",
+                "id": "topic-2-3-3"
+              },
+              {
+                "text": "预处理器与后处理器",
+                "link": "/frontend/css/preprocessors-postprocessors",
+                "id": "topic-2-3-4"
+              },
+              {
+                "text": "行内样式 vs Tailwind",
+                "link": "/frontend/css/inline-tailwind-css",
+                "id": "topic-2-3-5"
+              }
+            ],
+            "id": "topic-2-3",
+            "indexLink": "/frontend/css/#topic-2-3"
+          },
+          {
+            "text": "CSS 原始概览（简记）",
+            "link": "/frontend/css/css-original-overview",
+            "status": "outline",
+            "id": "css-original-overview"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "frontend/css",
+        "indexLink": "/frontend/css/",
+        "description": "CSS专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解CSS的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "JavaScript",
+        "items": [
+          {
+            "text": "基础",
+            "items": [
+              {
+                "text": "Var / Let / Const",
+                "link": "/frontend/javascript/var-let-const",
+                "id": "topic-3-1-1"
+              },
+              {
+                "text": "判断数据类型",
+                "link": "/frontend/javascript/type-checking",
+                "id": "topic-3-1-2"
+              },
+              {
+                "text": "类型转换",
+                "link": "/frontend/javascript/type-conversion",
+                "id": "topic-3-1-3"
+              },
+              {
+                "text": "== 与 ===",
+                "link": "/frontend/javascript/equality-operators",
+                "id": "topic-3-1-4"
+              },
+              {
+                "text": "包装对象",
+                "link": "/frontend/javascript/wrapper-objects",
+                "id": "topic-3-1-5"
+              },
+              {
+                "text": "运算符",
+                "link": "/frontend/javascript/operators",
+                "id": "topic-3-1-6"
+              },
+              {
+                "text": "值与引用",
+                "link": "/frontend/javascript/values-references",
+                "id": "topic-3-1-7"
+              },
+              {
+                "text": "This 指向",
+                "link": "/frontend/javascript/this-binding",
+                "id": "topic-3-1-8"
+              },
+              {
+                "text": "ES6 新特性",
+                "link": "/frontend/javascript/es6-features",
+                "id": "topic-3-1-9"
+              },
+              {
+                "text": "剩余参数",
+                "link": "/frontend/javascript/rest-parameters",
+                "id": "topic-3-1-10"
+              }
+            ],
+            "id": "topic-3-1",
+            "indexLink": "/frontend/javascript/#topic-3-1"
+          },
+          {
+            "text": "作用域与闭包",
+            "items": [
+              {
+                "text": "作用域与作用域链",
+                "link": "/frontend/javascript/scope-chain",
+                "id": "topic-3-2-1"
+              },
+              {
+                "text": "闭包",
+                "link": "/frontend/javascript/closures",
+                "id": "topic-3-2-2"
+              },
+              {
+                "text": "执行栈与上下文",
+                "link": "/frontend/javascript/execution-context",
+                "id": "topic-3-2-3"
+              },
+              {
+                "text": "垃圾回收与内存泄漏",
+                "link": "/frontend/javascript/garbage-collection",
+                "id": "topic-3-2-4"
+              }
+            ],
+            "id": "topic-3-2",
+            "indexLink": "/frontend/javascript/#topic-3-2"
+          },
+          {
+            "text": "原型与 Class",
+            "items": [
+              {
+                "text": "原型与原型链",
+                "link": "/frontend/javascript/prototype-chain",
+                "id": "topic-3-3-1"
+              },
+              {
+                "text": "Instanceof 原理",
+                "link": "/frontend/javascript/instanceof",
+                "id": "topic-3-3-2"
+              },
+              {
+                "text": "Class",
+                "link": "/frontend/javascript/class",
+                "id": "topic-3-3-3"
+              }
+            ],
+            "id": "topic-3-3",
+            "indexLink": "/frontend/javascript/#topic-3-3"
+          },
+          {
+            "text": "异步编程",
+            "items": [
+              {
+                "text": "Promise",
+                "link": "/frontend/javascript/promise",
+                "id": "topic-3-4-1"
+              },
+              {
+                "text": "手写 Promise.all",
+                "link": "/frontend/javascript/promise-all",
+                "id": "topic-3-4-2"
+              },
+              {
+                "text": "取消操作",
+                "link": "/frontend/javascript/cancellation",
+                "id": "topic-3-4-3"
+              }
+            ],
+            "id": "topic-3-4",
+            "indexLink": "/frontend/javascript/#topic-3-4"
+          },
+          {
+            "text": "集合与拷贝",
+            "items": [
+              {
+                "text": "Set / Map / WeakSet / WeakMap",
+                "link": "/frontend/javascript/collections",
+                "id": "topic-3-5-1"
+              },
+              {
+                "text": "Map 与 WeakMap",
+                "link": "/frontend/javascript/map-weakmap",
+                "id": "topic-3-5-2"
+              },
+              {
+                "text": "Set 与 WeakSet",
+                "link": "/frontend/javascript/set-weakset",
+                "id": "topic-3-5-3"
+              },
+              {
+                "text": "深拷贝与浅拷贝",
+                "link": "/frontend/javascript/copying",
+                "id": "topic-3-5-4"
+              },
+              {
+                "text": "迭代器",
+                "link": "/frontend/javascript/iterator",
+                "id": "topic-3-5-5"
+              }
+            ],
+            "id": "topic-3-5",
+            "indexLink": "/frontend/javascript/#topic-3-5"
+          },
+          {
+            "text": "常用 API",
+            "items": [
+              {
+                "text": "字符串常用方法",
+                "link": "/frontend/javascript/string-methods",
+                "id": "topic-3-6-1"
+              },
+              {
+                "text": "数组常用方法",
+                "link": "/frontend/javascript/array-methods",
+                "id": "topic-3-6-2"
+              },
+              {
+                "text": "Object 常用方法",
+                "link": "/frontend/javascript/object-methods",
+                "id": "topic-3-6-3"
+              },
+              {
+                "text": "Lodash 常用方法",
+                "link": "/frontend/javascript/lodash-methods",
+                "id": "topic-3-6-4"
+              },
+              {
+                "text": "柯里化",
+                "link": "/frontend/javascript/currying",
+                "id": "topic-3-6-5"
+              },
+              {
+                "text": "防抖与节流",
+                "link": "/frontend/javascript/debounce-throttle",
+                "id": "topic-3-6-6"
+              }
+            ],
+            "id": "topic-3-6",
+            "indexLink": "/frontend/javascript/#topic-3-6"
+          },
+          {
+            "text": "模块化",
+            "items": [
+              {
+                "text": "ESM 与 CJS",
+                "link": "/frontend/javascript/esm-vs-cjs",
+                "id": "topic-3-7-1"
+              },
+              {
+                "text": "ESM 静态结构 vs CJS 动态结构",
+                "link": "/frontend/javascript/esm-static-cjs-dynamic",
+                "id": "topic-3-7-2"
+              },
+              {
+                "text": "ESM / CJS 值拷贝与引用",
+                "link": "/frontend/javascript/module-bindings",
+                "id": "topic-3-7-3"
+              }
+            ],
+            "id": "topic-3-7",
+            "indexLink": "/frontend/javascript/#topic-3-7"
+          },
+          {
+            "text": "JavaScript 原始概览（简记）",
+            "link": "/frontend/javascript/javascript-original-overview",
+            "status": "outline",
+            "id": "javascript-original-overview"
+          },
+          {
+            "text": "ESM vs CommonJS",
+            "link": "/frontend/javascript/esm-vs-cjs-engineering-notes",
+            "id": "esm-vs-cjs-engineering-notes",
+            "related": [
+              {
+                "text": "主文档：ESM 与 CJS",
+                "link": "/frontend/javascript/esm-vs-cjs"
+              }
+            ],
+            "role": "supplement"
+          },
+          {
+            "text": "Lodash 库概览",
+            "link": "/frontend/javascript/lodash-overview",
+            "status": "outline",
+            "id": "lodash-overview"
+          },
+          {
+            "text": "模块化规范",
+            "link": "/frontend/javascript/module-standards",
+            "id": "module-standards"
+          }
+        ],
+        "id": "topic-3",
+        "directory": "frontend/javascript",
+        "indexLink": "/frontend/javascript/",
+        "description": "JavaScript专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解JavaScript的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "TypeScript",
+        "items": [
+          {
+            "text": "TypeScript 概览",
+            "link": "/frontend/typescript/typescript-overview",
+            "id": "topic-4-1"
+          },
+          {
+            "text": "类型系统",
+            "references": [
+              {
+                "text": "类型注解与类型断言",
+                "link": "/frontend/typescript/typescript-overview"
+              }
+            ],
+            "note": "类型系统的内容目前收录在 TypeScript 概览中。",
+            "id": "topic-4-2",
+            "indexLink": "/frontend/typescript/#topic-4-2"
+          },
+          {
+            "text": "TS 模块系统",
+            "link": "/frontend/typescript/module-detection",
+            "id": "topic-4-3"
+          }
+        ],
+        "id": "topic-4",
+        "directory": "frontend/typescript",
+        "indexLink": "/frontend/typescript/",
+        "description": "TypeScript专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解TypeScript的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "浏览器",
+        "items": [
+          {
+            "text": "浏览器架构",
+            "items": [
+              {
+                "text": "浏览器组成",
+                "link": "/frontend/browser/components",
+                "id": "topic-5-1-1"
+              },
+              {
+                "text": "多进程架构",
+                "link": "/frontend/browser/multiprocess-architecture",
+                "id": "topic-5-1-2"
+              },
+              {
+                "text": "渲染进程",
+                "link": "/frontend/browser/rendering-process",
+                "id": "topic-5-1-3"
+              },
+              {
+                "text": "浏览器内核",
+                "link": "/frontend/browser/engines",
+                "id": "topic-5-1-4"
+              }
+            ],
+            "id": "topic-5-1",
+            "indexLink": "/frontend/browser/#topic-5-1"
+          },
+          {
+            "text": "浏览器渲染原理",
+            "items": [
+              {
+                "text": "JS/CSS 阻塞渲染",
+                "link": "/frontend/browser/render-blocking",
+                "id": "topic-5-2-1"
+              },
+              {
+                "text": "回流与重绘",
+                "link": "/frontend/browser/reflow-repaint",
+                "id": "topic-5-2-2"
+              },
+              {
+                "text": "事件循环",
+                "link": "/frontend/browser/event-loop",
+                "id": "topic-5-2-3"
+              },
+              {
+                "text": "浏览器渲染模式",
+                "link": "/frontend/browser/rendering-modes",
+                "id": "rendering-modes"
+              }
+            ],
+            "id": "topic-5-2",
+            "indexLink": "/frontend/browser/#topic-5-2"
+          },
+          {
+            "text": "事件与 DOM",
+            "items": [
+              {
+                "text": "DOM 事件流",
+                "link": "/frontend/browser/dom-events",
+                "id": "topic-5-3-1"
+              },
+              {
+                "text": "DOM 尺寸与位置",
+                "link": "/frontend/browser/dom-geometry",
+                "id": "topic-5-3-2"
+              },
+              {
+                "text": "DocumentFragment",
+                "link": "/frontend/browser/document-fragment",
+                "id": "topic-5-3-3"
+              },
+              {
+                "text": "Web APIs（DOM/BOM）",
+                "link": "/frontend/browser/dom-bom",
+                "id": "topic-5-3-4"
+              }
+            ],
+            "id": "topic-5-3",
+            "indexLink": "/frontend/browser/#topic-5-3"
+          },
+          {
+            "text": "存储机制",
+            "items": [
+              {
+                "text": "Cookie",
+                "link": "/frontend/browser/cookie",
+                "id": "topic-5-4-1"
+              },
+              {
+                "text": "Local / Session Storage",
+                "link": "/frontend/browser/storage-cookies",
+                "id": "topic-5-4-2"
+              },
+              {
+                "text": "IndexedDB",
+                "link": "/frontend/browser/indexeddb",
+                "id": "topic-5-4-3"
+              }
+            ],
+            "id": "topic-5-4",
+            "indexLink": "/frontend/browser/#topic-5-4"
+          },
+          {
+            "text": "Web API",
+            "items": [
+              {
+                "text": "FileReader",
+                "link": "/frontend/browser/file-reader",
+                "id": "topic-5-5-1"
+              },
+              {
+                "text": "Canvas（笔记）",
+                "link": "/frontend/browser/canvas",
+                "id": "topic-5-5-2"
+              },
+              {
+                "text": "Web Workers",
+                "link": "/frontend/browser/web-workers",
+                "id": "topic-5-5-3"
+              },
+              {
+                "text": "独立标签页通信",
+                "link": "/frontend/browser/tab-communication",
+                "id": "topic-5-5-4"
+              },
+              {
+                "text": "SSE",
+                "link": "/frontend/browser/server-sent-events",
+                "id": "topic-5-5-5"
+              },
+              {
+                "text": "Canvas",
+                "link": "/frontend/browser/canvas-drawing",
+                "id": "canvas-drawing",
+                "related": [
+                  {
+                    "text": "主文档：Canvas（笔记）",
+                    "link": "/frontend/browser/canvas"
+                  }
+                ],
+                "role": "supplement"
+              }
+            ],
+            "id": "topic-5-5",
+            "indexLink": "/frontend/browser/#topic-5-5"
+          }
+        ],
+        "id": "topic-5",
+        "directory": "frontend/browser",
+        "indexLink": "/frontend/browser/",
+        "description": "浏览器架构、渲染、事件、存储与 Web API；不将 Canvas 或渲染模式混入 CSS/HTML 概念。",
+        "learningPath": [
+          "架构与渲染进程 → 渲染阻塞/回流重绘 → 事件循环。",
+          "再读 DOM 事件、存储与跨标签页协作。",
+          "最后查阅 Canvas、Worker、FileReader 等具体 API。"
+        ],
+        "related": [
+          {
+            "text": "JavaScript",
+            "link": "/frontend/javascript/"
+          },
+          {
+            "text": "网络",
+            "link": "/frontend/network/"
+          },
+          {
+            "text": "前端面试",
+            "link": "/interview/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "网络",
+        "items": [
+          {
+            "text": "HTTP 基础",
+            "items": [
+              {
+                "text": "输入 URL 后发生了什么",
+                "link": "/frontend/network/url-lifecycle",
+                "id": "topic-6-1-1"
+              },
+              {
+                "text": "HTTP 基础",
+                "link": "/frontend/network/http",
+                "id": "topic-6-1-3"
+              },
+              {
+                "text": "HTTP vs HTTPS",
+                "link": "/frontend/network/http-https",
+                "id": "topic-6-1-4"
+              },
+              {
+                "text": "HTTP 演进",
+                "link": "/frontend/network/http-evolution",
+                "id": "topic-6-1-5"
+              },
+              {
+                "text": "GET vs POST",
+                "link": "/frontend/network/get-post",
+                "id": "topic-6-1-6"
+              },
+              {
+                "text": "XHR readyState 与状态码",
+                "link": "/frontend/network/xhr-states-status",
+                "id": "topic-6-1-7"
+              },
+              {
+                "text": "Axios / Fetch / SSE 与 MCP",
+                "link": "/frontend/network/http-streaming",
+                "id": "topic-6-1-8"
+              }
+            ],
+            "id": "topic-6-1",
+            "indexLink": "/frontend/network/#topic-6-1",
+            "references": [
+              {
+                "text": "DNS 解析",
+                "link": "/computer-science/networking/dns"
+              }
+            ]
+          },
+          {
+            "text": "缓存机制",
+            "items": [
+              {
+                "text": "HTTP 缓存",
+                "link": "/frontend/network/http-cache",
+                "id": "topic-6-2-1"
+              },
+              {
+                "text": "强缓存与哈希值",
+                "link": "/frontend/network/cache-content-hashing",
+                "id": "topic-6-2-2"
+              },
+              {
+                "text": "缓存位置",
+                "link": "/frontend/network/cache-storage",
+                "id": "topic-6-2-3"
+              },
+              {
+                "text": "CS 架构缓存体系",
+                "link": "/frontend/network/client-server-caching",
+                "id": "topic-6-2-4"
+              }
+            ],
+            "id": "topic-6-2",
+            "indexLink": "/frontend/network/#topic-6-2"
+          },
+          {
+            "text": "跨域与鉴权",
+            "items": [
+              {
+                "text": "跨域 (CORS)",
+                "link": "/frontend/network/cors",
+                "id": "topic-6-3-1"
+              },
+              {
+                "text": "JSONP",
+                "link": "/frontend/network/jsonp",
+                "id": "topic-6-3-2"
+              },
+              {
+                "text": "Session",
+                "link": "/frontend/network/session",
+                "id": "topic-6-3-3"
+              },
+              {
+                "text": "JWT",
+                "link": "/frontend/network/jwt",
+                "id": "topic-6-3-4"
+              },
+              {
+                "text": "鉴权方案",
+                "link": "/frontend/network/authentication",
+                "id": "topic-6-3-5"
+              }
+            ],
+            "id": "topic-6-3",
+            "indexLink": "/frontend/network/#topic-6-3"
+          },
+          {
+            "text": "Web 安全",
+            "items": [
+              {
+                "text": "加密算法",
+                "link": "/frontend/network/cryptography",
+                "id": "topic-6-4-1"
+              },
+              {
+                "text": "常见安全攻击",
+                "link": "/frontend/network/web-security",
+                "id": "topic-6-4-2"
+              },
+              {
+                "text": "SSL/TLS",
+                "link": "/frontend/network/tls",
+                "id": "topic-6-4-3"
+              },
+              {
+                "text": "CA 证书",
+                "link": "/frontend/network/certificate-authorities",
+                "id": "topic-6-4-4"
+              }
+            ],
+            "id": "topic-6-4",
+            "indexLink": "/frontend/network/#topic-6-4"
+          },
+          {
+            "text": "传输层",
+            "items": [],
+            "id": "topic-6-5",
+            "references": [
+              {
+                "text": "TCP",
+                "link": "/computer-science/networking/tcp"
+              },
+              {
+                "text": "TCP 可靠性与 UDP",
+                "link": "/computer-science/networking/tcp-reliability-udp"
+              },
+              {
+                "text": "TCP 粘包与拆包",
+                "link": "/computer-science/networking/tcp-framing"
+              }
+            ],
+            "note": "传输层原理统一维护在计算机基础。这里从 Web 应用视角关联，不复制一份 TCP/UDP 文档。",
+            "indexLink": "/frontend/network/#topic-6-5"
+          },
+          {
+            "text": "实时通信",
+            "items": [
+              {
+                "text": "WebSocket",
+                "link": "/frontend/network/websocket",
+                "id": "topic-6-6-1"
+              },
+              {
+                "text": "WebSocket 握手",
+                "link": "/frontend/network/websocket-handshake",
+                "id": "topic-6-6-2"
+              }
+            ],
+            "id": "topic-6-6",
+            "indexLink": "/frontend/network/#topic-6-6"
+          },
+          {
+            "text": "文件传输",
+            "items": [
+              {
+                "text": "文件上传",
+                "link": "/frontend/network/file-upload",
+                "id": "topic-6-7-1"
+              },
+              {
+                "text": "文件下载",
+                "link": "/frontend/network/file-download",
+                "id": "topic-6-7-2"
+              },
+              {
+                "text": "断点续传",
+                "link": "/frontend/network/resumable-transfer",
+                "id": "topic-6-7-3"
+              }
+            ],
+            "id": "topic-6-7",
+            "indexLink": "/frontend/network/#topic-6-7"
+          },
+          {
+            "text": "服务端交互",
+            "items": [],
+            "id": "topic-6-8",
+            "references": [
+              {
+                "text": "RESTful 与 RPC",
+                "link": "/engineering/architecture/rest-rpc"
+              },
+              {
+                "text": "Nginx 配置",
+                "link": "/engineering/architecture/nginx"
+              },
+              {
+                "text": "负载均衡",
+                "link": "/engineering/architecture/load-balancing"
+              }
+            ],
+            "note": "协议使用在前端查阅，服务部署与架构设计回到工程与架构。",
+            "indexLink": "/frontend/network/#topic-6-8"
+          }
+        ],
+        "id": "topic-6",
+        "directory": "frontend/network",
+        "indexLink": "/frontend/network/",
+        "description": "Web 应用的 HTTP、缓存、跨域、鉴权与流式交互。底层 TCP/DNS 和服务部署引用各自领域的唯一原文。",
+        "learningPath": [
+          "URL 生命周期 → HTTP 演进 → 缓存。",
+          "跨域与鉴权 → 安全 → 实时通信。",
+          "文件传输与服务端交互连接业务实践和后端方案。"
+        ],
+        "related": [
+          {
+            "text": "计算机网络",
+            "link": "/computer-science/networking/"
+          },
+          {
+            "text": "软件架构",
+            "link": "/engineering/architecture/"
+          },
+          {
+            "text": "前端业务实践",
+            "link": "/frontend/practice/"
+          }
+        ]
+      },
+      {
+        "text": "Vue",
+        "items": [
+          {
+            "text": "基础与 API",
+            "items": [
+              {
+                "text": "Vue3 项目搭建",
+                "link": "/frontend/vue/project-setup",
+                "id": "topic-7-1-1"
+              },
+              {
+                "text": "环境变量",
+                "link": "/frontend/vue/environment-variables",
+                "id": "topic-7-1-2"
+              },
+              {
+                "text": "Composition vs Options API",
+                "link": "/frontend/vue/composition-options-api",
+                "id": "topic-7-1-3"
+              },
+              {
+                "text": "Setup 函数",
+                "link": "/frontend/vue/setup",
+                "id": "topic-7-1-4"
+              },
+              {
+                "text": "Vue 2 vs Vue 3",
+                "link": "/frontend/vue/vue2-vue3",
+                "id": "topic-7-1-5"
+              },
+              {
+                "text": "VueUse",
+                "link": "/frontend/vue/vueuse",
+                "id": "topic-7-1-6"
+              },
+              {
+                "text": "Vue 中的 Hook",
+                "link": "/frontend/vue/composables",
+                "id": "topic-7-1-7"
+              }
+            ],
+            "id": "topic-7-1",
+            "indexLink": "/frontend/vue/#topic-7-1"
+          },
+          {
+            "text": "响应式原理",
+            "items": [
+              {
+                "text": "Ref 与 Reactive",
+                "link": "/frontend/vue/ref-reactive",
+                "id": "topic-7-2-1"
+              },
+              {
+                "text": "Ref 与 Reactive（笔记）",
+                "link": "/frontend/vue/ref-reactive-notes",
+                "id": "topic-7-2-3",
+                "related": [
+                  {
+                    "text": "主文档：Ref 与 Reactive",
+                    "link": "/frontend/vue/ref-reactive"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "响应式机制",
+                "link": "/frontend/vue/reactivity-mechanism",
+                "id": "topic-7-2-4"
+              },
+              {
+                "text": "数组响应式",
+                "link": "/frontend/vue/array-reactivity",
+                "id": "topic-7-2-5"
+              },
+              {
+                "text": "Computed & Watch",
+                "link": "/frontend/vue/computed-watch",
+                "id": "topic-7-2-6"
+              },
+              {
+                "text": "Computed 双向绑定",
+                "link": "/frontend/vue/computed-two-way-binding",
+                "id": "topic-7-2-7"
+              }
+            ],
+            "id": "topic-7-2",
+            "indexLink": "/frontend/vue/#topic-7-2"
+          },
+          {
+            "text": "渲染与更新",
+            "items": [
+              {
+                "text": "虚拟 DOM",
+                "link": "/frontend/vue/virtual-dom",
+                "id": "topic-7-3-1"
+              },
+              {
+                "text": "状态到 UI 的渲染流程",
+                "link": "/frontend/vue/state-to-ui",
+                "id": "topic-7-3-2"
+              },
+              {
+                "text": "NextTick",
+                "link": "/frontend/vue/next-tick",
+                "id": "topic-7-3-3"
+              },
+              {
+                "text": "NextTick（笔记）",
+                "link": "/frontend/vue/next-tick-notes",
+                "id": "topic-7-3-4",
+                "related": [
+                  {
+                    "text": "主文档：NextTick",
+                    "link": "/frontend/vue/next-tick"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "发请求时机",
+                "link": "/frontend/vue/request-timing",
+                "id": "topic-7-3-5"
+              },
+              {
+                "text": "生命周期里的异步是否阻塞渲染",
+                "link": "/frontend/vue/async-lifecycle-rendering",
+                "id": "topic-7-3-6"
+              },
+              {
+                "text": "h 函数",
+                "link": "/frontend/vue/render-function",
+                "id": "topic-7-3-7"
+              },
+              {
+                "text": "编译器原理",
+                "link": "/frontend/vue/compiler",
+                "id": "topic-7-3-8"
+              }
+            ],
+            "id": "topic-7-3",
+            "indexLink": "/frontend/vue/#topic-7-3"
+          },
+          {
+            "text": "生命周期",
+            "items": [
+              {
+                "text": "Vue 生命周期",
+                "link": "/frontend/vue/lifecycle",
+                "id": "topic-7-4-1"
+              },
+              {
+                "text": "Vue 2/3 生命周期对比",
+                "link": "/frontend/vue/lifecycle-comparison",
+                "id": "topic-7-4-2"
+              }
+            ],
+            "id": "topic-7-4",
+            "indexLink": "/frontend/vue/#topic-7-4"
+          },
+          {
+            "text": "模板与指令",
+            "items": [
+              {
+                "text": "动态 Class / Style",
+                "link": "/frontend/vue/class-style",
+                "id": "topic-7-5-1"
+              },
+              {
+                "text": "动态 Class / Style（笔记）",
+                "link": "/frontend/vue/class-style-notes",
+                "id": "topic-7-5-2",
+                "related": [
+                  {
+                    "text": "主文档：动态 Class / Style",
+                    "link": "/frontend/vue/class-style"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "v-show vs v-if",
+                "link": "/frontend/vue/v-show-v-if",
+                "id": "topic-7-5-3"
+              },
+              {
+                "text": "v-if 与 v-for",
+                "link": "/frontend/vue/v-if-v-for",
+                "id": "topic-7-5-4"
+              },
+              {
+                "text": "v-for 的 key",
+                "link": "/frontend/vue/list-keys",
+                "id": "topic-7-5-5"
+              },
+              {
+                "text": "v-model（Vue 2）",
+                "link": "/frontend/vue/v-model-vue2",
+                "id": "topic-7-5-6"
+              },
+              {
+                "text": "v-model（Vue 3）",
+                "link": "/frontend/vue/v-model-vue3",
+                "id": "topic-7-5-7"
+              }
+            ],
+            "id": "topic-7-5",
+            "indexLink": "/frontend/vue/#topic-7-5"
+          },
+          {
+            "text": "组件系统",
+            "items": [
+              {
+                "text": "Scoped CSS",
+                "link": "/frontend/vue/scoped-css",
+                "id": "topic-7-6-1"
+              },
+              {
+                "text": "Scoped CSS（笔记）",
+                "link": "/frontend/vue/scoped-css-notes",
+                "id": "topic-7-6-2",
+                "related": [
+                  {
+                    "text": "主文档：Scoped CSS",
+                    "link": "/frontend/vue/scoped-css"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "Slot",
+                "link": "/frontend/vue/slot",
+                "id": "topic-7-6-3"
+              },
+              {
+                "text": "Slot（笔记）",
+                "link": "/frontend/vue/slot-notes",
+                "id": "topic-7-6-4",
+                "related": [
+                  {
+                    "text": "主文档：Slot",
+                    "link": "/frontend/vue/slot"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "Mixin",
+                "link": "/frontend/vue/mixin",
+                "id": "topic-7-6-5"
+              },
+              {
+                "text": "组件通信（详细）",
+                "link": "/frontend/vue/component-communication",
+                "id": "topic-7-6-6"
+              },
+              {
+                "text": "组件通信（精简）",
+                "link": "/frontend/vue/component-communication-notes",
+                "id": "topic-7-6-7",
+                "related": [
+                  {
+                    "text": "主文档：组件通信（详细）",
+                    "link": "/frontend/vue/component-communication"
+                  }
+                ],
+                "role": "supplement"
+              },
+              {
+                "text": "vue.use() 原理",
+                "link": "/frontend/vue/plugin-installation",
+                "id": "topic-7-6-8"
+              }
+            ],
+            "id": "topic-7-6",
+            "indexLink": "/frontend/vue/#topic-7-6"
+          },
+          {
+            "text": "KeepAlive",
+            "items": [
+              {
+                "text": "原理",
+                "link": "/frontend/vue/keep-alive",
+                "id": "topic-7-7-1"
+              },
+              {
+                "text": "常见坑",
+                "link": "/frontend/vue/keep-alive-pitfalls",
+                "id": "topic-7-7-2"
+              },
+              {
+                "text": "滚动位置丢失",
+                "link": "/frontend/vue/keep-alive-scroll",
+                "id": "topic-7-7-3"
+              }
+            ],
+            "id": "topic-7-7",
+            "indexLink": "/frontend/vue/#topic-7-7"
+          },
+          {
+            "text": "路由与状态",
+            "items": [
+              {
+                "text": "路由模式",
+                "link": "/frontend/vue/router-modes",
+                "id": "topic-7-8-1"
+              },
+              {
+                "text": "Vue Router 使用",
+                "link": "/frontend/vue/vue-router",
+                "id": "topic-7-8-2"
+              },
+              {
+                "text": "Vuex & Pinia",
+                "link": "/frontend/vue/vuex-pinia",
+                "id": "topic-7-8-3"
+              }
+            ],
+            "id": "topic-7-8",
+            "indexLink": "/frontend/vue/#topic-7-8"
+          }
+        ],
+        "id": "topic-7",
+        "directory": "frontend/vue",
+        "indexLink": "/frontend/vue/",
+        "description": "Vue 的 API、响应式、编译渲染、生命周期与组件协作。详解、简记及口述版均保留，主文档和补充版明确互链。",
+        "learningPath": [
+          "项目与 API → 响应式依赖追踪。",
+          "模板编译 → 渲染更新 → 生命周期。",
+          "组件通信 → KeepAlive → 路由状态，最后到业务实践验证。"
+        ],
+        "related": [
+          {
+            "text": "JavaScript",
+            "link": "/frontend/javascript/"
+          },
+          {
+            "text": "前端业务实践",
+            "link": "/frontend/practice/"
+          },
+          {
+            "text": "前端面试",
+            "link": "/interview/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "性能优化",
+        "items": [
+          {
+            "text": "前端性能优化",
+            "link": "/frontend/performance/frontend-performance",
+            "id": "topic-8-1"
+          },
+          {
+            "text": "首屏加载优化",
+            "link": "/frontend/performance/initial-load",
+            "id": "topic-8-2"
+          },
+          {
+            "text": "骨架屏",
+            "link": "/frontend/performance/skeleton-screen",
+            "id": "topic-8-3"
+          },
+          {
+            "text": "网络性能优化",
+            "link": "/frontend/performance/network-performance",
+            "id": "topic-8-4"
+          }
+        ],
+        "id": "topic-8",
+        "directory": "frontend/performance",
+        "indexLink": "/frontend/performance/",
+        "description": "性能优化专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解性能优化的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          }
+        ]
+      },
+      {
+        "text": "前端业务实践",
+        "items": [
+          {
+            "text": "组件与封装",
+            "items": [
+              {
+                "text": "拖拽组件",
+                "link": "/frontend/practice/drag-component",
+                "id": "topic-9-1-1"
+              },
+              {
+                "text": "组件封装",
+                "link": "/frontend/practice/component-design",
+                "id": "topic-9-1-2"
+              },
+              {
+                "text": "组件封装主题色",
+                "link": "/frontend/practice/component-theming",
+                "id": "topic-9-1-3"
+              },
+              {
+                "text": "全局 Loading",
+                "link": "/frontend/practice/global-loading",
+                "id": "topic-9-1-4"
+              },
+              {
+                "text": "render 动态渲染 VNode",
+                "link": "/frontend/practice/dynamic-vnode",
+                "id": "topic-9-1-5"
+              }
+            ],
+            "id": "topic-9-1",
+            "indexLink": "/frontend/practice/#topic-9-1"
+          },
+          {
+            "text": "列表与加载",
+            "items": [
+              {
+                "text": "懒加载",
+                "link": "/frontend/practice/lazy-loading",
+                "id": "topic-9-2-1"
+              },
+              {
+                "text": "上拉加载",
+                "link": "/frontend/practice/infinite-scroll",
+                "id": "topic-9-2-2"
+              },
+              {
+                "text": "长列表优化",
+                "link": "/frontend/practice/virtual-list",
+                "id": "topic-9-2-3"
+              },
+              {
+                "text": "瀑布流",
+                "link": "/frontend/practice/masonry",
+                "id": "topic-9-2-4"
+              },
+              {
+                "text": "列表与加载综合实践",
+                "link": "/frontend/practice/loading-practice-notes",
+                "id": "topic-9-2-5"
+              }
+            ],
+            "id": "topic-9-2",
+            "indexLink": "/frontend/practice/#topic-9-2"
+          },
+          {
+            "text": "路由与权限",
+            "items": [
+              {
+                "text": "动态路由与权限",
+                "link": "/frontend/practice/dynamic-routing",
+                "id": "topic-9-3-1"
+              },
+              {
+                "text": "RBAC 动态路由",
+                "link": "/frontend/practice/rbac-routing",
+                "id": "topic-9-3-2"
+              }
+            ],
+            "id": "topic-9-3",
+            "indexLink": "/frontend/practice/#topic-9-3"
+          },
+          {
+            "text": "上传与流式响应",
+            "items": [
+              {
+                "text": "文件上传",
+                "link": "/frontend/practice/file-upload",
+                "id": "topic-9-4-1"
+              },
+              {
+                "text": "流式响应",
+                "link": "/frontend/practice/streaming-response",
+                "id": "topic-9-4-2"
+              },
+              {
+                "text": "响应顺序导致渲染错位",
+                "link": "/frontend/practice/response-ordering",
+                "id": "topic-9-4-3"
+              }
+            ],
+            "id": "topic-9-4",
+            "indexLink": "/frontend/practice/#topic-9-4"
+          },
+          {
+            "text": "流式打字机",
+            "link": "/frontend/practice/streaming-typewriter",
+            "id": "topic-9-5"
+          },
+          {
+            "text": "交互与动效",
+            "items": [
+              {
+                "text": "AI 对话复制",
+                "link": "/frontend/practice/chat-copy",
+                "id": "topic-9-6-1"
+              },
+              {
+                "text": "自定义栈页面切换",
+                "link": "/frontend/practice/stack-navigation",
+                "id": "topic-9-6-2"
+              },
+              {
+                "text": "跳转特效",
+                "link": "/frontend/practice/navigation-animation",
+                "id": "topic-9-6-3"
+              },
+              {
+                "text": "人类行为验证",
+                "link": "/frontend/practice/human-verification",
+                "id": "topic-9-6-4"
+              },
+              {
+                "text": "iOS 分享卡片跳转",
+                "link": "/frontend/practice/ios-share-navigation",
+                "id": "topic-9-6-5"
+              }
+            ],
+            "id": "topic-9-6",
+            "indexLink": "/frontend/practice/#topic-9-6"
+          },
+          {
+            "text": "前端学习路线",
+            "link": "/frontend/learning-roadmap",
+            "id": "learning-roadmap"
+          }
+        ],
+        "id": "topic-9",
+        "directory": "frontend/practice",
+        "indexLink": "/frontend/practice/",
+        "description": "从组件封装、列表加载和权限路由，到上传、流式响应和交互动效的实际实现。",
+        "learningPath": [
+          "先选业务场景，再查语言、浏览器或 Vue 原理。",
+          "流式体验沿异步数据流 → SSE → 前端渲染 → 打字机体验逐层定位。",
+          "性能问题回到性能专题，服务侧方案回到工程架构。"
+        ],
+        "related": [
+          {
+            "text": "性能优化",
+            "link": "/frontend/performance/"
+          },
+          {
+            "text": "网络",
+            "link": "/frontend/network/"
+          },
+          {
+            "text": "软件架构",
+            "link": "/engineering/architecture/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "先沿 HTML → CSS → JavaScript → TypeScript 建立语言基础。",
+      "再理解浏览器渲染、事件循环与 HTTP 通信。",
+      "随后深入 Vue 响应式和渲染，最后用性能优化与业务实践验证理解。"
+    ],
+    "related": [
+      {
+        "text": "计算机基础",
+        "link": "/computer-science/"
+      },
+      {
+        "text": "工程与架构",
+        "link": "/engineering/"
+      },
+      {
+        "text": "前端面试",
+        "link": "/interview/frontend/"
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "text": "AI 与 Agent",
+    "description": "从模型与上下文出发，理解检索增强、Agent 决策、运行环境和工具扩展。产品分析回到架构概念，不以产品名切碎知识体系。",
+    "link": "/ai/",
+    "items": [
+      {
+        "text": "大模型基础",
+        "items": [
+          {
+            "text": "模型训练过程",
+            "link": "/ai/llm/model-training",
+            "id": "topic-1-1"
+          }
+        ],
+        "id": "topic-1",
+        "directory": "ai/llm",
+        "indexLink": "/ai/llm/",
+        "description": "模型训练与能力来源，为提示词、检索增强和 Agent 工程提供背景。",
+        "learningPath": [
+          "数据准备 → 预训练 → 监督微调 → 对齐训练。",
+          "区分训练改变参数与推理时构造上下文。",
+          "继续学习 Prompt 和 RAG，理解工程侧如何使用模型。"
+        ],
+        "related": [
+          {
+            "text": "Prompt Engineering",
+            "link": "/ai/prompt-engineering/"
+          },
+          {
+            "text": "RAG",
+            "link": "/ai/rag/"
+          }
+        ]
+      },
+      {
+        "text": "Prompt Engineering",
+        "items": [
+          {
+            "text": "提示词工程",
+            "link": "/ai/prompt-engineering/prompt-engineering",
+            "id": "topic-2-1"
+          },
+          {
+            "text": "Prompt 设计与优化",
+            "references": [
+              {
+                "text": "提示词工程",
+                "link": "/ai/prompt-engineering/prompt-engineering",
+                "id": "topic-2-1"
+              },
+              {
+                "text": "前端面试 Prompt 示例",
+                "link": "/ai/prompt-engineering/frontend-interview-prompt"
+              }
+            ],
+            "note": "从现有提示词笔记和模板示例开始。",
+            "id": "topic-2-2",
+            "indexLink": "/ai/prompt-engineering/#topic-2-2"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "ai/prompt-engineering",
+        "indexLink": "/ai/prompt-engineering/",
+        "description": "围绕目标、上下文、约束和输出协议设计模型输入；Agent 专用扩展通过关联链接查阅。",
+        "learningPath": [
+          "先读提示词工程，识别目标、上下文和输出约束。",
+          "用现有前端面试 Prompt 示例对照不同场景。",
+          "继续看 RAG 的上下文供给和 Agent 的指令扩展。"
+        ],
+        "related": [
+          {
+            "text": "RAG",
+            "link": "/ai/rag/"
+          },
+          {
+            "text": "Agent 扩展机制",
+            "link": "/ai/agent/extensions/"
+          }
+        ]
+      },
+      {
+        "text": "RAG",
+        "items": [
+          {
+            "text": "RAG 基础",
+            "link": "/ai/rag/rag-basics",
+            "id": "topic-3-1"
+          },
+          {
+            "text": "检索流程",
+            "references": [
+              {
+                "text": "RAG 基础",
+                "link": "/ai/rag/rag-basics",
+                "id": "topic-3-1"
+              }
+            ],
+            "note": "现有笔记包含离线数据准备和在线检索生成两个阶段。",
+            "id": "topic-3-2",
+            "indexLink": "/ai/rag/#topic-3-2"
+          },
+          {
+            "text": "Embedding",
+            "references": [
+              {
+                "text": "RAG 基础",
+                "link": "/ai/rag/rag-basics",
+                "id": "topic-3-1"
+              }
+            ],
+            "note": "向量化内容见 RAG 基础的离线数据准备部分。",
+            "id": "topic-3-3",
+            "indexLink": "/ai/rag/#topic-3-3"
+          },
+          {
+            "text": "Rerank",
+            "status": "planned",
+            "note": "待补充：目录已预留，暂未整理独立笔记。",
+            "id": "topic-3-4",
+            "indexLink": "/ai/rag/#topic-3-4"
+          },
+          {
+            "text": "RAG 评估",
+            "references": [
+              {
+                "text": "项目评估系统",
+                "link": "/interview/question-bank/project-interview"
+              }
+            ],
+            "note": "目前收录的是项目面试笔记中的评估系统说明，独立 RAG 评估笔记待整理。",
+            "id": "topic-3-5",
+            "indexLink": "/ai/rag/#topic-3-5"
+          }
+        ],
+        "id": "topic-3",
+        "directory": "ai/rag",
+        "indexLink": "/ai/rag/",
+        "description": "检索增强生成：将外部资料转化为可检索上下文，补足模型在知识与证据上的边界。",
+        "learningPath": [
+          "先读 RAG 基础，区分离线索引与在线检索生成。",
+          "沿数据准备 → Embedding → 检索 → 上下文 → 生成跟踪流程。",
+          "评估说明关联现有项目笔记；Rerank 独立知识文章尚待整理。"
+        ],
+        "related": [
+          {
+            "text": "大模型基础",
+            "link": "/ai/llm/"
+          },
+          {
+            "text": "Prompt Engineering",
+            "link": "/ai/prompt-engineering/"
+          },
+          {
+            "text": "AI 面试",
+            "link": "/interview/ai/"
+          }
+        ]
+      },
+      {
+        "text": "Agent Engineering",
+        "items": [
+          {
+            "text": "Agent 架构",
+            "items": [
+              {
+                "text": "Agent 的模块构成",
+                "link": "/ai/agent/architecture/agent-modules",
+                "id": "topic-4-1-1"
+              },
+              {
+                "text": "Agent 执行生命周期",
+                "references": [
+                  {
+                    "text": "Agent 的模块构成",
+                    "link": "/ai/agent/architecture/agent-modules",
+                    "id": "topic-4-1-1"
+                  }
+                ],
+                "note": "执行闭环和状态变化见 Agent 模块笔记。",
+                "id": "topic-4-1-2",
+                "indexLink": "/ai/agent/architecture/#topic-4-1-2"
+              }
+            ],
+            "id": "topic-4-1",
+            "directory": "ai/agent/architecture",
+            "indexLink": "/ai/agent/architecture/",
+            "description": "关注一个 Agent 内部的感知、上下文、决策、行动与反馈，以及一次任务如何闭环。",
+            "learningPath": [
+              "先读模块构成，区分模型能力与系统能力。",
+              "沿执行生命周期跟踪输入、工具行动和结果反馈。",
+              "再读 Harness，理解谁真正负责循环与状态管理。"
+            ],
+            "related": [
+              {
+                "text": "Harness",
+                "link": "/ai/agent/harness/"
+              },
+              {
+                "text": "Multi-Agent",
+                "link": "/ai/agent/multi-agent/"
+              }
+            ]
+          },
+          {
+            "text": "Multi-Agent",
+            "items": [
+              {
+                "text": "Subagent 与多 Agent 协作",
+                "link": "/ai/agent/multi-agent/collaboration-communication",
+                "id": "topic-4-2-1"
+              },
+              {
+                "text": "Agent 间通信",
+                "references": [
+                  {
+                    "text": "Subagent 与多 Agent 协作",
+                    "link": "/ai/agent/multi-agent/collaboration-communication",
+                    "id": "topic-4-2-1"
+                  }
+                ],
+                "note": "通信机制、请求响应、邮箱与共享状态见协作笔记。",
+                "id": "topic-4-2-2",
+                "indexLink": "/ai/agent/multi-agent/#topic-4-2-2"
+              },
+              {
+                "text": "任务分解与调度",
+                "references": [
+                  {
+                    "text": "Subagent 与多 Agent 协作",
+                    "link": "/ai/agent/multi-agent/collaboration-communication",
+                    "id": "topic-4-2-1"
+                  }
+                ],
+                "note": "任务拆分和协作模式见多 Agent 笔记。",
+                "id": "topic-4-2-3",
+                "indexLink": "/ai/agent/multi-agent/#topic-4-2-3"
+              }
+            ],
+            "id": "topic-4-2",
+            "directory": "ai/agent/multi-agent",
+            "indexLink": "/ai/agent/multi-agent/",
+            "description": "多 Agent 的分工、通信、状态共享和调度。先理解单 Agent 执行环境，才容易判断拆分是否有收益。",
+            "learningPath": [
+              "先理解单 Agent 生命周期。",
+              "再比较委派、协作与通信机制。",
+              "最后分析任务分解、结果汇总、共享状态和失败处理。"
+            ],
+            "related": [
+              {
+                "text": "Agent 架构",
+                "link": "/ai/agent/architecture/"
+              },
+              {
+                "text": "Harness",
+                "link": "/ai/agent/harness/"
+              },
+              {
+                "text": "计算机网络",
+                "link": "/computer-science/networking/"
+              }
+            ]
+          },
+          {
+            "text": "Harness",
+            "items": [
+              {
+                "text": "Harness 的模块构成",
+                "link": "/ai/agent/harness/harness-modules",
+                "id": "topic-4-3-1"
+              },
+              {
+                "text": "DeepSeek Harness 架构详解",
+                "link": "/ai/agent/harness/deepseek-harness",
+                "id": "topic-4-3-2"
+              }
+            ],
+            "id": "topic-4-3",
+            "directory": "ai/agent/harness",
+            "indexLink": "/ai/agent/harness/",
+            "description": "Harness 为模型提供运行环境：组织上下文、执行工具、管理状态、控制生命周期与处理异常。",
+            "learningPath": [
+              "先理解 Agent 架构，再读 Harness 的模块构成。",
+              "沿模型请求 → 工具执行 → 状态更新 → 下一轮请求追踪调用链。",
+              "用 DeepSeek Harness 架构分析对照模块、边界与工程取舍。"
+            ],
+            "related": [
+              {
+                "text": "Agent 架构",
+                "link": "/ai/agent/architecture/"
+              },
+              {
+                "text": "MCP",
+                "link": "/ai/agent/mcp/"
+              },
+              {
+                "text": "软件架构",
+                "link": "/engineering/architecture/"
+              }
+            ]
+          },
+          {
+            "text": "MCP",
+            "items": [
+              {
+                "text": "MCP 系统性知识",
+                "link": "/ai/agent/mcp/mcp-fundamentals",
+                "id": "topic-4-4-1"
+              },
+              {
+                "text": "MCP 生命周期",
+                "references": [
+                  {
+                    "text": "MCP 系统性知识",
+                    "link": "/ai/agent/mcp/mcp-fundamentals",
+                    "id": "topic-4-4-1"
+                  }
+                ],
+                "note": "握手与连接生命周期见 MCP 系统性知识。",
+                "id": "topic-4-4-2",
+                "indexLink": "/ai/agent/mcp/#topic-4-4-2"
+              },
+              {
+                "text": "MCP Client 与 Server",
+                "references": [
+                  {
+                    "text": "MCP 系统性知识",
+                    "link": "/ai/agent/mcp/mcp-fundamentals",
+                    "id": "topic-4-4-1"
+                  }
+                ],
+                "note": "Host、Client、Server 的职责见核心架构部分。",
+                "id": "topic-4-4-3",
+                "indexLink": "/ai/agent/mcp/#topic-4-4-3"
+              },
+              {
+                "text": "MCP Tool 调用机制",
+                "references": [
+                  {
+                    "text": "MCP 系统性知识",
+                    "link": "/ai/agent/mcp/mcp-fundamentals",
+                    "id": "topic-4-4-1"
+                  },
+                  {
+                    "text": "Pi Agent MCP",
+                    "link": "/ai/agent/mcp/pi-agent-mcp"
+                  }
+                ],
+                "id": "topic-4-4-4",
+                "indexLink": "/ai/agent/mcp/#topic-4-4-4"
+              },
+              {
+                "text": "Pi Agent MCP",
+                "link": "/ai/agent/mcp/pi-agent-mcp",
+                "id": "topic-4-4-5"
+              },
+              {
+                "text": "MCP 平台自研方案",
+                "link": "/ai/agent/mcp/platform-design",
+                "id": "topic-4-4-6"
+              },
+              {
+                "text": "mcpServer工具如何变成agentTool",
+                "link": "/ai/agent/mcp/server-tools-to-agent-tools",
+                "status": "planned",
+                "id": "server-tools-to-agent-tools"
+              }
+            ],
+            "id": "topic-4-4",
+            "directory": "ai/agent/mcp",
+            "indexLink": "/ai/agent/mcp/",
+            "description": "MCP 规范 Host、Client 与 Server 的连接和能力调用。Pi 的实现分析用于说明协议能力如何接入 Agent 工具系统。",
+            "learningPath": [
+              "先读 MCP 系统性知识，理解角色、握手和传输。",
+              "再追踪工具发现、工具描述注入与 tools/call 调用。",
+              "最后用 Pi Agent 和平台自研方案对照协议层、适配层与模型上下文。"
+            ],
+            "related": [
+              {
+                "text": "Harness",
+                "link": "/ai/agent/harness/"
+              },
+              {
+                "text": "Agent 扩展机制",
+                "link": "/ai/agent/extensions/"
+              },
+              {
+                "text": "网络",
+                "link": "/frontend/network/"
+              }
+            ]
+          },
+          {
+            "text": "Agent 扩展机制",
+            "items": [
+              {
+                "text": "Skill",
+                "link": "/ai/agent/extensions/skill",
+                "status": "outline",
+                "id": "topic-4-5-1"
+              },
+              {
+                "text": "Rule",
+                "link": "/ai/agent/extensions/rule",
+                "status": "outline",
+                "id": "topic-4-5-2"
+              },
+              {
+                "text": "Prompt",
+                "references": [
+                  {
+                    "text": "提示词工程",
+                    "link": "/ai/prompt-engineering/prompt-engineering",
+                    "id": "topic-2-1"
+                  },
+                  {
+                    "text": "前端面试 Prompt 示例",
+                    "link": "/ai/prompt-engineering/frontend-interview-prompt"
+                  }
+                ],
+                "id": "topic-4-5-3",
+                "indexLink": "/ai/agent/extensions/#topic-4-5-3"
+              },
+              {
+                "text": "Skill 模板",
+                "link": "/ai/agent/extensions/skill-template",
+                "id": "topic-4-5-4"
+              },
+              {
+                "text": "Agent 扩展概念",
+                "link": "/ai/agent/extensions/extension-concepts",
+                "status": "outline",
+                "id": "topic-4-5-5"
+              },
+              {
+                "text": "前端面试 Prompt 示例",
+                "link": "/ai/prompt-engineering/frontend-interview-prompt",
+                "id": "topic-4-5-6"
+              }
+            ],
+            "id": "topic-4-5",
+            "directory": "ai/agent/extensions",
+            "indexLink": "/ai/agent/extensions/",
+            "description": "Skill 组织专业任务方法，Rule 约束行为，Prompt 定义指令与上下文。通用提示词工程在独立专题维护，此处关注 Agent 侧扩展。",
+            "learningPath": [
+              "先区分 Skill、Rule、Prompt 的职责。",
+              "用 Skill 模板理解输入、流程、输出与触发条件。",
+              "回到 Harness 与 MCP，区分指令扩展和可执行工具能力。"
+            ],
+            "related": [
+              {
+                "text": "Prompt Engineering",
+                "link": "/ai/prompt-engineering/"
+              },
+              {
+                "text": "MCP",
+                "link": "/ai/agent/mcp/"
+              },
+              {
+                "text": "Harness",
+                "link": "/ai/agent/harness/"
+              }
+            ]
+          },
+          {
+            "text": "Agent 产品与框架",
+            "items": [
+              {
+                "text": "OpenClaw",
+                "link": "/ai/agent/ecosystem/openclaw",
+                "id": "topic-4-6-1"
+              }
+            ],
+            "id": "topic-4-6",
+            "directory": "ai/agent/ecosystem",
+            "indexLink": "/ai/agent/ecosystem/",
+            "description": "产品与框架是架构概念的具体实现，而不是平行于 Agent、Harness 和 MCP 的理论分类。",
+            "learningPath": [
+              "先掌握 Agent、Harness、MCP 和扩展机制。",
+              "再读产品分析，逐项映射其模块与生命周期。",
+              "用同一分析框架记录后续 Codex、Claude Code、Pi 等实现。"
+            ],
+            "related": [
+              {
+                "text": "Agent 架构",
+                "link": "/ai/agent/architecture/"
+              },
+              {
+                "text": "Harness",
+                "link": "/ai/agent/harness/"
+              },
+              {
+                "text": "MCP",
+                "link": "/ai/agent/mcp/"
+              }
+            ]
+          }
+        ],
+        "id": "topic-4",
+        "directory": "ai/agent",
+        "indexLink": "/ai/agent/",
+        "description": "Agent 是决策与行动系统；Harness 是模型之外的执行环境；MCP 是外部能力接口；Skill/Rule/Prompt 是专业能力、行为约束和上下文载体。它们不是互相替代的产品名。",
+        "learningPath": [
+          "Agent 架构明确能力模块和执行闭环。",
+          "Harness 把模型、工具、状态、权限与生命周期编排成可执行系统。",
+          "MCP 连接外部能力，扩展机制提供专业指令；在此基础上再组织多 Agent。"
+        ],
+        "related": [
+          {
+            "text": "Prompt Engineering",
+            "link": "/ai/prompt-engineering/"
+          },
+          {
+            "text": "RAG",
+            "link": "/ai/rag/"
+          },
+          {
+            "text": "AI 面试",
+            "link": "/interview/ai/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "模型训练 → Prompt Engineering → RAG：先理解模型能力与上下文来源。",
+      "Agent 架构 → Harness → MCP → 扩展机制：贯通决策、执行与工具连接。",
+      "最后研究多 Agent 协作和 OpenClaw 等实现，把抽象结构映射回真实产品。"
+    ],
+    "related": [
+      {
+        "text": "Agent Engineering",
+        "link": "/ai/agent/"
+      },
+      {
+        "text": "软件架构",
+        "link": "/engineering/architecture/"
+      },
+      {
+        "text": "AI 面试",
+        "link": "/interview/ai/"
+      }
+    ]
+  },
+  {
+    "id": "engineering",
+    "text": "工程与架构",
+    "description": "运行时、软件架构和工程工具链。将后端会话管理、异步流、一致性问题与前端业务实践串成完整的端到端方案。",
+    "link": "/engineering/",
+    "items": [
+      {
+        "text": "软件架构",
+        "items": [
+          {
+            "text": "架构设计基础",
+            "references": [
+              {
+                "text": "BFF",
+                "link": "/engineering/architecture/bff",
+                "id": "topic-1-6"
+              },
+              {
+                "text": "Web 渲染策略",
+                "link": "/engineering/architecture/web-rendering-strategies",
+                "id": "topic-1-7"
+              },
+              {
+                "text": "前端渲染模式",
+                "link": "/engineering/architecture/frontend-rendering-modes",
+                "id": "topic-1-8"
+              },
+              {
+                "text": "静态 Server vs 动态 Server",
+                "link": "/engineering/architecture/static-dynamic-servers",
+                "id": "topic-1-9"
+              }
+            ],
+            "id": "topic-1-1",
+            "indexLink": "/engineering/architecture/#topic-1-1"
+          },
+          {
+            "text": "设计模式",
+            "link": "/engineering/architecture/design-patterns",
+            "id": "topic-1-2"
+          },
+          {
+            "text": "异步流处理",
+            "link": "/engineering/architecture/async-streams",
+            "id": "topic-1-3"
+          },
+          {
+            "text": "Map 与 Redis",
+            "link": "/engineering/architecture/map-vs-redis",
+            "id": "topic-1-4"
+          },
+          {
+            "text": "原子扣费",
+            "link": "/engineering/architecture/atomic-billing",
+            "id": "topic-1-5"
+          },
+          {
+            "text": "BFF",
+            "link": "/engineering/architecture/bff",
+            "id": "topic-1-6"
+          },
+          {
+            "text": "Web 渲染策略",
+            "link": "/engineering/architecture/web-rendering-strategies",
+            "id": "topic-1-7"
+          },
+          {
+            "text": "前端渲染模式",
+            "link": "/engineering/architecture/frontend-rendering-modes",
+            "id": "topic-1-8"
+          },
+          {
+            "text": "静态 Server vs 动态 Server",
+            "link": "/engineering/architecture/static-dynamic-servers",
+            "id": "topic-1-9"
+          },
+          {
+            "text": "关系型与文档型数据库",
+            "link": "/engineering/architecture/relational-document-databases",
+            "id": "topic-1-10"
+          },
+          {
+            "text": "ELB",
+            "link": "/engineering/architecture/elastic-load-balancing",
+            "status": "planned",
+            "id": "elastic-load-balancing"
+          },
+          {
+            "text": "RESTful 与 RPC",
+            "link": "/engineering/architecture/rest-rpc",
+            "id": "rest-rpc"
+          },
+          {
+            "text": "Nginx 配置",
+            "link": "/engineering/architecture/nginx",
+            "id": "nginx"
+          },
+          {
+            "text": "负载均衡",
+            "link": "/engineering/architecture/load-balancing",
+            "id": "load-balancing"
+          }
+        ],
+        "id": "topic-1",
+        "directory": "engineering/architecture",
+        "indexLink": "/engineering/architecture/",
+        "references": [],
+        "description": "架构设计、服务通信、数据选型与一致性。会话管理、流式处理、原子扣费在同一系统设计主线上。",
+        "learningPath": [
+          "渲染策略/BFF → 服务通信与部署。",
+          "异步流 → Map/Redis 会话存储 → 数据库选择。",
+          "原子扣费 → 幂等与失败恢复，结合面试追问验证方案边界。"
+        ],
+        "related": [
+          {
+            "text": "Node.js",
+            "link": "/engineering/nodejs/"
+          },
+          {
+            "text": "服务端框架",
+            "link": "/engineering/backend-frameworks/"
+          },
+          {
+            "text": "系统设计面试",
+            "link": "/interview/system-design/"
+          }
+        ]
+      },
+      {
+        "text": "Node.js",
+        "items": [
+          {
+            "text": "事件循环",
+            "link": "/engineering/nodejs/event-loop",
+            "id": "topic-2-1"
+          },
+          {
+            "text": "模块系统",
+            "link": "/engineering/nodejs/module-system",
+            "id": "topic-2-2"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "engineering/nodejs",
+        "indexLink": "/engineering/nodejs/",
+        "description": "Node.js 运行时的事件循环与模块加载。语言模块语义和框架功能各有独立专题。",
+        "learningPath": [
+          "先读事件循环，理解异步任务的调度。",
+          "再读模块系统，区分环境识别与模块语义。",
+          "最后用服务端框架和异步流处理检验运行时知识。"
+        ],
+        "related": [
+          {
+            "text": "JavaScript",
+            "link": "/frontend/javascript/"
+          },
+          {
+            "text": "服务端框架",
+            "link": "/engineering/backend-frameworks/"
+          },
+          {
+            "text": "软件架构",
+            "link": "/engineering/architecture/"
+          }
+        ]
+      },
+      {
+        "text": "服务端框架",
+        "items": [
+          {
+            "text": "Express",
+            "link": "/engineering/backend-frameworks/express",
+            "status": "outline",
+            "id": "topic-3-1"
+          },
+          {
+            "text": "NestJS Observable",
+            "link": "/engineering/backend-frameworks/nestjs-observable",
+            "id": "topic-3-2"
+          },
+          {
+            "text": "Backend",
+            "link": "/engineering/backend-frameworks/backend-original-overview",
+            "status": "outline",
+            "id": "backend-original-overview"
+          }
+        ],
+        "id": "topic-3",
+        "directory": "engineering/backend-frameworks",
+        "indexLink": "/engineering/backend-frameworks/",
+        "description": "服务端框架专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解服务端框架的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "全栈框架",
+        "items": [
+          {
+            "text": "Next.js",
+            "link": "/engineering/fullstack-frameworks/nextjs",
+            "status": "outline",
+            "id": "topic-4-1"
+          }
+        ],
+        "id": "topic-4",
+        "directory": "engineering/fullstack-frameworks",
+        "indexLink": "/engineering/fullstack-frameworks/",
+        "description": "全栈框架专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解全栈框架的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "工程化",
+        "items": [
+          {
+            "text": "概念与架构",
+            "items": [
+              {
+                "text": "工程化的理解",
+                "link": "/engineering/toolchain/engineering-principles",
+                "id": "topic-5-1-1"
+              },
+              {
+                "text": "工程化概览",
+                "link": "/engineering/toolchain/toolchain-overview",
+                "id": "topic-5-1-2"
+              },
+              {
+                "text": "Monorepo",
+                "link": "/engineering/toolchain/monorepo",
+                "id": "topic-5-1-3"
+              },
+              {
+                "text": "CDN 原理",
+                "link": "/engineering/toolchain/cdn",
+                "id": "topic-5-1-6"
+              }
+            ],
+            "id": "topic-5-1",
+            "indexLink": "/engineering/toolchain/#topic-5-1"
+          },
+          {
+            "text": "构建工具",
+            "items": [
+              {
+                "text": "Webpack",
+                "link": "/engineering/toolchain/webpack",
+                "id": "topic-5-2-1"
+              },
+              {
+                "text": "Webpack 打包流程",
+                "link": "/engineering/toolchain/webpack-pipeline",
+                "id": "topic-5-2-2"
+              },
+              {
+                "text": "Plugin 与 Loader",
+                "link": "/engineering/toolchain/plugins-loaders",
+                "id": "topic-5-2-3"
+              },
+              {
+                "text": "提升 Webpack 速度",
+                "link": "/engineering/toolchain/webpack-performance",
+                "id": "topic-5-2-4"
+              },
+              {
+                "text": "打包体积优化",
+                "link": "/engineering/toolchain/bundle-size",
+                "id": "topic-5-2-5"
+              },
+              {
+                "text": "Tree Shaking",
+                "link": "/engineering/toolchain/tree-shaking",
+                "id": "topic-5-2-6"
+              },
+              {
+                "text": "Vite",
+                "link": "/engineering/toolchain/vite",
+                "id": "topic-5-2-7"
+              },
+              {
+                "text": "Vite 为什么快",
+                "link": "/engineering/toolchain/vite-performance",
+                "id": "topic-5-2-8"
+              },
+              {
+                "text": "Webpack vs Vite",
+                "link": "/engineering/toolchain/webpack-vite",
+                "id": "topic-5-2-9"
+              },
+              {
+                "text": "HMR 原理",
+                "link": "/engineering/toolchain/hot-module-replacement",
+                "id": "topic-5-2-10"
+              },
+              {
+                "text": "Vite 配置解读",
+                "link": "/engineering/toolchain/vite-config",
+                "id": "topic-5-2-11"
+              },
+              {
+                "text": "Babel",
+                "link": "/engineering/toolchain/babel",
+                "id": "topic-5-2-12"
+              }
+            ],
+            "id": "topic-5-2",
+            "indexLink": "/engineering/toolchain/#topic-5-2"
+          },
+          {
+            "text": "包管理与质量",
+            "items": [
+              {
+                "text": "npm vs pnpm",
+                "link": "/engineering/toolchain/npm-vs-pnpm",
+                "id": "topic-5-3-1"
+              },
+              {
+                "text": "npm vs pnpm（详细）",
+                "link": "/engineering/toolchain/package-manager-notes",
+                "id": "topic-5-3-2"
+              },
+              {
+                "text": "ESLint",
+                "link": "/engineering/toolchain/eslint",
+                "id": "topic-5-3-3"
+              },
+              {
+                "text": "Prettier",
+                "link": "/engineering/toolchain/prettier",
+                "id": "topic-5-3-4"
+              },
+              {
+                "text": "ESLint & Prettier 配置",
+                "link": "/engineering/toolchain/eslint-prettier",
+                "id": "topic-5-3-5"
+              },
+              {
+                "text": "Stylelint",
+                "link": "/engineering/toolchain/stylelint",
+                "id": "topic-5-3-6"
+              },
+              {
+                "text": "Husky & Lint-Staged",
+                "link": "/engineering/toolchain/husky-lint-staged",
+                "id": "topic-5-3-7"
+              },
+              {
+                "text": "单元测试",
+                "link": "/engineering/toolchain/unit-testing",
+                "id": "topic-5-3-8"
+              },
+              {
+                "text": "CI/CD",
+                "link": "/engineering/toolchain/ci-cd",
+                "id": "topic-5-3-9"
+              },
+              {
+                "text": "本地测试 vs 生产模式",
+                "link": "/engineering/toolchain/development-production",
+                "id": "topic-5-3-10"
+              }
+            ],
+            "id": "topic-5-3",
+            "indexLink": "/engineering/toolchain/#topic-5-3"
+          },
+          {
+            "text": "团队协作",
+            "items": [
+              {
+                "text": "组件复用与代码风格",
+                "link": "/engineering/toolchain/team-component-reuse",
+                "id": "topic-5-4-1"
+              }
+            ],
+            "id": "topic-5-4",
+            "indexLink": "/engineering/toolchain/#topic-5-4"
+          },
+          {
+            "text": "技术文档",
+            "items": [
+              {
+                "text": "文档档案对照",
+                "link": "/engineering/toolchain/document-types",
+                "id": "topic-5-5-1"
+              }
+            ],
+            "id": "topic-5-5",
+            "indexLink": "/engineering/toolchain/#topic-5-5"
+          }
+        ],
+        "id": "topic-5",
+        "directory": "engineering/toolchain",
+        "indexLink": "/engineering/toolchain/",
+        "description": "工程结构、构建流程、包管理、代码质量和团队协作；语言模块语义不在这里重复维护。",
+        "learningPath": [
+          "工程化理念与 Monorepo → Webpack/Vite/Babel 构建。",
+          "包管理 → Lint/格式化 → 单测与 CI/CD。",
+          "结合团队协作和技术文档把个人代码变成可持续交付。"
+        ],
+        "related": [
+          {
+            "text": "JavaScript",
+            "link": "/frontend/javascript/"
+          },
+          {
+            "text": "工程实践",
+            "link": "/engineering/practice/"
+          },
+          {
+            "text": "Git",
+            "link": "/tools/git/"
+          }
+        ]
+      },
+      {
+        "text": "工程实践",
+        "items": [
+          {
+            "text": "代码组织",
+            "references": [
+              {
+                "text": "Monorepo",
+                "link": "/engineering/toolchain/monorepo"
+              },
+              {
+                "text": "组件复用与代码风格",
+                "link": "/engineering/toolchain/team-component-reuse"
+              }
+            ],
+            "id": "topic-6-1",
+            "indexLink": "/engineering/practice/#topic-6-1"
+          },
+          {
+            "text": "系统设计",
+            "references": [
+              {
+                "text": "异步流处理",
+                "link": "/engineering/architecture/async-streams",
+                "id": "topic-1-3"
+              },
+              {
+                "text": "Map 与 Redis",
+                "link": "/engineering/architecture/map-vs-redis",
+                "id": "topic-1-4"
+              },
+              {
+                "text": "原子扣费",
+                "link": "/engineering/architecture/atomic-billing",
+                "id": "topic-1-5"
+              },
+              {
+                "text": "负载均衡",
+                "link": "/engineering/architecture/load-balancing"
+              }
+            ],
+            "id": "topic-6-2",
+            "indexLink": "/engineering/practice/#topic-6-2"
+          },
+          {
+            "text": "技术方案",
+            "references": [
+              {
+                "text": "MCP 平台自研方案",
+                "link": "/ai/agent/mcp/platform-design"
+              },
+              {
+                "text": "Nginx 配置",
+                "link": "/engineering/architecture/nginx"
+              }
+            ],
+            "id": "topic-6-3",
+            "indexLink": "/engineering/practice/#topic-6-3"
+          },
+          {
+            "text": "站内搜索实施计划（历史记录）",
+            "link": "/engineering/practice/search-implementation-plan",
+            "id": "search-implementation-plan"
+          },
+          {
+            "text": "站内搜索设计方案（历史记录）",
+            "link": "/engineering/practice/search-design-spec",
+            "id": "search-design-spec"
+          }
+        ],
+        "id": "topic-6",
+        "directory": "engineering/practice",
+        "indexLink": "/engineering/practice/",
+        "description": "工程实践专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解工程实践的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "先区分语言模块系统、Node.js 运行时和服务端框架。",
+      "再沿异步流 → 会话存储 → 原子扣费学习服务设计。",
+      "用构建、包管理、质量保障与历史工程方案连接设计和交付。"
+    ],
+    "related": [
+      {
+        "text": "前端业务实践",
+        "link": "/frontend/practice/"
+      },
+      {
+        "text": "Harness",
+        "link": "/ai/agent/harness/"
+      },
+      {
+        "text": "系统设计面试",
+        "link": "/interview/system-design/"
+      }
+    ]
+  },
+  {
+    "id": "computer-science",
+    "text": "计算机基础",
+    "description": "可跨语言和框架复用的基础原理。网络主文档在这里维护，Web 应用与面试专题以链接引用。",
+    "link": "/computer-science/",
+    "items": [
+      {
+        "text": "计算机网络",
+        "items": [
+          {
+            "text": "计算机网络五层模型",
+            "link": "/computer-science/networking/five-layer-model",
+            "id": "topic-1-1"
+          },
+          {
+            "text": "正向代理与反向代理",
+            "link": "/computer-science/networking/forward-reverse-proxy",
+            "id": "topic-1-2"
+          },
+          {
+            "text": "TCP",
+            "references": [
+              {
+                "text": "TCP",
+                "link": "/computer-science/networking/tcp"
+              },
+              {
+                "text": "TCP 粘包与拆包",
+                "link": "/computer-science/networking/tcp-framing"
+              }
+            ],
+            "id": "topic-1-3",
+            "indexLink": "/computer-science/networking/#topic-1-3"
+          },
+          {
+            "text": "UDP",
+            "references": [
+              {
+                "text": "TCP 可靠性与 UDP",
+                "link": "/computer-science/networking/tcp-reliability-udp"
+              }
+            ],
+            "id": "topic-1-4",
+            "indexLink": "/computer-science/networking/#topic-1-4"
+          },
+          {
+            "text": "DNS 解析",
+            "link": "/computer-science/networking/dns",
+            "id": "dns"
+          },
+          {
+            "text": "TCP",
+            "link": "/computer-science/networking/tcp",
+            "id": "tcp"
+          },
+          {
+            "text": "TCP 可靠性与 UDP",
+            "link": "/computer-science/networking/tcp-reliability-udp",
+            "id": "tcp-reliability-udp"
+          },
+          {
+            "text": "TCP 粘包与拆包",
+            "link": "/computer-science/networking/tcp-framing",
+            "id": "tcp-framing"
+          },
+          {
+            "text": "数据通信基础模式",
+            "link": "/computer-science/networking/communication-patterns",
+            "id": "communication-patterns"
+          },
+          {
+            "text": "Mac mini + mihomo 家庭局域网代理网关",
+            "link": "/computer-science/networking/mac-mini-mihomo-home-gateway",
+            "id": "mac-mini-mihomo-home-gateway",
+            "related": [
+              {
+                "text": "System Proxy / TUN / fake-IP",
+                "link": "/tools/developer-tools/proxy-tun-fake-ip"
+              }
+            ]
+          }
+        ],
+        "id": "topic-1",
+        "directory": "computer-science/networking",
+        "indexLink": "/computer-science/networking/",
+        "description": "计算机网络专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解计算机网络的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "计算机基础",
+            "link": "/computer-science/"
+          }
+        ]
+      },
+      {
+        "text": "数据结构与算法",
+        "items": [
+          {
+            "text": "数组与字符串",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-1",
+            "indexLink": "/computer-science/algorithms/#topic-2-1"
+          },
+          {
+            "text": "链表",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-2",
+            "indexLink": "/computer-science/algorithms/#topic-2-2"
+          },
+          {
+            "text": "栈与队列",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-3",
+            "indexLink": "/computer-science/algorithms/#topic-2-3"
+          },
+          {
+            "text": "哈希表",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-4",
+            "indexLink": "/computer-science/algorithms/#topic-2-4"
+          },
+          {
+            "text": "树与图",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-5",
+            "indexLink": "/computer-science/algorithms/#topic-2-5"
+          },
+          {
+            "text": "排序算法",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-6",
+            "indexLink": "/computer-science/algorithms/#topic-2-6"
+          },
+          {
+            "text": "动态规划",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "目前可查阅算法练习清单；独立的数据结构与算法知识笔记待整理。",
+            "id": "topic-2-7",
+            "indexLink": "/computer-science/algorithms/#topic-2-7"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "computer-science/algorithms",
+        "indexLink": "/computer-science/algorithms/",
+        "description": "数据结构与算法的学习导航。现有内容以面试练习清单和代码片段为主，基础文章待逐步沉淀，不复制进度记录。",
+        "learningPath": [
+          "数组与字符串、链表、栈队列、哈希表。",
+          "树与图、排序、动态规划按依赖推进。",
+          "题目与刷题进度统一在算法面试中维护。"
+        ],
+        "related": [
+          {
+            "text": "算法面试",
+            "link": "/interview/algorithms/"
+          },
+          {
+            "text": "JavaScript",
+            "link": "/frontend/javascript/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "五层模型 → DNS 与代理 → TCP/UDP：从分层理解网络。",
+      "数组/字符串 → 链表/哈希 → 树图 → 排序与动态规划：按依赖理解算法。",
+      "算法专题目前以已有练习索引和代码示例为入口，不冒充完整教材。"
+    ],
+    "related": [
+      {
+        "text": "网络",
+        "link": "/frontend/network/"
+      },
+      {
+        "text": "算法面试",
+        "link": "/interview/algorithms/"
+      }
+    ]
+  },
+  {
+    "id": "interview",
+    "text": "面试与题库",
+    "description": "面向表达与验证的题库入口，而不是技术正文的第二份副本。先回答问题，再沿链接回到知识原文验证机制、代码与边界。",
+    "link": "/interview/",
+    "items": [
+      {
+        "text": "前端面试",
+        "items": [
+          {
+            "text": "HTML 面试题",
+            "references": [
+              {
+                "text": "HTML 概览",
+                "link": "/frontend/html/html-overview"
+              },
+              {
+                "text": "图片类型及选择",
+                "link": "/frontend/html/image-formats"
+              },
+              {
+                "text": "Iframe",
+                "link": "/frontend/html/iframe"
+              },
+              {
+                "text": "微格式 Microformats",
+                "link": "/frontend/html/microformats"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-1",
+            "indexLink": "/interview/frontend/#topic-1-1"
+          },
+          {
+            "text": "CSS 面试题",
+            "references": [
+              {
+                "text": "CSS 选择器",
+                "link": "/frontend/css/selectors"
+              },
+              {
+                "text": "盒模型",
+                "link": "/frontend/css/box-model"
+              },
+              {
+                "text": "CSS 单位",
+                "link": "/frontend/css/units"
+              },
+              {
+                "text": "CSS 优先级",
+                "link": "/frontend/css/specificity"
+              },
+              {
+                "text": "BFC",
+                "link": "/frontend/css/bfc"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-2",
+            "indexLink": "/interview/frontend/#topic-1-2"
+          },
+          {
+            "text": "JavaScript 面试题",
+            "references": [
+              {
+                "text": "Var / Let / Const",
+                "link": "/frontend/javascript/var-let-const"
+              },
+              {
+                "text": "判断数据类型",
+                "link": "/frontend/javascript/type-checking"
+              },
+              {
+                "text": "类型转换",
+                "link": "/frontend/javascript/type-conversion"
+              },
+              {
+                "text": "== 与 ===",
+                "link": "/frontend/javascript/equality-operators"
+              },
+              {
+                "text": "包装对象",
+                "link": "/frontend/javascript/wrapper-objects"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-3",
+            "indexLink": "/interview/frontend/#topic-1-3"
+          },
+          {
+            "text": "TypeScript 面试题",
+            "references": [
+              {
+                "text": "TypeScript 概览",
+                "link": "/frontend/typescript/typescript-overview"
+              },
+              {
+                "text": "TS 模块系统",
+                "link": "/frontend/typescript/module-detection"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-4",
+            "indexLink": "/interview/frontend/#topic-1-4"
+          },
+          {
+            "text": "浏览器面试题",
+            "references": [
+              {
+                "text": "浏览器组成",
+                "link": "/frontend/browser/components"
+              },
+              {
+                "text": "多进程架构",
+                "link": "/frontend/browser/multiprocess-architecture"
+              },
+              {
+                "text": "渲染进程",
+                "link": "/frontend/browser/rendering-process"
+              },
+              {
+                "text": "浏览器内核",
+                "link": "/frontend/browser/engines"
+              },
+              {
+                "text": "JS/CSS 阻塞渲染",
+                "link": "/frontend/browser/render-blocking"
+              },
+              {
+                "text": "浏览器渲染模式",
+                "link": "/frontend/browser/rendering-modes"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-5",
+            "indexLink": "/interview/frontend/#topic-1-5"
+          },
+          {
+            "text": "网络面试题",
+            "references": [
+              {
+                "text": "输入 URL 后发生了什么",
+                "link": "/frontend/network/url-lifecycle"
+              },
+              {
+                "text": "DNS 解析",
+                "link": "/computer-science/networking/dns"
+              },
+              {
+                "text": "HTTP 基础",
+                "link": "/frontend/network/http"
+              },
+              {
+                "text": "HTTP vs HTTPS",
+                "link": "/frontend/network/http-https"
+              },
+              {
+                "text": "HTTP 演进",
+                "link": "/frontend/network/http-evolution"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-6",
+            "indexLink": "/interview/frontend/#topic-1-6"
+          },
+          {
+            "text": "Vue 面试题",
+            "references": [
+              {
+                "text": "Vue3 项目搭建",
+                "link": "/frontend/vue/project-setup"
+              },
+              {
+                "text": "环境变量",
+                "link": "/frontend/vue/environment-variables"
+              },
+              {
+                "text": "Composition vs Options API",
+                "link": "/frontend/vue/composition-options-api"
+              },
+              {
+                "text": "Setup 函数",
+                "link": "/frontend/vue/setup"
+              },
+              {
+                "text": "Vue 2 vs Vue 3",
+                "link": "/frontend/vue/vue2-vue3"
+              }
+            ],
+            "note": "复习索引：关联现有学习笔记，独立题库后续整理。",
+            "id": "topic-1-7",
+            "indexLink": "/interview/frontend/#topic-1-7"
+          },
+          {
+            "text": "Ref / Reactive 口述",
+            "link": "/interview/frontend/reactivity-answer",
+            "id": "reactivity-answer",
+            "related": [
+              {
+                "text": "主文档：Ref 与 Reactive",
+                "link": "/frontend/vue/ref-reactive"
+              }
+            ],
+            "role": "answer"
+          }
+        ],
+        "id": "topic-1",
+        "directory": "interview/frontend",
+        "indexLink": "/interview/frontend/",
+        "description": "前端面试专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解前端面试的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          },
+          {
+            "text": "AI 与 Agent",
+            "link": "/ai/"
+          },
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "AI 面试",
+        "items": [
+          {
+            "text": "大模型基础",
+            "references": [
+              {
+                "text": "模型训练过程",
+                "link": "/ai/llm/model-training"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-2-1",
+            "indexLink": "/interview/ai/#topic-2-1"
+          },
+          {
+            "text": "RAG",
+            "references": [
+              {
+                "text": "RAG 基础",
+                "link": "/ai/rag/rag-basics",
+                "id": "topic-3-1"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-2-2",
+            "indexLink": "/interview/ai/#topic-2-2"
+          },
+          {
+            "text": "Prompt Engineering",
+            "references": [
+              {
+                "text": "提示词工程",
+                "link": "/ai/prompt-engineering/prompt-engineering",
+                "id": "topic-2-1"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-2-3",
+            "indexLink": "/interview/ai/#topic-2-3"
+          },
+          {
+            "text": "Agent 架构",
+            "references": [
+              {
+                "text": "Agent 的模块构成",
+                "link": "/ai/agent/architecture/agent-modules",
+                "id": "topic-4-1-1"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-2-4",
+            "indexLink": "/interview/ai/#topic-2-4"
+          },
+          {
+            "text": "Harness",
+            "references": [
+              {
+                "text": "Harness 的模块构成",
+                "link": "/ai/agent/harness/harness-modules"
+              },
+              {
+                "text": "DeepSeek Harness 架构详解",
+                "link": "/ai/agent/harness/deepseek-harness"
+              }
+            ],
+            "id": "topic-2-5",
+            "indexLink": "/interview/ai/#topic-2-5"
+          },
+          {
+            "text": "MCP",
+            "references": [
+              {
+                "text": "MCP 系统性知识",
+                "link": "/ai/agent/mcp/mcp-fundamentals",
+                "id": "topic-4-4-1"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-2-6",
+            "indexLink": "/interview/ai/#topic-2-6"
+          },
+          {
+            "text": "Skill",
+            "references": [
+              {
+                "text": "Skill 模板",
+                "link": "/ai/agent/extensions/skill-template"
+              }
+            ],
+            "id": "topic-2-7",
+            "indexLink": "/interview/ai/#topic-2-7"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "interview/ai",
+        "indexLink": "/interview/ai/",
+        "description": "AI 面试专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解AI 面试的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          },
+          {
+            "text": "AI 与 Agent",
+            "link": "/ai/"
+          },
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "系统设计面试",
+        "items": [
+          {
+            "text": "异步流处理",
+            "references": [
+              {
+                "text": "异步流处理",
+                "link": "/engineering/architecture/async-streams",
+                "id": "topic-1-3"
+              },
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-3-1",
+            "indexLink": "/interview/system-design/#topic-3-1"
+          },
+          {
+            "text": "流式响应",
+            "references": [
+              {
+                "text": "流式响应",
+                "link": "/frontend/practice/streaming-response"
+              },
+              {
+                "text": "流式打字机",
+                "link": "/frontend/practice/streaming-typewriter"
+              }
+            ],
+            "id": "topic-3-2",
+            "indexLink": "/interview/system-design/#topic-3-2"
+          },
+          {
+            "text": "Redis 设计",
+            "references": [
+              {
+                "text": "Map 与 Redis",
+                "link": "/engineering/architecture/map-vs-redis",
+                "id": "topic-1-4"
+              }
+            ],
+            "id": "topic-3-3",
+            "indexLink": "/interview/system-design/#topic-3-3"
+          },
+          {
+            "text": "原子扣费",
+            "references": [
+              {
+                "text": "原子扣费",
+                "link": "/engineering/architecture/atomic-billing",
+                "id": "topic-1-5"
+              }
+            ],
+            "id": "topic-3-4",
+            "indexLink": "/interview/system-design/#topic-3-4"
+          },
+          {
+            "text": "高并发与一致性",
+            "references": [
+              {
+                "text": "原子扣费",
+                "link": "/engineering/architecture/atomic-billing",
+                "id": "topic-1-5"
+              },
+              {
+                "text": "Map 与 Redis",
+                "link": "/engineering/architecture/map-vs-redis",
+                "id": "topic-1-4"
+              },
+              {
+                "text": "负载均衡",
+                "link": "/engineering/architecture/load-balancing"
+              }
+            ],
+            "id": "topic-3-5",
+            "indexLink": "/interview/system-design/#topic-3-5"
+          }
+        ],
+        "id": "topic-3",
+        "directory": "interview/system-design",
+        "indexLink": "/interview/system-design/",
+        "description": "系统设计面试专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解系统设计面试的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          },
+          {
+            "text": "AI 与 Agent",
+            "link": "/ai/"
+          },
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "算法面试",
+        "items": [
+          {
+            "text": "高频算法",
+            "link": "/interview/algorithms/practice-tracker",
+            "id": "topic-4-1"
+          },
+          {
+            "text": "算法题解",
+            "references": [
+              {
+                "text": "算法练习清单",
+                "link": "/interview/algorithms/practice-tracker"
+              }
+            ],
+            "note": "现有内容是练习清单与进度记录，完整题解待补充。",
+            "id": "topic-4-2",
+            "indexLink": "/interview/algorithms/#topic-4-2"
+          }
+        ],
+        "id": "topic-4",
+        "directory": "interview/algorithms",
+        "indexLink": "/interview/algorithms/",
+        "description": "算法面试专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解算法面试的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          },
+          {
+            "text": "AI 与 Agent",
+            "link": "/ai/"
+          },
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      },
+      {
+        "text": "面试题汇总",
+        "items": [
+          {
+            "text": "高频问题",
+            "references": [
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              },
+              {
+                "text": "复习记录",
+                "link": "/interview/question-bank/review-journal"
+              }
+            ],
+            "id": "topic-5-1",
+            "indexLink": "/interview/question-bank/#topic-5-1"
+          },
+          {
+            "text": "常见追问",
+            "references": [
+              {
+                "text": "项目面试题汇总",
+                "link": "/interview/question-bank/project-interview",
+                "id": "topic-5-4"
+              }
+            ],
+            "id": "topic-5-2",
+            "indexLink": "/interview/question-bank/#topic-5-2"
+          },
+          {
+            "text": "面试复盘",
+            "link": "/interview/question-bank/review-journal",
+            "id": "topic-5-3"
+          },
+          {
+            "text": "项目面试题汇总",
+            "link": "/interview/question-bank/project-interview",
+            "id": "topic-5-4"
+          }
+        ],
+        "id": "topic-5",
+        "directory": "interview/question-bank",
+        "indexLink": "/interview/question-bank/",
+        "description": "面试题汇总专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解面试题汇总的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "前端开发",
+            "link": "/frontend/"
+          },
+          {
+            "text": "AI 与 Agent",
+            "link": "/ai/"
+          },
+          {
+            "text": "工程与架构",
+            "link": "/engineering/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "选领域问题，先不看资料作简答。",
+      "对照关联原文补齐原理、实现与失败场景。",
+      "练习追问与代码，最后在复习记录里沉淀薄弱点。"
+    ],
+    "related": [
+      {
+        "text": "前端开发",
+        "link": "/frontend/"
+      },
+      {
+        "text": "AI 与 Agent",
+        "link": "/ai/"
+      },
+      {
+        "text": "工程与架构",
+        "link": "/engineering/"
+      },
+      {
+        "text": "计算机基础",
+        "link": "/computer-science/"
+      }
+    ]
+  },
+  {
+    "id": "tools",
+    "text": "工具与实践",
+    "description": "研发工具的使用与排障经验。Git 管理变更，Shell 与 SSH 管理执行环境，调试和代理工具帮助定位实际问题。",
+    "link": "/tools/",
+    "items": [
+      {
+        "text": "Git",
+        "items": [
+          {
+            "text": "Git 基础",
+            "references": [
+              {
+                "text": "Git 语法",
+                "link": "/tools/git/git-basics",
+                "id": "topic-1-4"
+              }
+            ],
+            "id": "topic-1-1",
+            "indexLink": "/tools/git/#topic-1-1"
+          },
+          {
+            "text": "分支管理",
+            "link": "/tools/git/branch-workflow",
+            "id": "topic-1-2"
+          },
+          {
+            "text": "Git 工作流",
+            "references": [
+              {
+                "text": "分支开发流程",
+                "link": "/tools/git/branch-workflow"
+              },
+              {
+                "text": "Git 语法",
+                "link": "/tools/git/git-basics",
+                "id": "topic-1-4"
+              }
+            ],
+            "id": "topic-1-3",
+            "indexLink": "/tools/git/#topic-1-3"
+          },
+          {
+            "text": "Git 语法",
+            "link": "/tools/git/git-basics",
+            "id": "topic-1-4"
+          }
+        ],
+        "id": "topic-1",
+        "directory": "tools/git",
+        "indexLink": "/tools/git/",
+        "references": [],
+        "description": "Git专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解Git的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工具与实践",
+            "link": "/tools/"
+          }
+        ]
+      },
+      {
+        "text": "Shell 与调试",
+        "items": [
+          {
+            "text": "Shell 基础",
+            "references": [
+              {
+                "text": "Shell 配置文件读取顺序",
+                "link": "/tools/shell/startup-files",
+                "id": "topic-2-4"
+              },
+              {
+                "text": "执行 Shell 的方式",
+                "link": "/tools/shell/execution-methods",
+                "id": "topic-2-5"
+              }
+            ],
+            "id": "topic-2-1",
+            "indexLink": "/tools/shell/#topic-2-1"
+          },
+          {
+            "text": "命令行工具",
+            "references": [
+              {
+                "text": "Shell 配置文件读取顺序",
+                "link": "/tools/shell/startup-files",
+                "id": "topic-2-4"
+              },
+              {
+                "text": "执行 Shell 的方式",
+                "link": "/tools/shell/execution-methods",
+                "id": "topic-2-5"
+              },
+              {
+                "text": "SSH 远程连接",
+                "link": "/tools/shell/ssh",
+                "id": "topic-2-6"
+              },
+              {
+                "text": "System Proxy / TUN / fake-IP",
+                "link": "/tools/developer-tools/proxy-tun-fake-ip",
+                "id": "topic-2-7"
+              }
+            ],
+            "id": "topic-2-2",
+            "indexLink": "/tools/shell/#topic-2-2"
+          },
+          {
+            "text": "调试技巧",
+            "link": "/tools/developer-tools/debug",
+            "id": "topic-2-3"
+          },
+          {
+            "text": "Shell 配置文件读取顺序",
+            "link": "/tools/shell/startup-files",
+            "id": "topic-2-4"
+          },
+          {
+            "text": "执行 Shell 的方式",
+            "link": "/tools/shell/execution-methods",
+            "id": "topic-2-5"
+          },
+          {
+            "text": "SSH 远程连接",
+            "link": "/tools/shell/ssh",
+            "id": "topic-2-6"
+          },
+          {
+            "text": "System Proxy / TUN / fake-IP",
+            "link": "/tools/developer-tools/proxy-tun-fake-ip",
+            "id": "topic-2-7"
+          }
+        ],
+        "id": "topic-2",
+        "directory": "tools/shell",
+        "indexLink": "/tools/shell/",
+        "description": "Shell 与调试专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解Shell 与调试的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工具与实践",
+            "link": "/tools/"
+          }
+        ]
+      },
+      {
+        "text": "其他工具",
+        "items": [
+          {
+            "text": "开发环境",
+            "references": [
+              {
+                "text": "Vue3 项目搭建",
+                "link": "/frontend/vue/project-setup"
+              },
+              {
+                "text": "Shell 配置文件读取顺序",
+                "link": "/tools/shell/startup-files",
+                "id": "topic-2-4"
+              },
+              {
+                "text": "执行 Shell 的方式",
+                "link": "/tools/shell/execution-methods",
+                "id": "topic-2-5"
+              }
+            ],
+            "id": "topic-3-1",
+            "indexLink": "/tools/developer-tools/#topic-3-1"
+          },
+          {
+            "text": "效率工具",
+            "references": [
+              {
+                "text": "Lodash 库概览",
+                "link": "/frontend/javascript/lodash-overview"
+              },
+              {
+                "text": "Lodash 常用方法",
+                "link": "/frontend/javascript/lodash-methods"
+              }
+            ],
+            "id": "topic-3-2",
+            "indexLink": "/tools/developer-tools/#topic-3-2"
+          }
+        ],
+        "id": "topic-3",
+        "directory": "tools/developer-tools",
+        "indexLink": "/tools/developer-tools/",
+        "description": "其他工具专题：按原理、实现和实际应用组织现有笔记。",
+        "learningPath": [
+          "先按下方知识模块理解其他工具的核心概念。",
+          "再结合代码、对比与场景笔记验证边界。",
+          "遇到跨领域问题，沿关联专题回到知识主文档。"
+        ],
+        "related": [
+          {
+            "text": "工具与实践",
+            "link": "/tools/"
+          }
+        ]
+      }
+    ],
+    "learningPath": [
+      "Git 语法 → 分支流程：先建立可回溯的变更习惯。",
+      "Shell 启动文件 → 执行方式 → SSH：理解命令在哪个环境运行。",
+      "最后结合调试、系统代理与 TUN/fake-IP 定位问题。"
+    ],
+    "related": [
+      {
+        "text": "工程化",
+        "link": "/engineering/toolchain/"
+      },
+      {
+        "text": "前端业务实践",
+        "link": "/frontend/practice/"
+      }
+    ]
+  }
+]

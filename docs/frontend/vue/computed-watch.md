@@ -1,0 +1,49 @@
+---
+title: "Computed & Watch"
+description: "Computed & Watch：语言基础、浏览器、网络、Vue 与前端业务实践"
+tags: ["前端开发"]
+docType: "concept"
+knowledgeTopic: "/frontend/vue/"
+migrationSource: "interview/vue/computed-watch.md"
+---
+
+# computed/watch
+
+## 区别
+
+| 维度     | computed                           | watch                                 |
+| :------- | :--------------------------------- | :------------------------------------ |
+| 本质     | 计算属性，派生数据                 | 侦听器，执行副作用                    |
+| 返回值   | ✅ 必须有返回值                    | ❌ 不需要返回值                       |
+| 缓存     | ✅ 有缓存，依赖不变就不重新计算    | ❌ 无缓存，每次变化都执行             |
+| 异步     | ❌ 不能异步（getter 必须同步返回） | ✅ 可以异步（发请求、操作 DOM 等）    |
+| 适用场景 | 一个值由其他值计算得来             | 值变化后需要"做某件事"                |
+| 首次执行 | ✅ 首次访问时执行                  | ❌ 默认不执行（除非 immediate: true） |
+
+## computed
+
+计算属性（基于已有响应式数据，派生出一个新的属性）
+
+- 缓存机制：computed 具有响应式缓存。
+  - 只有当它所依赖的响应式属性发生改变时，它才会重新求值。
+  - 如果依赖未变，多次访问该属性会立即返回之前的计算结果，而不必再次执行函数。
+- 执行时机：默认是“惰性求值”（Lazy）。
+  - 只有在它被读取时，且依赖已更新，才会触发计算。
+
+## watch
+
+侦听器（观察者副作用）
+
+- 监听某个特定数据的变化，并执行相应的回调函数。
+- 执行时机：支持多种配置，如 immediate: true（立即执行）和 deep: true（深度监听）。
+- 支持执行异步操作、修改 DOM、或者修改其他响应式状态。
+
+### watch 是如何做到监听的（底层原理）：
+
+不管是 Vue 2 还是 Vue 3，核心都是 **依赖收集（Track）与派发更新（Trigger）**。
+
+- Vue 2 (`Object.defineProperty`)： 在初始化 `watch` 时，Vue 会实例化一个 `Watcher 对象` 。在这个过程中，会去读取被监听对象的属性（触发 `getter`）。在 `getter` 中，当前的 `Watcher` 会被收集到该属性的依赖收集器（`Dep`）中。当数据被修改时（触发 `setter`），`Dep` 会通知内部所有的 `Watcher 对象` 执行 `update 方法`，从而触发用户定义的回调函数。
+
+- Vue 3 (`Proxy`)： Vue 3 使用 `Proxy` 代理了整个对象。使用 `watch` 时，内部会跑一个副作用函数（`effect`），在读取代理对象属性时，触发 `Proxy` 的 `get` 拦截器，将当前的 `effect` 收集到全局的依赖图谱（`TargetMap`）中。当属性被赋值时，触发 `set` 拦截器，从图谱中找出对应的 `effect` 并执行 `watch` 回调。
+
+#### 浅了解一下 watchEffect

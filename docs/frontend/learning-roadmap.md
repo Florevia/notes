@@ -1,0 +1,16 @@
+---
+title: "前端学习路线"
+description: "前端学习路线：语言基础、浏览器、网络、Vue 与前端业务实践"
+tags: ["前端开发"]
+docType: "concept"
+knowledgeTopic: "/frontend/"
+migrationSource: "frontend/前端学习路线.md"
+---
+
+1. 夯实基础 (P4 级别)： 深入掌握 HTML5 语义化、CSS3 响应式布局与动画、JavaScript 核心（闭包、原型链、异步编程、ES6+）。
+
+2. 主流框架与工程化 (P5 级别)： 精通 React 或 Vue 的底层原理（虚拟 DOM、Diff 算法、状态管理），熟练使用 Webpack/Vite 等构建工具，掌握 Git、CI/CD 流程。
+
+3. 性能调优与架构 (P6 级别)： 掌握网络协议（HTTP/2/3）、浏览器渲染原理、前端安全（XSS/CSRF）、微前端架构、SSR/SSG。
+
+4. 全栈与前沿领域 (P7+级别)： 熟练运用 Node.js 开发 BFF 层，掌握数据库基础，探索 WebGL/WebGPU、WebAssembly，以及如今火热的 AI 原生应用开发。

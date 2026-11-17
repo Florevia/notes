@@ -1,0 +1,94 @@
+---
+title: "隐藏元素的方式"
+description: "隐藏元素的方式：语言基础、浏览器、网络、Vue 与前端业务实践"
+tags: ["前端开发"]
+docType: "concept"
+knowledgeTopic: "/frontend/css/"
+migrationSource: "interview/css/隐藏元素的方式.md"
+---
+
+# CSS 隐藏元素的方式
+
+## 1. display: none
+
+最彻底的隐藏方式。
+
+- 会触发 **Reflow (重排)** 和 Repaint (重绘)。
+- 所有子元素也会被隐藏，且无法通过给子元素设置 `display: block` 来显示。
+- 不可点击
+- 不参与布局
+- 元素不显示
+
+## 2. visibility: hidden
+
+“隐身”效果。
+
+- 元素看不见
+- 不可点击（鼠标事件不会触发）
+- 只触发 **Repaint (重绘)**
+- 子元素继承隐藏。**但**如果给子元素设置 `visibility: visible`，子元素**可以显示**出来
+
+## 3. opacity: 0
+
+透明度设为 0。
+
+- 元素透明不可见
+- 占据空间
+- 可以点击，可以触发事件
+- 如果不改变 layout，只触发 Repaint（通常结合 GPU 加速）
+- 子元素也透明，无法单独显示
+
+## 4. position: absolute (移出可视区)
+
+- 屏幕内看不见。
+- 不影响主体文档流（因为脱离了文档流），但理论上它还在 DOM 树里渲染。
+- 看不见所以点不到，但键盘 Tab 键可能还能切到。
+- 常用于 seo 优化（比如隐藏的文字标签）。
+
+```css
+.hide {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+```
+
+## 5. z-index: -999
+
+把元素藏在其他元素底下。
+
+- 被其他层盖住了。
+- 占据空间。
+- 点不到（因为被挡住了）。
+
+```css
+.hide {
+  position: relative;
+  z-index: -999;
+}
+```
+
+## 6. height: 0 + overflow: hidden
+
+- 类似折叠起来了
+- 如果是 block 元素，高度为 0，但 border/margin 可能还在
+- 无法点击
+- 常用作手风琴动画效果
+
+```css
+.hide {
+  height: 0;
+  overflow: hidden;
+}
+```
+
+---
+
+## 总结对比表
+
+| 方式                   | 占据空间? | 能点击交互? | 触发重排(Reflow)? | 子元素可复原?   | 备注                     |
+| :--------------------- | :-------- | :---------- | :---------------- | :-------------- | :----------------------- |
+| **display: none**      | ❌ (无)   | ❌          | ✅ (高开销)       | ❌              | 最常用的彻底隐藏         |
+| **visibility: hidden** | ✅ (有)   | ❌          | ❌ (仅重绘)       | ✅ (可 visible) | 占坑位，子元素可救       |
+| **opacity: 0**         | ✅ (有)   | ✅ (能!)    | ❌ (仅重绘)       | ❌              | 仅仅是看不见，还得防误触 |
+| **position: absolute** | ❌ (脱离) | ❌          | ✅                | ❌              | 这种叫“移走”更合适       |

@@ -1,0 +1,104 @@
+---
+title: "独立标签页通信"
+description: "独立标签页通信：语言基础、浏览器、网络、Vue 与前端业务实践"
+tags: ["前端开发"]
+docType: "architecture"
+knowledgeTopic: "/frontend/browser/"
+migrationSource: "interview/浏览器/独立标签页通信.md"
+---
+
+# 独立标签页通信
+
+## 方案
+
+### 1. localStorage + storage 事件
+
+一个标签页修改 localStorage，其他同源标签页会触发 storage 事件。
+
+```js
+// tab1
+localStorage.setItem("msg", "hello");
+
+// tab2
+window.addEventListener("storage", (e) => {
+  console.log(e.key, e.newValue);
+});
+```
+
+- 特点：
+  - 只能同源页面通信
+  - 当前页自己修改 localStorage 不会触发自己页面的 storage 事件
+  - 实现简单，兼容性好
+
+---
+
+### 基于 BroadcastChannel
+
+同源页面之间可以通过频道广播消息。
+
+```js
+const bc = new BroadcastChannel("test");
+bc.postMessage("hello");
+
+bc.onmessage = (e) => {
+  console.log(e.data);
+};
+```
+
+- 特点：
+  - API 简单
+  - 支持多个 tab、iframe、worker 通信
+  - 也是同源限制
+
+---
+
+### 基于 postMessage 消息传递
+
+`window.open + postMessage`
+
+- 如果 tab 是通过 window.open 打开的，并且可以拿到窗口引用，可以用 postMessage。
+
+```js
+otherWindow.postMessage({ msg: "hello" }, "\*");
+```
+
+- 特点：
+  - 可跨域，但要校验 origin
+  - 常用于页面与 iframe / 新窗口通信
+
+---
+
+### 基于 IndexedDB 数据库存储
+
+### 最小 Demo 包含：
+
+1. 公共工具函数 ：
+   - openDB() - 打开/创建数据库
+   - addMessage(content) - 添加消息到数据库
+   - getLatestMessage(lastId) - 获取最新消息
+
+2. 页面 A (发送方) ：简单调用 addMessage() 发送消息
+3. 页面 B (接收方) ：使用 setInterval 每秒轮询检查新消息
+
+### 基于服务站中转
+
+1. WebSocket 实时通信
+
+2. SSE
+
+3. 轮询
+
+- 特点：
+  - 不依赖浏览器本地能力
+  - 不同设备、不同浏览器也能通信
+  - 本质上是通过服务端同步消息
+
+### 基于 Shared Worker 消息传递
+
+- 中央消息总线：
+  - 一个独立的 js 文件作为后台守护线程
+  - 所有的页面都连接到这个 Worker，由它负责将消息广播给其他人
+
+```
+
+```
