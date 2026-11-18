@@ -715,6 +715,11 @@
                 "text": "Axios / Fetch / SSE 与 MCP",
                 "link": "/frontend/network/http-streaming",
                 "id": "topic-6-1-8"
+              },
+              {
+                "text": "XHR、Fetch 与 Axios 关系与用法",
+                "link": "/frontend/network/xhr-axios-fetch",
+                "id": "topic-6-1-9"
               }
             ],
             "id": "topic-6-1",

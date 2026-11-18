@@ -40,6 +40,8 @@ Web 应用的 HTTP、缓存、跨域、鉴权与流式交互。底层 TCP/DNS �
 
 - [Axios / Fetch / SSE 与 MCP](/frontend/network/http-streaming)
 
+- [XHR、Fetch 与 Axios 关系与用法](/frontend/network/xhr-axios-fetch)
+
 ## 缓存机制 {#topic-6-2}
 
 
