@@ -1969,13 +1969,23 @@
           },
           {
             "text": "Agent 产品与框架",
-            "items": [
-              {
-                "text": "OpenClaw",
-                "link": "/ai/agent/ecosystem/openclaw",
-                "id": "topic-4-6-1"
-              }
-            ],
+        "items": [
+          {
+            "text": "OpenClaw",
+            "link": "/ai/agent/ecosystem/openclaw",
+            "id": "topic-4-6-1"
+          },
+          {
+            "text": "Codex System Prompt",
+            "link": "/ai/agent/ecosystem/codex-system-prompt",
+            "id": "topic-4-6-2"
+          },
+          {
+            "text": "Cursor System Prompt",
+            "link": "/ai/agent/ecosystem/cursor-system-prompt",
+            "id": "topic-4-6-3"
+          }
+        ],
             "id": "topic-4-6",
             "directory": "ai/agent/ecosystem",
             "indexLink": "/ai/agent/ecosystem/",
@@ -3463,6 +3473,28 @@
             "text": "Git 语法",
             "link": "/tools/git/git-basics",
             "id": "topic-1-4"
+          },
+          {
+            "text": "远程与代理",
+            "references": [
+              {
+                "text": "SSH 远程连接",
+                "link": "/tools/shell/ssh"
+              },
+              {
+                "text": "System Proxy / TUN / fake-IP",
+                "link": "/tools/developer-tools/proxy-tun-fake-ip"
+              }
+            ],
+            "items": [
+              {
+                "text": "Git 走 SSH 代理的原理",
+                "link": "/tools/git/git-ssh-proxy",
+                "id": "topic-1-5-1"
+              }
+            ],
+            "id": "topic-1-5",
+            "indexLink": "/tools/git/#topic-1-5"
           }
         ],
         "id": "topic-1",
@@ -3609,6 +3641,11 @@
             ],
             "id": "topic-3-2",
             "indexLink": "/tools/developer-tools/#topic-3-2"
+          },
+          {
+            "text": "mitmproxy 抓 curl/git/npm/pnpm",
+            "link": "/tools/developer-tools/mitmproxy-cli-proxy",
+            "id": "topic-3-3"
           }
         ],
         "id": "topic-3",

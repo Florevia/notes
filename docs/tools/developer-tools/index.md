@@ -33,6 +33,8 @@ outline: [2, 3]
 - [Lodash 库概览](/frontend/javascript/lodash-overview)
 - [Lodash 常用方法](/frontend/javascript/lodash-methods)
 
+- [mitmproxy 抓 curl/git/npm/pnpm](/tools/developer-tools/mitmproxy-cli-proxy)
+
 ## 本专题其他原始笔记
 
 - [System Proxy / TUN / fake-IP](/tools/developer-tools/proxy-tun-fake-ip)

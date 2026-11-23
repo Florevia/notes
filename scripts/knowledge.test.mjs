@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, existsSync, rmSync } from 'node:fs';
+import { readFileSync, mkdtempSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { noteCategories, notesNav, notesSidebar, findKnowledgeContext } from '../docs/.vitepress/navigation.ts';
@@ -17,6 +17,13 @@ test('six domains share the navigation source and isolate their sidebars',()=>{
   assert.equal(notesNav.find(n=>n.text===c.text).link,c.link);
   assert(notesSidebar[c.link]);
   for (const n of flatten(c.items)) if(n.link) assert(n.link.startsWith(c.link));
+ }
+});
+test('category directories match sidebar path case',()=>{
+ const names = readdirSync(new URL('docs/', root));
+ for (const c of noteCategories) {
+  const dir = c.link.split('/').filter(Boolean)[0];
+  assert(names.includes(dir), `${c.text} directory must be ${dir} so VitePress relativePath matches the sidebar`);
  }
 });
 test('all 264 original article bodies have one primary menu owner',()=>{

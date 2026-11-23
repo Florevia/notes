@@ -24,6 +24,10 @@ outline: [2, 3]
 
 - [OpenClaw](/ai/agent/ecosystem/openclaw)
 
+- [Codex System Prompt](/ai/agent/ecosystem/codex-system-prompt)
+
+- [Cursor System Prompt](/ai/agent/ecosystem/cursor-system-prompt)
+
 ## 关联专题
 
 - [Agent 架构](/ai/agent/architecture/)

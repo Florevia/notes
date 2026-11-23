@@ -35,6 +35,13 @@ Git专题：按原理、实现和实际应用组织现有笔记。
 
 - [Git 语法](/tools/git/git-basics)
 
+## 远程与代理 {#topic-1-5}
+
+- [SSH 远程连接](/tools/shell/ssh)
+- [System Proxy / TUN / fake-IP](/tools/developer-tools/proxy-tun-fake-ip)
+
+- [Git 走 SSH 代理的原理](/tools/git/git-ssh-proxy)
+
 ## 关联专题
 
 - [工具与实践](/tools/)
