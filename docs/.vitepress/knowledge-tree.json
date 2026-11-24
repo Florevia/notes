@@ -245,6 +245,11 @@
                 "text": "剩余参数",
                 "link": "/frontend/javascript/rest-parameters",
                 "id": "topic-3-1-10"
+              },
+              {
+                "text": "报错类型",
+                "link": "/frontend/javascript/error-types",
+                "id": "topic-3-1-11"
               }
             ],
             "id": "topic-3-1",
