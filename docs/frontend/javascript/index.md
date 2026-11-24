@@ -123,7 +123,7 @@ JavaScript专题：按原理、实现和实际应用组织现有笔记。
 
 这些文件是已有学习片段，保留原始内容；代码链接用于查看或下载，不代表完整可运行项目。
 
-- [index.ts](/examples/frontend/JavaScript/ecma-262/es5/index.ts)
+- [index.ts](/examples/frontend/javascript/ecma-262/es5/index.ts)
 - [a++-++a.js](/examples/interview/js/a++-++a.js)
 - [index.js](/examples/interview/js/index.js)
 - [index.ts](/examples/interview/js/index.ts)

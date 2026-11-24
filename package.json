@@ -9,7 +9,7 @@
     "catalog:generate": "node --experimental-strip-types scripts/catalog.mjs --write",
     "catalog:check": "node --experimental-strip-types scripts/catalog.mjs",
     "ll:dev": "vitepress dev docs",
-    "ll:build": "vitepress build docs",
+    "ll:build": "NODE_OPTIONS='--max-old-space-size=8192' vitepress build docs",
     "ll:preview": "node scripts/preview.mjs"
   },
   "keywords": [],

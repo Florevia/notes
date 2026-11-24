@@ -37,8 +37,16 @@ export default withMermaid(
     title: "My notes",
     description: "前端开发、AI 与 Agent、工程架构与计算机基础的个人学习笔记",
     // localhost URLs are literal CORS teaching examples, not knowledge-base routes.
-    // All actual internal article and asset links remain strictly checked.
-    ignoreDeadLinks: [/^https?:\/\/localhost(?::\d+)?(?:\/.*)?$/],
+    // /assets/* and /examples/* are served from docs/public/ — VitePress dead-link
+    // checker does not scan public/ so these are always false positives.
+    // /absolute/path and /abs/path/* are placeholder paths used in doc examples.
+    ignoreDeadLinks: [
+      /^https?:\/\/localhost(?::\d+)?(?:\/.*)?$/,
+      /^\/assets\//,
+      /^\/examples\//,
+      /^\/absolute\//,
+      /^\/abs\//,
+    ],
     cleanUrls: true,
     buildEnd(site) {
       publishLegacyPages(site.outDir, site.site.base);

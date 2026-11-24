@@ -28,6 +28,10 @@ outline: [2, 3]
 
 - [Cursor System Prompt](/ai/agent/ecosystem/cursor-system-prompt)
 
+- [Antigravity System Prompt](/ai/agent/ecosystem/antigravity-system-prompt)
+
+- [Pi Agent System Prompt](/ai/agent/ecosystem/pi-agent-system-prompt)
+
 ## 关联专题
 
 - [Agent 架构](/ai/agent/architecture/)

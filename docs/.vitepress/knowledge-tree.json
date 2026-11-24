@@ -1984,6 +1984,16 @@
             "text": "Cursor System Prompt",
             "link": "/ai/agent/ecosystem/cursor-system-prompt",
             "id": "topic-4-6-3"
+          },
+          {
+            "text": "Antigravity System Prompt",
+            "link": "/ai/agent/ecosystem/antigravity-system-prompt",
+            "id": "topic-4-6-4"
+          },
+          {
+            "text": "Pi Agent System Prompt",
+            "link": "/ai/agent/ecosystem/pi-agent-system-prompt",
+            "id": "topic-4-6-5"
           }
         ],
             "id": "topic-4-6",
